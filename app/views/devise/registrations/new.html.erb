@@ -9,7 +9,7 @@
       会員情報入力
     </h3>
   </div>
-  <%# <%= render 'shared/error_messages', model: @user %>
+  <%= render 'shared/error_messages', model: @user %>
   <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
   <%# render 'shared/error_messages', model: f.object %>
   <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
@@ -26,7 +26,7 @@
     <div class='form-text-wrap'>
       <label class="form-text">プロフィール</label>
     </div>
-    <%= f.text_area :nickname, class:"input-default-large", id:"profile", placeholder:"例) 山田太朗と申します。趣味は、テニスです。宜しくお願いいたします。", maxlength:"600" %>
+    <%= f.text_area :profile, class:"input-default-large", id:"profile", placeholder:"例) 山田太朗と申します。趣味は、テニスです。宜しくお願いいたします。", maxlength:"600" %>
   </div>
 
   <div class="form-group">
