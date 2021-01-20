@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  background-color: #CCFFFF;
+  border: 1px solid;
+  border-color: #DDDDDD;
+  font: yellow;
+}
+
+.header-bar {
+  font: yellow;
+  font-size: 20px;
+  display: flex;
+}
+
+.top-title {
+  text-decoration: none;
+}
+
+.grid-6 {
+  margin-left: 400px;
+}
+
+.post {
+  text-decoration: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
