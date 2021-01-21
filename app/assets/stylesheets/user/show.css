@@ -35,3 +35,10 @@
   width: 70%;
   padding: 16px 8px;
 }
+
+.item-box-img {
+  height: 25vh;
+  width: 30vw;
+  min-height: 300px;
+  object-fit: contain;
+}
