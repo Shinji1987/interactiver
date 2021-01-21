@@ -2,14 +2,23 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   validates :nickname, presence: true
-  
+                       
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable
+        #  :validatable
 
-  
+  VALID_EMAIL_REGEX = /@/.freeze
+  validates :email,              presence: true,
+                                 uniqueness: true,
+                                 format: { with: VALID_EMAIL_REGEX,
+                                 message: 'に@を含めてください' }
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
-  validates :password, format: { with: VALID_PASSWORD_REGEX,
+  validates :password,           on: :create,
+                                 presence: true,
+                                 length: { minimum: 6 },
+                                 confirmation: true,
+                                 format: { with: VALID_PASSWORD_REGEX,
                                  message: 'は半角6文字以上、英字・数字それぞれ１文字以上含む必要があります' }
 
   VALID_FAMILY_NAME_KANJI = /\A[ぁ-んァ-ン一-龥]/.freeze

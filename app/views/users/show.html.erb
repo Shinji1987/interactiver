@@ -1,0 +1,40 @@
+<div class="main">
+  <div class="inner">
+    <div class="user__wrapper">
+      <h2 class="page-heading">
+        <%= @user.nickname %>さんの情報
+        <%= button_to "編集", edit_user_path, method: :get, class: "edit" %>
+      </h2>
+      
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1">ニックネーム</th>
+            <td class="table__col2"><%= @user.nickname %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">プロフィール</th>
+            <td class="table__col2"><%= @user.profile %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">メールアドレス</th>
+            <td class="table__col2"><%= @user.email %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">お名前 </th>
+            <td class="table__col2"><%= @user.family_name_kanji + @user.first_name_kanji %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">お名前カナ</th>
+            <td class="table__col2"><%= @user.family_name_kana + @user.first_name_kana %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">生年月日</th>
+            <td class="table__col2"><%= @user.birthday %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

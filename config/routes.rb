@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'posts#index'
-  resources :users, only: [:new, :create]
+  resources :users, only: [:show, :edit, :update]
   resources :posts, only: :index
-  # get 'users', :to => 'users#create'
 end

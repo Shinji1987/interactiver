@@ -15,7 +15,7 @@
         <a href="/" class="top-title">Interactiver</a>
         <% if user_signed_in? %>
           <div class="user_nav grid-6">
-            <%= link_to current_user.nickname, "/users/#{current_user.id}", class: "post" %>
+            <%= link_to current_user.nickname, user_path(current_user.id), class: "post" %>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "post" %>
             <%= link_to "投稿する", "#", class: "post" %>
           </div>
