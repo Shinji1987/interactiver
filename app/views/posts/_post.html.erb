@@ -1,10 +1,11 @@
 <div class="top-posts">
   <div class="top-icon">
-    <%= image_tag post.user.image.variant(resize: '100x100'), class: :topicon_img if post.user.image.attached? %>
+     <div class="trim-post"> 
+      <%= image_tag post.user.image.variant(resize: '100x100'), class: :topicon_img if post.user.image.attached? %>
+    </div>
     <div class="topicon-name">
       <%= post.user.nickname %>
     </div>
-    <%# <%= image_tag current_user.image, class: :card__img %>
   </div>
   <div class="top-post-right">
     <%= image_tag post.post_image.variant(resize: '300x300'), class: :post_img if post.post_image.attached?%><br>

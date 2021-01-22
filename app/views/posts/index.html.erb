@@ -1,1 +1,13 @@
+<div class="top-indication">
+  <% if user_signed_in? %>
+    <div class="trim">
+      <%= image_tag current_user.image.variant(resize: '100x100') if current_user.image.attached? %>
+    </div>
+    <div class="balloon-left">
+      <%= link_to "思ったことを書きましょう！(投稿はココをクリック)", new_post_path, class: "tweet" %>
+      <%# <%= link_to "ログイン", new_user_session_path, class: "post" %>
+      <%# placeholder:"例) furima太郎" %>
+    </div>
+  <% end %>
+</div>
 <%= render partial: "post", collection: @posts %>
