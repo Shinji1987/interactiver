@@ -26,7 +26,7 @@
 | Column                | Type       | Options           |
 | ----------------------| -----------| ----------------- |
 | text                  | text       | null: false       |
-| post                  | references | foreign_key: true |
+| user                  | references | foreign_key: true |
 
 ### Association
 

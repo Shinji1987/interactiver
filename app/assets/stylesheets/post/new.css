@@ -1,0 +1,20 @@
+.inner {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+.form__wrapper {
+  min-height: calc(100vh - 161px);
+  margin-left: 170px;
+}
+
+.image-icon {
+  margin-top: 15px;
+}
+
+
+/* .page-heading {
+  font-size: 30px;
+  margin-bottom: 28px;
+} */
+

@@ -8,3 +8,5 @@ ja:
        first_name_kanji: お名前(全角)の名前
        family_name_kana: お名前カナ(全角)の名字
        first_name_kana: お名前カナ(全角)の名前
+     post:
+       text: テキスト

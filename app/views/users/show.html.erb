@@ -5,7 +5,7 @@
         <%= @user.nickname %>さんの情報
         <%= button_to "編集", edit_user_path, method: :get, class: "edit" %>
       </h2>
-      <%= image_tag @user.image, class:"item-box-img" %>
+      <%= image_tag @user.image, class:"item-box-img" if @user.image.attached? %>
       <table class="table">
         <tbody>
           <tr>
