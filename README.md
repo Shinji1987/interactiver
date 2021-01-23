@@ -38,7 +38,7 @@
 
 | Column                | Type       | Options           |
 | ----------------------| -----------| ----------------- |
-| text                  | text       | null: false       |
+| comment               | text       | null: false       |
 | user                  | references | foreign_key: true |
 | post                  | references | foreign_key: true |
 

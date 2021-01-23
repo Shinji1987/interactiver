@@ -11,4 +11,5 @@
     <%= image_tag post.post_image.variant(resize: '300x300'), class: :post_img if post.post_image.attached?%><br>
     <%= post.text %>
   </div>
+  <%= link_to image_tag("comment.jpg", width: '70', alt: "コメントアイコン"), new_post_comment_path(post.id), class: :comment_img %>
 </div>
