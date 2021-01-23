@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all.order('created_at DESC')
+    @like = Like.create
+    # @likes = @post.likes.includes(:user)
   end
 
   def new
