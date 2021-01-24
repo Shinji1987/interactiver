@@ -4,7 +4,8 @@ class User < ApplicationRecord
   has_one_attached :image
   has_many :posts
   has_many :comments
-  has_many :likes
+  has_many :likes, dependent: :destroy
+  has_many :like_posts, through: :likes, source: :post
 
   validates :nickname, presence: true
                        
@@ -47,4 +48,8 @@ class User < ApplicationRecord
                                         message: 'は全角カタカナを入力する必要がります' }
   
   validates :birthday, presence: true
+
+  def already_liked?(post)
+    self.likes.exists?(post_id: post.id)
+  end
 end

@@ -15,9 +15,8 @@
     <div>
       <%= link_to image_tag("comment.jpg", width: '60', alt: "コメントアイコン"), new_post_comment_path(post.id), class: :comment_img %>
     </div>
-    <div>
-      <%= link_to image_tag("like.jpg", width: '60', alt: "いいねアイコン"), post_likes_path(post.id), method: :post, class: :like_img %>
-      <%# <%= button_to("いいね", post_likes_path(post), method: :post, class: :like_img) %>
+    <div id="likes_buttons_<%= post.id %>">
+    <%= render partial: "likes/like", locals: { post: post } %>
     </div>
   </div>
 </div>
