@@ -20,6 +20,8 @@
 - has_many :follows
 - has_many :user_follows
 - has_many :friends
+- has_many :relationships
+- has_many :friend_requests
 
 ## posts テーブル
 
@@ -85,11 +87,34 @@
 
 ## friends テーブル
 
-| Column                | Type       | Options           |
-| ----------------------| -----------| ----------------- |
-| request_user          | references | foreign_key: true |
-| requested_user        | references | foreign_key: true |
-| status                | references | foreign_key: true |
+| Column         | Type       | Options           |
+| ---------------| -----------| ----------------- |
+| user_id        | references | foreign_key: true |
+| friends        | references | foreign_key: true |
+
+### Association
+
+- has_many :users
+- has_many :relationships
+
+## relationships テーブル
+
+| Column         | Type       | Options           |
+| ---------------| -----------| ----------------- |
+| user_id        | references | foreign_key: true |
+| friend_user_id | references | foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :friend
+
+## friend_requests テーブル
+
+| Column         | Type       | Options           |
+| ---------------| -----------| ----------------- |
+| from_user_id   | references | foreign_key: true |
+| to_user_id     | references | foreign_key: true |
 
 ### Association
 
