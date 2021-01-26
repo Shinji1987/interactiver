@@ -1,0 +1,12 @@
+<% if user_signed_in? %>
+  <% if @user == current_user %>
+    <%= button_to "編集", edit_user_path, method: :get, class: "edit" %>
+  <% elsif FriendRequest.find_by(from_user_id: current_user.id, to_user_id: @user.id) %>
+    <%= link_to image_tag("send_friend_request.png", width: '50', alt: "友達申請アイコン"), user_friend_request_path(@user, @friend_request), method: :delete, remote: true, class: :friend_unrequest_img %>
+    <%# <%= link_to image_tag("send_friend_request.png", width: '50', alt: "友達申請アイコン"), user_friend_request_path(@user, @user.friend_requests), method: :delete, remote: true, class: :friend_unrequest_img %>
+    <span class="request-indication">友達申請キャンセル</span>
+  <% else %>
+    <%= link_to image_tag("send_friend_request.png", width: '50', alt: "友達申請アイコン"), user_friend_requests_path(@user.id), method: :post, remote: true, class: :friend_request_img %>
+    <span class="request-indication">友達申請</span>
+  <% end %>
+<% end %>

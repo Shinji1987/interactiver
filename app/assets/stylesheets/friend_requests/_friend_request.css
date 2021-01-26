@@ -1,0 +1,9 @@
+.friend_unrequest_img {
+  filter: opacity(30%);
+  margin-left: 30px;
+}
+
+.request-indication {
+  font-size: 20px;
+  color: blue;
+}

@@ -3,7 +3,9 @@
     <div class="user__wrapper">
       <h2 class="page-heading">
         <%= @user.nickname %>さんの情報
-        <%= button_to "編集", edit_user_path, method: :get, class: "edit" %>
+        <div id="request_button_<%= @user.id %>">
+          <%= render partial: "friend_requests/friend_request", locals: { user: @user } %>
+        </div>
       </h2>
       <%= image_tag @user.image, class:"item-box-img" if @user.image.attached? %>
       <table class="table">

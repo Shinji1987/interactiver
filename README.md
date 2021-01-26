@@ -11,6 +11,7 @@
 | first_name_kana       | string     | null: false |
 | birthday              | date       | null: false |
 | profile               | text       |             |
+| request_status        | integer    |             |
 
 ### Association
 
@@ -19,8 +20,6 @@
 - has_many :likes
 - has_many :follows
 - has_many :user_follows
-- has_many :friends
-- has_many :relationships
 - has_many :friend_requests
 
 ## posts テーブル
@@ -85,36 +84,13 @@
 - belongs_to :user
 - belongs_to :follow
 
-## friends テーブル
-
-| Column         | Type       | Options           |
-| ---------------| -----------| ----------------- |
-| user_id        | references | foreign_key: true |
-| friends        | references | foreign_key: true |
-
-### Association
-
-- has_many :users
-- has_many :relationships
-
-## relationships テーブル
-
-| Column         | Type       | Options           |
-| ---------------| -----------| ----------------- |
-| user_id        | references | foreign_key: true |
-| friend_user_id | references | foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :friend
-
 ## friend_requests テーブル
 
-| Column         | Type       | Options           |
-| ---------------| -----------| ----------------- |
-| from_user_id   | references | foreign_key: true |
-| to_user_id     | references | foreign_key: true |
+| Column            | Type       | Options           |
+| ----------------- | -----------| ----------------- |
+| from_user_id      | integer    | null: false       |
+| to_user_id        | integer    | null: false       |
+| requesting_status | integer    | null: false       |
 
 ### Association
 

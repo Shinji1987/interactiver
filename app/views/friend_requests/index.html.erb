@@ -1,7 +1,7 @@
 <div class="top-posts">
   <div class="top-icon">
      <div class="trim-post"> 
-      <%= link_to image_tag(post.user.image.variant(resize: '100x100')), user_path(post.user.id), class: :topicon_img if post.user.image.attached? %>
+      <%= link_to image_tag(@friend_request.user.image.variant(resize: '100x100')), user_path(post.user.id), class: :topicon_img if post.user.image.attached? %>
     </div>
     <div class="topicon-name">
       <%= post.user.nickname %>
@@ -14,9 +14,6 @@
   <div class="icons">
     <div>
       <%= link_to image_tag("comment.jpg", width: '60', alt: "コメントアイコン"), new_post_comment_path(post.id), class: :comment_img %>
-    </div>
-    <div id="likes_buttons_<%= post.id %>">
-    <%= render partial: "likes/like", locals: { post: post } %>
     </div>
   </div>
 </div>

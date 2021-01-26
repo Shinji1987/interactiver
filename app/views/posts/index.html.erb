@@ -5,8 +5,9 @@
     </div>
     <div class="balloon-left">
       <%= link_to "思ったことを書きましょう！(投稿はココをクリック)", new_post_path, class: "tweet" %>
-      <%# <%= link_to "ログイン", new_user_session_path, class: "post" %>
-      <%# placeholder:"例) furima太郎" %>
+    </div>
+    <div class="friend-request">
+      <%= link_to image_tag("friend_request.png", width: '50', alt: "友達申請アイコン"), user_friend_requests_path(current_user.id), class: "friend-request-icon" %>
     </div>
   <% end %>
 </div>

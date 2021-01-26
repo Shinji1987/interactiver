@@ -1,10 +1,17 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    if user_signed_in?
+      @friend_request = FriendRequest.find_by(from_user_id: current_user.id, to_user_id: @user.id)
+    end
+    # @friend_request = FriendRequest.find(params[:id])
   end
 
   def edit
     @user = User.find(params[:id])
+    if @user != current_user
+      redirect_to root_path
+    end
   end
 
   def update

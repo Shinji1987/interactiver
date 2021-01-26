@@ -3,7 +3,8 @@ class PostsController < ApplicationController
     @posts = Post.all.order('created_at DESC')
     @post = Post.new
     @like = Like.create
-    # @likes = @post.likes.includes(:user)
+    # @user = User.find(params[:user_id])
+    # @friend_request = FriendRequest.find_by(from_user_id: current_user.id)
   end
 
   def new

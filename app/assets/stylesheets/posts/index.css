@@ -96,3 +96,8 @@
 .tweet {
   text-decoration: none;
 }
+
+.friend-request {
+  margin-left: 20px;
+  margin-top: 30px;
+}
