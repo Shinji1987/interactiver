@@ -7,7 +7,17 @@
           <%= render partial: "friend_requests/friend_request", locals: { user: @user } %>
         </div>
       </h2>
-      <%= image_tag @user.image, class:"item-box-img" if @user.image.attached? %>
+      <div class="mid-object">
+        <%= image_tag @user.image, class:"item-box-img" if @user.image.attached? %>
+        <div class="friend-list">
+          <%= link_to "友達リスト", "#", class: "friend-list-indication" %>
+        </div>
+        <ul class='request-lists'>
+          <li class='list'>
+            
+          </li>
+        </ul>
+      </div>
       <table class="table">
         <tbody>
           <tr>

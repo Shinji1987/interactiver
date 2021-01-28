@@ -1,10 +1,34 @@
 <% if user_signed_in? %>
   <% if @user == current_user %>
-    <%= button_to "編集", edit_user_path, method: :get, class: "edit" %>
-  <% elsif FriendRequest.find_by(from_user_id: current_user.id, to_user_id: @user.id) %>
-    <%= link_to image_tag("send_friend_request.png", width: '50', alt: "友達申請アイコン"), user_friend_request_path(@user, @friend_request), method: :delete, remote: true, class: :friend_unrequest_img %>
-    <%# <%= link_to image_tag("send_friend_request.png", width: '50', alt: "友達申請アイコン"), user_friend_request_path(@user, @user.friend_requests), method: :delete, remote: true, class: :friend_unrequest_img %>
-    <span class="request-indication">友達申請キャンセル</span>
+    <div class="edit-request">
+      <%= button_to "編集", edit_user_path, method: :get, class: "edit" %>
+    <% if @friend_request != nil && @friend_request_status.include?(1) %>
+      <%= link_to image_tag("friend_request.png", width: '50', alt: "友達申請アイコン"), edit_user_friend_request_path(@friend_request_from), class: "friend-request-icon" %>
+      <div class="request-count">
+        <%= @request_count %><span>件の友達申請</span>
+      </div>
+    <% else %>
+      <%= link_to image_tag("friend_request.png", width: '50', alt: "友達申請アイコン"), "#", class: "friend-request-icon" %>
+      <span class="request-empty-indication">友達申請はありません</span>
+    <% end %>
+    </div>
+  <% elsif FriendRequest.find_by(from_user_id: current_user.id, to_user_id: @user.id) || FriendRequest.find_by(from_user_id: @user.id, to_user_id: current_user.id) %>
+    <% if @friend_request.requesting_status != 2 %>
+      <% if @friend_request.to_user_id != current_user.id %>
+        <%= link_to image_tag("send_friend_request.png", width: '50', alt: "友達申請アイコン"), user_friend_request_path(@user, @friend_request), method: :delete, remote: true, class: :friend_unrequest_img %>
+        <span class="request-indication">友達申請キャンセル</span>
+      <% else %>
+        <%= link_to image_tag("friend_request.png", width: '50', alt: "友達申請アイコン"), edit_user_friend_request_path(@friend_request_from), class: :friend_request_icon %>
+        <div class="requested-indication-top">友達申請受信済み</div>
+        <div class="requested-indication-bottom">
+          ここからリクエストの処理を行ってください
+        </div>
+      <% end %>
+    <% else %>
+      <%= link_to image_tag("already_friend.png", width: '50', alt: "既に友達アイコン"), remove_user_friend_request_path(@user.id), method: :delete, class: :already_friend_img %>
+      <div class="already-friend-indication-top">既に友達です</div>
+      <div class="already-friend-indication-bottom">友達をキャンセルする場合はここをクリック</div>
+    <% end %>
   <% else %>
     <%= link_to image_tag("send_friend_request.png", width: '50', alt: "友達申請アイコン"), user_friend_requests_path(@user.id), method: :post, remote: true, class: :friend_request_img %>
     <span class="request-indication">友達申請</span>

@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'posts#index'
   resources :users, only: [:show, :edit, :update] do
-    resources :friend_requests, only: [:index, :new, :create, :destroy]
+    resources :friend_requests, only: [:create, :destroy, :edit, :update, :reject] do
+      member do
+        delete 'reject'
+        delete 'remove'
+      end
+    end
   end
   resources :posts, only: [:index, :new, :create] do
     resources :comments, only: [:new, :create]
