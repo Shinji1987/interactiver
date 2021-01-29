@@ -1,26 +1,24 @@
-<div class="main">
-  <div class="inner">
-    <div class="user__wrapper">
-      <h2 class="page-heading">
-        <%= @user.nickname %>さんの情報
-        <div id="request_button_<%= @user.id %>">
-          <%= render partial: "friend_requests/friend_request", locals: { user: @user } %>
+    <div class="request-index-main">
+      <h2 class="page-heading-friend-list">
+        <div class="friend-list-top">
+        <div class="trim-friend-list">
+          <%= link_to image_tag(@user.image.variant(resize: '100x100')), user_path(@user.id), class: :icon_img if @user.image.attached? %>
+        </div>
+        <div class="friend-list-top-indication">
+          <%= @user.nickname %>さんの友達リスト一覧
         </div>
       </h2>
       <div class="mid-object">
-        <%= image_tag @user.image, class:"item-box-img" if @user.image.attached? %>
-        
-        <div class="friend-list-section">
+        <div class="friend-list-main-section">
           <% if current_user.id == @user.id %>
             <div class="friend-list-block">
-              <%= link_to "友達リスト: #{@friend_lists.count}人", user_friend_requests_path(@user.id), class: "friend-list-indication" %>
+              <%= link_to "友達リスト: #{@friend_lists.count}人", "#", class: "friend-list-indication" %>
             </div>
           <% else %>
             <div class="friend-list-block">
-              <%= link_to "友達リスト: #{@friend_list_others.count}人", user_friend_requests_path(@user.id), class: "friend-list-indication" %>
+              <%= link_to "友達リスト: #{@friend_list_others.count}人", "#", class: "friend-list-indication" %>
             </div>
           <% end %>
-
           <% if current_user.id == @user.id %>
             <div class="friend-lists-group">
               <% @friend_lists.each do |friend_list| %>
@@ -28,7 +26,7 @@
                   <% x != current_user.id %>
                 <% end %>
                 <% user = User.find_by(id: to_from_user) %>
-                  <ul class='friend-lists'>
+                  <ul class='friend-lists-main'>
                     <li class='friend-list'>
                       <div class="image-border">
                         <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :friend_list_img if user.image.attached? %>
@@ -59,40 +57,7 @@
                   </ul>
               <% end %>
             </div>
-          
           <% end %>
-
-
         </div>
       </div>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th class="table__col1">ニックネーム</th>
-            <td class="table__col2"><%= @user.nickname %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">プロフィール</th>
-            <td class="table__col2"><%= @user.profile %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">メールアドレス</th>
-            <td class="table__col2"><%= @user.email %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">お名前 </th>
-            <td class="table__col2"><%= @user.family_name_kanji + @user.first_name_kanji %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">お名前カナ</th>
-            <td class="table__col2"><%= @user.family_name_kana + @user.first_name_kana %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">生年月日</th>
-            <td class="table__col2"><%= @user.birthday %></td>
-          </tr>
-        </tbody>
-      </table>
     </div>
-  </div>
-</div>

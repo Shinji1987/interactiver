@@ -1,5 +1,11 @@
 class FriendRequestsController < ApplicationController
 
+  def index
+    @user = User.find(params[:user_id])
+    @friend_lists = FriendRequest.where("from_user_id = ? or to_user_id = ?", current_user.id, current_user.id).where(requesting_status: 2).pluck(:from_user_id, :to_user_id)
+    @friend_list_others = FriendRequest.where("from_user_id = ? or to_user_id = ?", @user.id, @user.id).where(requesting_status: 2).pluck(:from_user_id, :to_user_id)
+  end
+
   def create
     @user = User.find(params[:user_id])
     @friend_request = FriendRequest.new(friend_request_params)

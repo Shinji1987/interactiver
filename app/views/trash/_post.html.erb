@@ -1,3 +1,6 @@
+<% posts = @posts.where(user_id: post_list_user) %>
+<% posts.each do |post| %>
+
 <div class="top-posts">
   <div class="top-icon">
      <div class="trim-post"> 
@@ -20,3 +23,4 @@
     </div>
   </div>
 </div>
+<% end %>
