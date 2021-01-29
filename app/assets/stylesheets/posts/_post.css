@@ -24,6 +24,7 @@
 
 .topicon_img {
   margin-bottom: 16px;
+  
 }
 
 .topicon-name {
@@ -64,6 +65,8 @@
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   height:100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .comment_img {

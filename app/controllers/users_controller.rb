@@ -4,6 +4,8 @@ class UsersController < ApplicationController
     @friend_request_from = FriendRequest.where(to_user_id: current_user).pluck(:from_user_id)
     @friend_requests = FriendRequest.where(to_user_id: current_user, requesting_status: 1)
     @request_count = @friend_requests.count
+    @friend_lists = FriendRequest.where("from_user_id = ? or to_user_id = ?", current_user.id, current_user.id).where(requesting_status: 2).pluck(:from_user_id, :to_user_id)
+    @friend_list_others = FriendRequest.where("from_user_id = ? or to_user_id = ?", @user.id, @user.id).where(requesting_status: 2).pluck(:from_user_id, :to_user_id)
     if user_signed_in?
       if current_user.id == @user.id
         @friend_request = FriendRequest.find_by(to_user_id: current_user)
