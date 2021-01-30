@@ -1,5 +1,12 @@
-<% content_for :header do %>
-  
+<% if user_signed_in? %>
+  <% content_for :header do %>
+    <%= form_with(url: search_user_path(@users), local: true, method: :get, class: "search-form") do |form| %>
+      <div class="top-middle-icons">
+        <%= form.text_field :keyword, placeholder: "ユーザーを検索する", class: "search-input" %>
+        <%= form.submit "検索", class: "search-btn" %>
+      </div>
+    <% end %>  
+  <% end %>
 <% end %>
 
 <% if user_signed_in? %>
@@ -40,8 +47,7 @@
     </div>
   </div>
   <% end %>
-<% end %>
-
+<% else %>
 <div class="main-sentences">
   <div class="top1">
     ようこそ、Interactiverへ！！！
@@ -56,3 +62,4 @@
     興味がある方は、ヘッダーの「<span class="new-account">新規登録</span>」からアカウントを作成して、交流を開始してください。
   </div>
 </div>
+<% end %>

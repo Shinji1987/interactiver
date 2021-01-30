@@ -1,0 +1,56 @@
+<% content_for :header do %>
+  <%= form_with(url: search_user_path, local: true, method: :get, class: "search-form") do |form| %>
+    <div class="top-middle-icons">
+      <%= form.text_field :keyword, placeholder: "ユーザーを検索する", class: "search-input" %>
+      <%= form.submit "検索", class: "search-btn" %>
+    </div>
+  <% end %>  
+<% end %>
+<div class="contents row">
+  <% @users.each do |user| %>
+
+  <% from_record = FriendRequest.where(from_user_id: user.id).or(FriendRequest.where(to_user_id: user.id)).pluck(:requesting_status) %>
+  <% unless from_record.include?(2) %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="accept-reject-btn">
+            <div class="accept_button">
+              <%= button_to("承認", user_friend_request_path(user.id), method: :patch, class: :accept_button_icon) %>
+            </div>
+            <div class="reject_button">
+              <%= button_to("承認拒否", reject_user_friend_request_path(user.id), method: :delete, class: :accept_button_icon) %>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  <% else %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="search-already-friend">
+            <span class="search-indication">既に友達です</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+ <% end %>
+</div>

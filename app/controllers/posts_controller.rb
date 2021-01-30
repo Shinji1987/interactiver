@@ -5,16 +5,18 @@ class PostsController < ApplicationController
     if user_signed_in?
       @posts = Post.all.order('created_at DESC')
       post_list_users = FriendRequest.where("from_user_id = ? or to_user_id = ?", current_user.id, current_user.id).where(requesting_status: 2).pluck(:from_user_id, :to_user_id)
+      
       @post_lists_users = post_list_users.flatten!
-      @post_list_users = @post_lists_users.uniq
+
+      if @post_lists_users != nil
+        @post_list_users = @post_lists_users.uniq
+      end
 
       @post = Post.new
       @like = Like.create
-      # @user = User.find(params[:user_id])
-      # @friend_request = FriendRequest.find_by(from_user_id: current_user.id)
-
-      
     end
+    @users_record = User.search(params[:keyword])
+    @users = @users_record.select(:id)
   end
 
   def new

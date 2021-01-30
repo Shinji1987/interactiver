@@ -1,0 +1,14 @@
+.search-list {
+  display: flex;
+}
+
+.search-already-friend {
+  margin-top: 65px;
+  margin-left: 30px;
+}
+
+.search-indication {
+  font-size: 25px;
+  color: blue;
+  font-weight: bold;
+}

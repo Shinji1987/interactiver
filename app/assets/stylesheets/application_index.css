@@ -1,6 +1,6 @@
-.header {
+.header-main {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   height: 60px;
   width: 100%;
@@ -10,18 +10,45 @@
   font: yellow;
 }
 
-.header-bar {
+.header-bar-left {
   font: yellow;
   font-size: 20px;
   display: flex;
+  width: 33%;
+  /* border: 1px solid;
+  border-color: black; */
+}
+
+.header-bar-middle {
+  
+}
+
+.header-sub {
+  font: yellow;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  width: 32%;
+  /* border: 1px solid;
+  border-color: black; */
+}
+
+.header-bar-right {
+  font: yellow;
+  font-size: 20px;
+  display: flex;
+  /* border: 1px solid;
+  border-color: black; */
+  width: 35%;
 }
 
 .top-title {
   text-decoration: none;
+  margin-left: 350px;
 }
 
 .grid-6 {
-  margin-left: 400px;
+  /* margin-left: 400px; */
 }
 
 .post {
@@ -32,3 +59,8 @@
   display: flex;
   justify-content: center;
 }
+
+/* .search-objects {
+  display: flex;
+  align-items: center;
+} */

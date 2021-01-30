@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'posts#index'
   resources :users, only: [:show, :edit, :update] do
+    member do
+      get 'search'
+    end
     resources :friend_requests, only: [:index, :create, :destroy, :edit, :update, :reject] do
       member do
         delete 'reject'

@@ -12,10 +12,18 @@
 
   <body>
 
-    <header class="header">
-      <div class="header-bar">
+    <header class="header-main">
+      <div class="header-bar-left">
         <a href="/" class="top-title">Interactiver</a>
-        <%= yield :header %>
+      </div>
+      
+      <header class="header-sub">
+      <div class="header-bar-middle">
+          <%= yield :header %>
+      </div>
+      </header>
+
+      <div class="header-bar-right">
         <% if user_signed_in? %>
           <div class="user_nav grid-6">
             <%= link_to current_user.nickname, user_path(current_user.id), class: "post" %>
@@ -29,6 +37,8 @@
         <% end %>
       </div>
     </header>
+
+   
 
     <%= yield %>
 
