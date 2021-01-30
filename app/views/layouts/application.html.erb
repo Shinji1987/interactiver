@@ -11,9 +11,11 @@
   </head>
 
   <body>
+
     <header class="header">
       <div class="header-bar">
         <a href="/" class="top-title">Interactiver</a>
+        <%= yield :header %>
         <% if user_signed_in? %>
           <div class="user_nav grid-6">
             <%= link_to current_user.nickname, user_path(current_user.id), class: "post" %>
@@ -27,7 +29,9 @@
         <% end %>
       </div>
     </header>
+
     <%= yield %>
+
     <footer>
       <div class="footer">
         <div class="footer-object">
@@ -35,5 +39,6 @@
         </div>
       </div>
     </footer>
+
   </body>
 </html>

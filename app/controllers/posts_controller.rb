@@ -12,6 +12,8 @@ class PostsController < ApplicationController
       @like = Like.create
       # @user = User.find(params[:user_id])
       # @friend_request = FriendRequest.find_by(from_user_id: current_user.id)
+
+      
     end
   end
 
