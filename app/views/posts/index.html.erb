@@ -1,11 +1,16 @@
 <% if user_signed_in? %>
   <% content_for :header do %>
-    <%= form_with(url: search_user_path(@users), local: true, method: :get, class: "search-form") do |form| %>
-      <div class="top-middle-icons">
-        <%= form.text_field :keyword, placeholder: "ユーザーを検索する", class: "search-input" %>
-        <%= form.submit "検索", class: "search-btn" %>
+    <div class="top-middle-main">
+      <%= form_with(url: search_user_path(@users), local: true, method: :get, class: "search-form") do |form| %>
+        <div class="top-middle-icons">
+          <%= form.text_field :keyword, placeholder: "ユーザーを検索する", class: "search-input" %>
+          <%= form.submit "検索", class: "search-btn" %>
+        </div>
+      <% end %>
+      <div class="messenger-object">
+        <%= link_to image_tag("Messenger Icon.png", width: '40', alt: "友達申請アイコン"), "#", class: "messenger-icon" %>
       </div>
-    <% end %>  
+    </div>
   <% end %>
 <% end %>
 

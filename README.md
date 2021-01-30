@@ -22,6 +22,10 @@
 - has_many :user_follows
 - has_many :friend_requests
 
+- has_many :messages
+- has_many :chats
+- has_many :chat_users
+
 ## posts テーブル
 
 | Column                | Type       | Options           |
@@ -95,3 +99,42 @@
 ### Association
 
 - belongs_to :user
+
+## messages テーブル
+
+| Column            | Type       | Options           |
+| ----------------- | -----------| ----------------- |
+| content           | text       | null: false       |
+| sent_user_id      | integer    | null: false       |
+| received_user_id  | integer    | null: false       |
+| chat_id           | references | foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :chat
+
+## chats テーブル
+
+| Column            | Type       | Options           |
+| ----------------- | -----------| ----------------- |
+|                   |            |                   |
+
+### Association
+
+- has_many :users
+- has_many :messages
+- has_many :chat_users
+
+## chat_users テーブル
+
+| Column            | Type       | Options           |
+| ----------------- | -----------| ----------------- |
+| created_user_id   | integer    | null: false       |
+| invited_user_id   | integer    | null: false       |
+| chat_id           | references | foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :chat

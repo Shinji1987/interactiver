@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
   has_many :friend_requests, dependent: :destroy
+  has_many :chats, through: :chat_users
+  has_many :messages, dependent: :destroy
+  has_many :chat_users, dependent: :destroy
 
   validates :nickname, presence: true
                        

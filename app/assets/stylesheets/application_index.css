@@ -19,10 +19,6 @@
   border-color: black; */
 }
 
-.header-bar-middle {
-  
-}
-
 .header-sub {
   font: yellow;
   font-size: 20px;
@@ -59,8 +55,3 @@
   display: flex;
   justify-content: center;
 }
-
-/* .search-objects {
-  display: flex;
-  align-items: center;
-} */

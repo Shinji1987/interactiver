@@ -239,5 +239,12 @@
 
 .top-middle-icons {
   display: flex;
+}
 
+.top-middle-main {
+  display: flex;
+}
+
+.messenger-object {
+  margin-left: 50px;
 }
