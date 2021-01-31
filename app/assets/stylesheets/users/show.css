@@ -105,3 +105,8 @@
 .friend-list-name {
   text-align: center;
 }
+
+.chat-icon {
+  margin-left: 20px;
+  margin-top: -10px;
+}

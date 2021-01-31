@@ -1,0 +1,52 @@
+.message-main {
+  margin-left: 25%;
+  margin-top: 10px;
+  display: flex;
+  border: 1px solid;
+  border-color: #DDDDDD;
+  width: 700px;
+  padding: 5px;
+  min-height: 74vh;
+}
+
+.message-footer {
+  width: 49.4%;
+  height: 80px;
+  background-color: #89c7de;
+  position: fixed;
+  bottom: 0;
+  /* left: 0; */
+  margin-left: 357px;
+}
+
+.message-input {
+  height: 35px;
+  width: 400px;
+  border-radius:20px;
+  border: solid 1px black;
+  outline: 0;
+  font-size: 15px;
+}
+
+.message-send-btn {
+  color: #fff;
+  background-color: skyblue;
+  /* border-radius: 100vh; */
+  border-radius: 10px;
+  width: 60px;
+  height: 35px;
+  border: solid 1px black;
+  font-size: 18px;
+  text-shadow:
+    1px 0 0 black,
+    0 1px 0 black,
+    -1px 0 0 black,
+    0 -1px 0 black;
+}
+
+.message-footer-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}

@@ -17,4 +17,8 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
   post   '/like/:post_id' => 'likes#like',   as: 'like'
+
+  resources :chats, only: [:new, :create] do
+    resources :messages, only: [:new, :create]
+  end
 end

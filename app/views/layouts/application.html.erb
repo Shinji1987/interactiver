@@ -42,13 +42,17 @@
 
     <%= yield %>
 
+    
     <footer>
+    <% unless request.path.include?("chats") %>
       <div class="footer">
         <div class="footer-object">
           Copyright Interactiver 2021.
         </div>
       </div>
+    <% end %>
     </footer>
+   
 
   </body>
 </html>

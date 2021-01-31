@@ -1,0 +1,16 @@
+<div class="message-main">
+
+</div>
+
+<footer>
+  <div class="message-footer">
+    <%= form_with(url: chat_messages_path, local: true, method: :get, class: "message-form") do |form| %>
+      <div class="message-footer-icons">
+        <%= form.text_area :content, placeholder: "メッセージを入力する", class: "message-input" %>
+        <div>
+          <%= form.submit "送信", class: "message-send-btn" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</footer>

@@ -6,6 +6,11 @@
         <div id="request_button_<%= @user.id %>">
           <%= render partial: "friend_requests/friend_request", locals: { user: @user } %>
         </div>
+        <% unless current_user.id == @user.id %>
+          <div class="chat-icon">
+            <%= link_to image_tag("chat_create_icon.png", width: '70', alt: "チャットアイコン"), chats_path, method: :post, class: :messanger_img if current_user.image.attached? %>
+          </div>
+        <% end %>
       </h2>
       <div class="mid-object">
         <%= image_tag @user.image, class:"item-box-img" if @user.image.attached? %>
@@ -59,7 +64,6 @@
                   </ul>
               <% end %>
             </div>
-          
           <% end %>
 
 
