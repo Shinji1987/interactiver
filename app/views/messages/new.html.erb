@@ -1,10 +1,81 @@
-<div class="message-main">
+<% content_for :header do %>
+  <div class="top-middle-message">
+    <div class="trim-message-icon"> 
+      <%= link_to image_tag(@user.image.variant(resize: '100x100')), user_path(@user.id), class: :topicon_img if @user.image.attached? %>
+    </div>
+    <div class="message-icon-name">
+      <%= @user.nickname %>
+    </div>
 
+  </div>
+<% end %>
+
+<div class="message-main">
+  <% @messages.each do |message| %>
+    <ul class='message-list'>
+      <li class='message-list'>
+        <div class="chat-message">
+          <% if message.sent_user_id == @user.id %>
+            <div class="other">
+              <div class="trim-message-other-icon"> 
+                <%= link_to image_tag(@user.image.variant(resize: '100x100')), user_path(@user.id), class: :message_other_icon if @user.image.attached? %>
+              </div>
+              <div class="message-other">
+                <div class="message-time">
+                  <%= message.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
+                </div>
+                <span class="message-content-other"><%= message.content %></span>
+              </div>
+            </div>
+            <%# <% reads = Read.find_by(message_id: message.id) %>
+            <% reads_arr = Read.where(message_id: message.id) %>
+
+              <% if reads_arr.count >= 2 %>
+                <% reads = reads_arr.slice(0) %>
+                <% reads.each do |read| %>
+                  <% if read != nil && current_user.id == read.received_user_id %>
+                    <% read.update(complete: true) %>
+                  <% end %>
+                <% end %>
+              <% elsif reads_arr != [] && current_user.id == reads_arr.slice(0).received_user_id %>
+                <% read = reads_arr.slice(0) %>
+                <% read.update(complete: true) %>
+              <% end %>
+
+<%#.errors.full_messages%>
+            
+          <% else %>
+            <div class="message-time-right">
+              <% read = Read.find_by(message_id: message.id) %>
+                <% if read == nil %>
+                  <% read_new = Read.create(message_id: message.id, received_user_id: message.received_user_id, complete: false) %>
+                  <% read_new.complete == false %>
+                  <span class="unread"><%= read_new.complete ? '既読' : '未読' %></span>
+                  <%# <% binding.pry %>
+                <%# <% elsif read != nil && current_user.id == read.received_user_id %>
+                  <%# <% read = Read.update(complete: true) %>
+                <% elsif read.complete == true %>
+                  <span class="read"><%= read.complete ? '既読' : '未読' %></span>
+                <% else %>
+                  <span class="read"><%= read.complete ? '既読' : '未読' %></span>
+                <% end %>
+              <%# <% binding.pry %>
+              <%= message.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
+            </div>
+            <div class="message-myself">
+              <span class="message-content-myself"><%= message.content %></span>
+            </div>
+          <% end %>
+        </div>
+      </li>
+    </ul>
+  <% end %>
+  <div class="push"></div>
 </div>
 
 <footer>
   <div class="message-footer">
-    <%= form_with(url: chat_messages_path, local: true, method: :get, class: "message-form") do |form| %>
+    <%= form_with(url: chat_messages_path(@chat.id), local: true, method: :post, class: "message-form") do |form| %>
       <div class="message-footer-icons">
         <%= form.text_area :content, placeholder: "メッセージを入力する", class: "message-input" %>
         <div>

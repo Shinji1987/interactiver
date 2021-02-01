@@ -113,6 +113,7 @@
 
 - belongs_to :user
 - belongs_to :chat
+- has_one    :read
 
 ## chats テーブル
 
@@ -138,3 +139,15 @@
 
 - belongs_to :user
 - belongs_to :chat
+
+## reads テーブル
+
+| Column            | Type       | Options           |
+| ----------------- | -----------| ----------------- |
+| received_user_id  | references | foreign_key: true |
+| message_id        | references | foreign_key: true |
+| complete          | boolean    | null: false       |
+
+### Association
+
+- belongs_to :message

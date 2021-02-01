@@ -8,7 +8,7 @@
         </div>
         <% unless current_user.id == @user.id %>
           <div class="chat-icon">
-            <%= link_to image_tag("chat_create_icon.png", width: '70', alt: "チャットアイコン"), chats_path, method: :post, class: :messanger_img if current_user.image.attached? %>
+            <%= link_to image_tag("chat_create_icon.png", width: '70', alt: "チャットアイコン"), chats_path(@user.id), method: :post, class: :messanger_img if current_user.image.attached? %>
           </div>
         <% end %>
       </h2>
