@@ -1,6 +1,6 @@
 <% @users.each do |user| %>
 <%# <% from_record = FriendRequest.find_by(from_user_id: user.id) %>
-<% from_record = FriendRequest.where(from_user_id: user.id).pluck(:requesting_status) %>
+<% from_record = FriendRequest.where(from_user_id: user.id).where(to_user_id: current_user.id).pluck(:requesting_status) %>
 <% unless from_record.include?(2) %>
   <div class="top-requests">
     <ul class='request-lists'>

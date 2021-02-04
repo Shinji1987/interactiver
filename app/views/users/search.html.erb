@@ -9,11 +9,12 @@
 <div class="contents row">
   <% @users.each do |user| %>
 
-  <% from_record = FriendRequest.where(from_user_id: user.id).or(FriendRequest.where(to_user_id: user.id)).pluck(:requesting_status) %>
-  <% unless from_record.include?(2) %>
+  <% record = FriendRequest.where(from_user_id: user.id).or(FriendRequest.where(to_user_id: user.id)).where("from_user_id = ? or to_user_id = ?", current_user.id, current_user.id) %>
+  <% from_record = record.pluck(:requesting_status) %>
+  <% if from_record.slice(0) == 1 && record.slice(0).to_user_id == current_user.id %>
     <div class="top-requests">
       <ul class='request-lists'>
-        <li class='list'>
+        <li class='search-list'>
           <div class="top-icon">
             <div class="trim-post"> 
               <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
@@ -22,13 +23,44 @@
               <%= user.nickname %>
             </div>
           </div>
-          <div class="accept-reject-btn">
-            <div class="accept_button">
-              <%= button_to("承認", user_friend_request_path(user.id), method: :patch, class: :accept_button_icon) %>
+          <div class="search-already-friend">
+            <span class="search-indication">友達申請受信済みです<br>詳細画面からリクエストの処理をしましょう</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  <% elsif from_record.slice(0) == 1 %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
             </div>
-            <div class="reject_button">
-              <%= button_to("承認拒否", reject_user_friend_request_path(user.id), method: :delete, class: :accept_button_icon) %>
+            <div class="topicon-name">
+              <%= user.nickname %>
             </div>
+          </div>
+          <div class="search-already-friend">
+            <span class="search-indication">友達申請承認待ちです</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  <% elsif from_record.slice(0) == 2 %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="search-already-friend">
+            <span class="search-indication">既に友達です</span>
           </div>
         </li>
       </ul>
@@ -46,7 +78,7 @@
             </div>
           </div>
           <div class="search-already-friend">
-            <span class="search-indication">既に友達です</span>
+            <span class="search-indication">友達ではありません<br>詳細画面から友達申請をしましょう</span>
           </div>
         </li>
       </ul>

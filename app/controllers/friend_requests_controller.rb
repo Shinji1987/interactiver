@@ -46,6 +46,7 @@ class FriendRequestsController < ApplicationController
     @friend_request.destroy
     redirect_to edit_user_friend_request_path
     else
+      binding.pry
       render 'posts/index'
     end
   end
@@ -97,10 +98,9 @@ class FriendRequestsController < ApplicationController
   end
 
   def update
-    # binding.pry
     @from_user = User.find(params[:user_id])
-    @to_user = User.find(params[:id])
-    # @friend_request = FriendRequest.find(params[:id])
+    # @to_user = User.find(params[:id])
+   #これは消しても問題ないのか、確認して問題ないなら消す。
 
     # @friend_request = FriendRequest.where(from_user_id: current_user).pluck(:to_user_id)
     # if FriendRequest.find_by(from_user_id: current_user.id, to_user_id: @user.id)

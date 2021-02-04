@@ -17,6 +17,7 @@ class PostsController < ApplicationController
     end
     @users_record = User.search(params[:keyword])
     @users = @users_record.select(:id)
+
   end
 
   def new
