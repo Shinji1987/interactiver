@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   resources :chats, only: [:new, :create] do
     resources :messages, only: [:new, :create]
   end
+  get "news/data"
 end

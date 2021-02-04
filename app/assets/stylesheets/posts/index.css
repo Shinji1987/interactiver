@@ -33,7 +33,7 @@
   height:60px;
   border-radius:50%;
   margin-top: 10px;
-  margin-left: 25%;
+  /* margin-left: 25%; */
   margin-bottom: 30px;
   border: solid 1px #C0C0C0;
 }
@@ -98,6 +98,7 @@
 
 .top-indication {
   display: flex;
+  justify-content: center;
 }
 
 .tweet {
@@ -137,15 +138,22 @@
 
 .topicon-name {
   margin-top: -25px;
+  width: 80px;
+}
+
+.top-posts-object {
+  display: flex;
+  justify-content: center;
 }
 
 .top-posts {
-  margin-left: 25%;
+  /* margin-left: 25%; */
   margin-top: 10px;
   display: flex;
+  /* justify-content: center; */
   border: 1px solid;
   border-color: #DDDDDD;
-  width: 700px;
+  width: 600px;
   padding: 5px;
 }
 
@@ -247,4 +255,23 @@
 
 .messenger-object {
   margin-left: 50px;
+}
+
+.body-objects {
+  display: flex;
+}
+
+.body-left-objects {
+  width: 620px;
+}
+
+.body-left-main {
+  width: 1000px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.news-objects {
+  /* border: 1px solid black; */
+  width: 430px;
 }
