@@ -57,10 +57,11 @@
   </div>
   </div>
   <div class="news-objects">
-    <p>ニュース</p>
+    <p class="left-top-heading">ビジネスニュース</p>
     <hr>
     <div id="result">no information...</div>
-    <script>
+    <div clas="script-objects">
+    <script class="scripts">
     var f = function(){
         $.ajax({
             type: 'GET',
@@ -69,6 +70,7 @@
     };
     f();
     </script>
+    </div>
   </div>
 </div>
   <% else %>

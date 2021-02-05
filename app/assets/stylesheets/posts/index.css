@@ -275,3 +275,20 @@
   /* border: 1px solid black; */
   width: 430px;
 }
+
+.news-objects {
+  width: 350px;
+  margin-left: 30px;
+}
+
+.image_data {
+  width: 100px;
+}
+
+.yahoo_link {
+  text-decoration: none;
+}
+
+.left-top-heading {
+  font-weight: bold;
+}
