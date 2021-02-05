@@ -1,6 +1,9 @@
 <% if user_signed_in? %>
   <% content_for :header do %>
     <div class="top-middle-main">
+      <div class="footprint-object">
+        <%= link_to image_tag("footprint.png", width: '40', alt: "足跡アイコン"), footprints_path, class: "messenger-icon" %>
+      </div>
       <%= form_with(url: search_user_path(@users), local: true, method: :get, class: "search-form") do |form| %>
         <div class="top-middle-icons">
           <%= form.text_field :keyword, placeholder: "ユーザーを検索する", class: "search-input" %>

@@ -22,4 +22,6 @@ Rails.application.routes.draw do
     resources :messages, only: [:new, :create]
   end
   get "news/data"
+
+  resources :footprints, only: :index
 end

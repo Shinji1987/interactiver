@@ -19,6 +19,10 @@ class UsersController < ApplicationController
         end
       end
     end
+    @footprint = Footprint.new(footprint_params)
+    if @footprint.visitor_user_id != @footprint.visited_user_id
+      @footprint.save
+    end
   end
 
   def edit
@@ -45,5 +49,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:image, :nickname, :family_name_kanji, :first_name_kanji, :family_name_kana, :first_name_kana, :birthday, :profile)
+  end
+
+  def footprint_params
+    params.permit().merge(visitor_user_id: current_user.id, visited_user_id: @user.id)
   end
 end

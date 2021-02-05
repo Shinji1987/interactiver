@@ -14,9 +14,8 @@
   font: yellow;
   font-size: 20px;
   display: flex;
-  width: 33%;
-  /* border: 1px solid;
-  border-color: black; */
+  justify-content: flex-end;
+  width: 30%;
 }
 
 .header-sub {
@@ -25,22 +24,18 @@
   display: flex;
   justify-content: center;
   width: 32%;
-  /* border: 1px solid;
-  border-color: black; */
 }
 
 .header-bar-right {
   font: yellow;
   font-size: 20px;
   display: flex;
-  /* border: 1px solid;
-  border-color: black; */
-  width: 35%;
+  width: 32%;
 }
 
 .top-title {
   text-decoration: none;
-  margin-left: 350px;
+  /* margin-left: 350px; */
 }
 
 .grid-6 {

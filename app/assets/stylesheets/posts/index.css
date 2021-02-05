@@ -251,10 +251,13 @@
 
 .top-middle-main {
   display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 450px;
 }
 
 .messenger-object {
-  margin-left: 50px;
+  /* margin-left: 50px; */
 }
 
 .body-objects {
@@ -291,4 +294,8 @@
 
 .left-top-heading {
   font-weight: bold;
+}
+
+.footprint-object {
+  
 }

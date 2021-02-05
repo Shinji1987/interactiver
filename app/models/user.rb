@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :chats, through: :chat_users
   has_many :messages, dependent: :destroy
   has_many :chat_users, dependent: :destroy
+  has_many :footprints, dependent: :destroy
 
   validates :nickname, presence: true
                        

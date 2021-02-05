@@ -1,0 +1,33 @@
+<div class="footprint-top-indication-block">
+  <span class="footprint-top-indication">最近の足跡</span>
+</div>
+<div class="footprint-access-block">
+  <span><%= current_user.nickname %></span>さんの詳細ページアクセス数： <span class="footpirnt_counts"><%= @footprints.count %></span>アクセス
+</div>
+<div class="footprint-body-parent">
+  <div class="footprint-body">
+    <div class="footprint-body-header-block">
+      <span class="footprint-body-header">＜過去20回アクセス分の足跡を表示＞</span>
+    </div>
+    <div>
+      <% @footprints.each do |footprint| %>
+      <ul class='footprint-lists'>
+        <li class='footprint-list'>
+          <div class="footprint-records">
+            <div>
+              <%= footprint.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
+            </div>
+            <% user = User.find_by(id: footprint.visitor_user_id) %>
+            <div class="footprint-trim">
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :footprint_list_img if user.image.attached? %>
+            </div>
+            <div class="footprint-name">
+              <%= link_to user.nickname, user_path(user.id), class: :footprint_name_indication %>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
