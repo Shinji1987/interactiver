@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
   # before_action :authenticate_user!, except: :show
-  
+  require 'nokogiri'
+  require 'open-uri'
+  require 'date'
+
   def index
     if user_signed_in?
       @posts = Post.all.order('created_at DESC')
@@ -18,6 +21,13 @@ class PostsController < ApplicationController
     @users_record = User.search(params[:keyword])
     @users = @users_record.select(:id)
 
+    url = 'http://info.finance.yahoo.co.jp/fx/detail/?code=USDJPY=FX'
+    doc = Nokogiri::HTML(open(url))
+    @bid = doc.xpath("//*[@id='USDJPY_detail_bid']").text
+    @ask = doc.xpath("//*[@id='USDJPY_detail_ask']").text
+    @time = DateTime.now
+    @mmk_bid = doc.xpath("//*[@ids='EURJPY_detail_bid']").text
+    @mmk_ask = doc.xpath("//*[@ids='EURJPY_detail_ask']").text
   end
 
   def new

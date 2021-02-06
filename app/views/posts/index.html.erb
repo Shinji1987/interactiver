@@ -18,6 +18,27 @@
 <% end %>
 
 <div class="body-objects">
+  <div class="body-side-bar">
+    <div>
+      <div class="currency-info-object">
+        <span class="currency-info">為替情報</span>
+      </div>
+      <div class="updated-info-blcok">
+        【更新日時：<%= @time.year %>年 <%= @time.month %>月<%= @time.day %>日 <%= @time.hour %>時<%= @time.min %>分】
+      </div>
+      <div class="USD-block">
+       <span class="USD-indication">＜1米ドル当たり＞</span>
+      </div>
+      <div class="buy-sell-objects">
+        <div class="sell-object">
+          <span class="sell-indication">売値：<span class="bid-ask"><%= @bid %></span></span>円
+        </div>
+        <div class="buy-object">
+          <span class="buy-indication">買値：<span class="bid-ask"><%= @ask %></span></span>円
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="body-left-main">
   <div class="body-left-objects">
   <% if user_signed_in? %>

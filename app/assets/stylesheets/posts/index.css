@@ -269,7 +269,7 @@
 }
 
 .body-left-main {
-  width: 1000px;
+  width: 620px;
   display: flex;
   justify-content: flex-end;
 }
@@ -296,6 +296,65 @@
   font-weight: bold;
 }
 
-.footprint-object {
-  
+.body-side-bar {
+  width: 380px;
+  height: 600px;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.currency-info {
+  border-bottom: 2px solid gray;
+  height: 35px;
+  width: 130px;
+  display: flex;
+  justify-content: center;
+}
+
+.buy-sell-objects {
+  display: flex;
+}
+
+.currency-info-object {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.buy-object {
+  margin-left: 20px;
+}
+
+.sell-indication {
+  font-size: 20px;
+}
+
+.buy-indication {
+  font-size: 20px;
+}
+
+.bid-ask {
+  color: blue;
+}
+
+.updated-info-blcok {
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+}
+
+.sell-object {
+
+}
+
+.USD-indication {
+  font-size: 15px;
+}
+
+.USD-block {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
 }
