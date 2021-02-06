@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+gem "chartkick"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -71,3 +72,13 @@ gem 'jquery-rails'
 gem 'dotenv-rails'
 
 gem 'money-rails'
+
+gem 'lazy_high_charts'
+
+gem 'haml-rails'
+
+gem 'slim-rails'
+
+gem 'html2slim'
+
+gem 'bootstrap-sass'

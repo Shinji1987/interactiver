@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   end
   get "news/data"
   resources :footprints, only: :index
-  # get 'info'
+  
+  resources :graphs, only: :index
 end

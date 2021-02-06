@@ -26,8 +26,9 @@ class PostsController < ApplicationController
     @bid = doc.xpath("//*[@id='USDJPY_detail_bid']").text
     @ask = doc.xpath("//*[@id='USDJPY_detail_ask']").text
     @time = DateTime.now
-    @mmk_bid = doc.xpath("//*[@ids='EURJPY_detail_bid']").text
-    @mmk_ask = doc.xpath("//*[@ids='EURJPY_detail_ask']").text
+
+    # ここから
+
   end
 
   def new

@@ -1,0 +1,30 @@
+<div class="graph-header-block">
+  <span class="graph-header-indication"><%= current_user.nickname %>さんの「いいね」数集計結果</span>
+</div>
+<div class="graph-block">
+  <div class="graph-object">
+    <div class="like-graph-vertical">件数</div>
+    <%= column_chart @user_posts.pluck(:id, :likes_count) %>
+  </div>
+</div>
+<div class="like-graph-horizontal">ID</div>
+<div class="table-block">
+  <div class="table-object">
+    <table>
+      <tr>
+        <th class="id-th">ID</th>
+        <th class="content-th">内容</th>
+        <th class="date-th">日時</th>
+        <th class="like-th">いいね数</th>
+      </tr>
+    <% @user_posts.each do |user_post| %>
+     <tr>
+        <td><%= user_post["id"] %></td>
+        <td><%= user_post["text"] %></td>
+        <td><%= user_post.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
+        <td><%= user_post["likes_count"] %></td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>
