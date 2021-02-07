@@ -12,6 +12,7 @@
 | birthday              | date       | null: false |
 | profile               | text       |             |
 | request_status        | integer    |             |
+| shop_address          | string     | null: false |
 
 ### Association
 

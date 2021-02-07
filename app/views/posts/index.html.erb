@@ -20,6 +20,7 @@
   <% end %>
 <% end %>
 
+ <% if user_signed_in? %>
 <div class="body-objects">
   <div class="body-side-bar">
     <div>
@@ -44,7 +45,6 @@
   </div>
   <div class="body-left-main">
   <div class="body-left-objects">
-  <% if user_signed_in? %>
   <div class="top-indication">
     <div class="trim">
       <%= image_tag current_user.image.variant(resize: '100x100'), class: :trim_image if current_user.image.attached? %>

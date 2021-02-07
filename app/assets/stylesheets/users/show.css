@@ -110,3 +110,12 @@
   margin-left: 20px;
   margin-top: -10px;
 }
+
+.show-bottom-section {
+  display: flex;
+}
+
+.map-header-indication {
+  font-size: 20px;
+  font-weight: bold;
+}

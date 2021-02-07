@@ -82,3 +82,9 @@ gem 'slim-rails'
 gem 'html2slim'
 
 gem 'bootstrap-sass'
+
+gem "geocoder"
+
+gem 'http'
+
+gem 'openssl'
