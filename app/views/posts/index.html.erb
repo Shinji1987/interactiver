@@ -41,8 +41,50 @@
           <span class="buy-indication">買値：<span class="bid-ask"><%= @ask %></span></span>円
         </div>
       </div>
+      <div class="may-know-block">
+        <div class="may-know-section">
+          <div class="may-know-header">
+            <span class="may-know-header-indication">知り合いかも</span>
+          </div>
+        </div>
+          <div class="may-know-people">
+            <% @friends.each do |friend| %>
+              <% if friend.from_user_id != current_user.id %>
+                <% friend_id = friend.from_user_id %>
+              <% else %>
+                <% friend_id = friend.to_user_id %>
+              <% end %>
+              <% friend_fellow_ids_dup = FriendRequest.where("from_user_id = ? or to_user_id = ?", friend_id, friend_id).where(requesting_status: 2).pluck(:from_user_id, :to_user_id).flatten! %>
+              <%# 友達の友達を全て取得 %>
+              <% friend_fellow_ids = friend_fellow_ids_dup.uniq %>
+              <% friend_fellow_ids.delete(current_user.id) %>
+              <%# 友達の全ての友達のID %>
+              <% friend_fellow_ids.each do |friend_fellow_id| %>
+                <% unless @friend_ids.include?(friend_fellow_id) %>
+                  <% user = User.find_by(id: friend_fellow_id) %>
+                  <ul class="may-know-lists">
+                    <li class="may-know-list">
+                      <div class="may-know-indication">
+                        <div class="may-know-trim">
+                          <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :messanger_img if user.image.attached? %>
+                        </div>
+                        <div class="may-know-name-block">
+                          <%= user.nickname %>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  <%# <% @friend_ids.push(friend_fellow_id) %>
+                  <%# 友達の友達の中で、自分が友達でない人のIDを配列で取得 %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+      </div>
     </div>
+    
   </div>
+  
   <div class="body-left-main">
   <div class="body-left-objects">
   <div class="top-indication">
