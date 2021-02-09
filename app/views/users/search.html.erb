@@ -6,8 +6,11 @@
     </div>
   <% end %>  
 <% end %>
+
+<% if @users != nil && @users != [] %>
 <div class="contents row">
   <% @users.each do |user| %>
+  <% unless Security.find_by(block_user_id: user.id, blocked_user_id: current_user.id) || Security.find_by(block_user_id: current_user.id, blocked_user_id: user.id) %>
 
   <% record = FriendRequest.where(from_user_id: user.id).or(FriendRequest.where(to_user_id: user.id)).where("from_user_id = ? or to_user_id = ?", current_user.id, current_user.id) %>
   <% from_record = record.pluck(:requesting_status) %>
@@ -84,5 +87,35 @@
       </ul>
     </div>
   <% end %>
+  <% else %>
+    <% if Security.find_by(block_user_id: current_user.id, blocked_user_id: user.id) %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="search-already-friend">
+            <span class="search-block-indication">ブロック中のユーザーです</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <% end %>
  <% end %>
+ <% end %>
+<% elsif @users == nil %>
+  <div class="no-result-block">
+    <span class="no-result-indication">ユーザー名を入力してください</span>
+  </div>
+<% elsif @users == [] %>
+  <div class="no-result-block">
+    <span class="not-found-indication">一致するユーザーは見つかりませんでした</span>
+  </div>
+<% end %>
 </div>

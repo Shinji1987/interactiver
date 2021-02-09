@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 
   def index
     if user_signed_in?
+
       @posts = Post.all.order('created_at DESC')
       post_list_users = FriendRequest.where("from_user_id = ? or to_user_id = ?", current_user.id, current_user.id).where(requesting_status: 2).pluck(:from_user_id, :to_user_id)
       
@@ -20,8 +21,10 @@ class PostsController < ApplicationController
 
       @friends = FriendRequest.where("from_user_id = ? or to_user_id = ?", current_user.id, current_user.id).where(requesting_status: 2)
       friend_ids_dup = @friends.pluck(:from_user_id, :to_user_id).flatten!
-      @friend_ids = friend_ids_dup.uniq
-      @friend_ids.delete(current_user.id)
+      if friend_ids_dup != nil
+        @friend_ids = friend_ids_dup.uniq
+        @friend_ids.delete(current_user.id)
+      end
       # 自分の全ての友達のIDを配列で取得
     end
     @users_record = User.search(params[:keyword])

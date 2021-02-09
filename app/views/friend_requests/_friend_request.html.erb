@@ -1,4 +1,5 @@
 <% if user_signed_in? %>
+<% unless Security.find_by(block_user_id: current_user.id, blocked_user_id: @user.id) || Security.find_by(block_user_id: @user.id, blocked_user_id: current_user.id) %>
   <% if @user == current_user %>
     <div class="edit-request">
       <%= button_to "編集", edit_user_path, method: :get, class: "edit" %>
@@ -33,4 +34,5 @@
     <%= link_to image_tag("send_friend_request.png", width: '50', alt: "友達申請アイコン"), user_friend_requests_path(@user.id), method: :post, remote: true, class: :friend_request_img %>
     <span class="request-indication">友達申請</span>
   <% end %>
+<% end %>
 <% end %>

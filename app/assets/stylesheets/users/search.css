@@ -12,3 +12,28 @@
   color: blue;
   font-weight: bold;
 }
+
+.no-result-block {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 500px;
+}
+
+.no-result-indication {
+  font-size: 30px;
+  font-weight: bold;
+  color: red;
+}
+
+.not-found-indication {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.search-block-indication {
+  font-size: 25px;
+  color: red;
+  font-weight: bold;
+  
+}
