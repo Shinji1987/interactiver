@@ -195,11 +195,10 @@
 }
 
 .main-sentences {
-  /* text-align: center; */
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 330px;
   width: 700px;
 }
 
@@ -232,12 +231,30 @@
 .search-btn {
   color: #fff;
   background-color: skyblue;
-  /* border-radius: 100vh; */
   border-radius:0 10px 10px 0;
   width: 60px;
   height: 35px;
   border: solid 1px black;
   font-size: 18px;
+  font-family: "游ゴシック体","YuGothic";
+  font-weight: bold;
+  text-shadow:
+    1px 0 0 black,
+    0 1px 0 black,
+    -1px 0 0 black,
+    0 -1px 0 black
+}
+
+.search-btn:hover {
+  color: #fff;
+  background-color: #CCFFFF;
+  border-radius:0 10px 10px 0;
+  width: 60px;
+  height: 35px;
+  border: solid 1px black;
+  font-size: 18px;
+  font-family: "游ゴシック体","YuGothic";
+  font-weight: bold;
   text-shadow:
     1px 0 0 black,
     0 1px 0 black,
@@ -422,4 +439,36 @@
   display: flex;
   justify-content: center;
   margin-bottom: -8px;
+}
+
+.graph-icon {
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+}
+
+.graph-icon:hover {
+  filter: invert(88%) sepia(100%) saturate(2929%) hue-rotate(104deg) brightness(99%) contrast(104%);
+}
+
+.footprint-icon {
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+}
+
+.footprint-icon:hover {
+  filter: invert(88%) sepia(100%) saturate(2929%) hue-rotate(104deg) brightness(99%) contrast(104%);
+}
+
+.messenger-icon {
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+}
+
+.messenger-icon:hover {
+  filter: invert(88%) sepia(100%) saturate(2929%) hue-rotate(104deg) brightness(99%) contrast(104%);
+}
+
+.security-icon {
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+}
+
+.security-icon:hover {
+  filter: invert(88%) sepia(100%) saturate(2929%) hue-rotate(104deg) brightness(99%) contrast(104%);
 }

@@ -63,3 +63,16 @@
   margin-top: 15px;
   margin-left: 8px;
 }
+
+.user-edit-btn {
+  text-decoration: none;
+  margin-left: 30px;
+  font-size: 20px;
+  background-color: #0066FF;
+  color: white;
+}
+
+.user-edit-btn:hover {
+  background-color: #0099FF;
+  color: white;
+}

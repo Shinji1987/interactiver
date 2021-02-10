@@ -1,4 +1,4 @@
-<div class="main">
+<div class="user-show-main">
   <div class="inner">
     <div class="user__wrapper">
       <h2 class="page-heading">
@@ -109,7 +109,7 @@
       </div>
 
       <input id="address" type="textbox" value="GeekSalon">
-      <input type="button" value="検索" onclick="codeAddress()">
+      <input class="map-button" type="button" value="検索" onclick="codeAddress()">
       <div id="display">緯度・経度が表示されます</div>
 
       <div id='map'></div>
@@ -160,7 +160,7 @@
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GMAP_API_KEY"] %>&callback=initMap" async defer></script>
       
-      </div>   <%#  ここまで %>
+      </div>
       </div>
     </div>
   </div>

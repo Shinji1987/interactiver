@@ -5,7 +5,7 @@
         <%= link_to image_tag("analysis.png", width: '40', alt: "分析アイコン"), graphs_path, class: "graph-icon" %>
       </div>
       <div class="footprint-object">
-        <%= link_to image_tag("footprint.png", width: '40', alt: "足跡アイコン"), footprints_path, class: "messenger-icon" %>
+        <%= link_to image_tag("footprint.png", width: '40', alt: "足跡アイコン"), footprints_path, class: "footprint-icon" %>
       </div>
       <%= form_with(url: search_user_path(@users), local: true, method: :get, class: "search-form") do |form| %>
         <div class="top-middle-icons">
@@ -17,7 +17,7 @@
         <%= link_to image_tag("Messenger Icon.png", width: '40', alt: "メッセンジャーアイコン"), new_chat_path, class: "messenger-icon" %>
       </div>
       <div>
-        <%= link_to image_tag("security.png", width: '40', alt: "セキュリティーアイコン"), new_security_path(current_user.id), class: "messenger-icon" %>
+        <%= link_to image_tag("security.png", width: '40', alt: "セキュリティーアイコン"), new_security_path(current_user.id), class: "security-icon" %>
       </div>
     </div>
   <% end %>
@@ -64,6 +64,8 @@
               <%# 友達の全ての友達のID %>
               <% friend_fellow_ids.each do |friend_fellow_id| %>
                 <% unless @friend_ids.include?(friend_fellow_id) %>
+                  <% unless @friend_stock.include?(friend_fellow_id) %>
+                  <% @friend_stock << friend_fellow_id %>
                   <% user = User.find_by(id: friend_fellow_id) %>
                   <ul class="may-know-lists">
                     <li class="may-know-list">
@@ -77,22 +79,20 @@
                       </div>
                     </li>
                   </ul>
-                  <%# <% @friend_ids.push(friend_fellow_id) %>
-                  <%# 友達の友達の中で、自分が友達でない人のIDを配列で取得 %>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
           </div>
       </div>
     </div>
-    
   </div>
   
   <div class="body-left-main">
   <div class="body-left-objects">
   <div class="top-indication">
     <div class="trim">
-      <%= image_tag current_user.image.variant(resize: '100x100'), class: :trim_image if current_user.image.attached? %>
+      <%= link_to image_tag(current_user.image.variant(resize: '100x100')), user_path(current_user.id), class: :trim_image if current_user.image.attached? %>
     </div>
     <div class="balloon-left">
       <%= link_to "思ったことを書きましょう！(投稿はココをクリック)", new_post_path, class: "tweet" %>
@@ -157,7 +157,7 @@
     海外で事業をしていく上での悩みや問題等を共有し、相互に助け合えるような場所になることを目指しております。
   </div>
   <div class="top4">
-    興味がある方は、ヘッダーの「<span class="new-account">新規登録</span>」からアカウントを作成して、交流を開始してください。
+    興味がある方は、ヘッダーの「<span class="new-account">新規登録</span>」からアカウントを作成して、交流を開始しましょう。
   </div>
 </div>
 <% end %>

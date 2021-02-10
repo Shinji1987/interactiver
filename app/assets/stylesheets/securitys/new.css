@@ -34,6 +34,7 @@
 .instruction {
   font-size: 30px;
   font-weight: bold;
+  font-family: "游ゴシック体","YuGothic";
 }
 
 .instruction-arr {
@@ -54,6 +55,7 @@
 .block-list-header {
   font-size: 30px;
   font-weight: bold;
+  font-family: "游ゴシック体","YuGothic";
 }
 
 .block-list-header-block {
@@ -70,4 +72,8 @@
   border-color: #DDDDDD;
   width: 700px;
   padding: 5px;
+}
+
+.block-contents-main {
+  margin-bottom: 400px;
 }

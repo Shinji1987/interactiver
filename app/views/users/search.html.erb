@@ -10,6 +10,7 @@
 <% if @users != nil && @users != [] %>
 <div class="contents row">
   <% @users.each do |user| %>
+  <% if user.id != current_user.id %>
   <% unless Security.find_by(block_user_id: user.id, blocked_user_id: current_user.id) || Security.find_by(block_user_id: current_user.id, blocked_user_id: user.id) %>
 
   <% record = FriendRequest.where(from_user_id: user.id).or(FriendRequest.where(to_user_id: user.id)).where("from_user_id = ? or to_user_id = ?", current_user.id, current_user.id) %>
@@ -106,6 +107,7 @@
         </li>
       </ul>
     </div>
+    <% end %>
     <% end %>
  <% end %>
  <% end %>
