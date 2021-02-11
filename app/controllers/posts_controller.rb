@@ -37,6 +37,12 @@ class PostsController < ApplicationController
     @bid = doc.xpath("//*[@id='USDJPY_detail_bid']").text
     @ask = doc.xpath("//*[@id='USDJPY_detail_ask']").text
     @time = DateTime.now
+
+    if user_signed_in?
+      unless current_user.image.attached?
+        current_user.image.attach(io: File.open('app/assets/images/dummy.png'), filename: 'dummy.png')
+      end
+    end
   end
 
   def new

@@ -129,6 +129,7 @@
 .map-button {
   background-color: #0066FF;
   color: white;
+  border-radius: 10px;
 }
 
 .map-button:hover {

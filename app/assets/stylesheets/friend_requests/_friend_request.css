@@ -5,7 +5,7 @@
 
 .request-indication {
   font-size: 20px;
-  color: blue;
+  color: red;
 }
 
 .edit-request {
@@ -70,9 +70,36 @@
   font-size: 20px;
   background-color: #0066FF;
   color: white;
+  border-radius: 10px;
 }
 
 .user-edit-btn:hover {
   background-color: #0099FF;
   color: white;
+}
+
+.received-request {
+  color: purple;
+}
+
+.already-received-request {
+  color: brown;
+}
+
+.is-already-friend {
+  color: green;
+}
+
+.now-request-indication {
+  color: blue;
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.now-request-block {
+  display: flex;
+}
+
+.now-request-section {
+  margin-top: 10px;
 }

@@ -8,6 +8,7 @@
 <% end %>
 
 <% if @users != nil && @users != [] %>
+<div class="search-top-main">
 <div class="contents row">
   <% @users.each do |user| %>
   <% if user.id != current_user.id %>
@@ -46,7 +47,7 @@
             </div>
           </div>
           <div class="search-already-friend">
-            <span class="search-indication">友達申請承認待ちです</span>
+            <span class="search-request-waiting">友達申請承認待ちです</span>
           </div>
         </li>
       </ul>
@@ -64,7 +65,7 @@
             </div>
           </div>
           <div class="search-already-friend">
-            <span class="search-indication">既に友達です</span>
+            <span class="search-already-friend">既に友達です</span>
           </div>
         </li>
       </ul>
@@ -82,7 +83,7 @@
             </div>
           </div>
           <div class="search-already-friend">
-            <span class="search-indication">友達ではありません<br>詳細画面から友達申請をしましょう</span>
+            <span class="search-not-friend">友達ではありません<br>詳細画面から友達申請をしましょう</span>
           </div>
         </li>
       </ul>
@@ -120,4 +121,5 @@
     <span class="not-found-indication">一致するユーザーは見つかりませんでした</span>
   </div>
 <% end %>
+</div>
 </div>

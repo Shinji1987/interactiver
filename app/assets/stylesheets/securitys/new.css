@@ -28,7 +28,7 @@
 
 .instruction-block {
   margin-top: 50px;
-  margin-bottom: 400px;
+  min-height: 550px;
 }
 
 .instruction {
@@ -75,5 +75,35 @@
 }
 
 .block-contents-main {
-  margin-bottom: 400px;
+  min-height: 590px;
+}
+
+.security-blcoked {
+  font-size: 25px;
+  color: red;
+  font-weight: bold;
+}
+
+.security-requst-received {
+  font-size: 25px;
+  color: brown;
+  font-weight: bold;
+}
+
+.security-request-waiting {
+  font-size: 25px;
+  color: purple;
+  font-weight: bold;
+}
+
+.security-already-friend {
+  font-size: 25px;
+  color: green;
+  font-weight: bold;
+}
+
+.security-not-friend {
+  font-size: 25px;
+  color: blue;
+  font-weight: bold;
 }
