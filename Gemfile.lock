@@ -351,7 +351,7 @@ DEPENDENCIES
   listen (~> 3.2)
   mini_magick
   money-rails
-  mysql2 (>= 0.5.3)
+  mysql2 (= 0.5.3)
   openssl
   pry-rails
   puma (~> 4.1)
