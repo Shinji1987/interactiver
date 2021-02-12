@@ -58,10 +58,18 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    autoprefixer-rails (10.2.4.0)
+      execjs
     bcrypt (3.1.16)
+    bcrypt (3.1.16-java)
     bindex (0.8.1)
     bootsnap (1.5.1)
       msgpack (~> 1.0)
+    bootsnap (1.5.1-java)
+      msgpack (~> 1.0)
+    bootstrap-sass (3.4.1)
+      autoprefixer-rails (>= 5.2.1)
+      sassc (>= 2.0.0)
     builder (3.2.4)
     byebug (11.1.3)
     capybara (3.34.0)
@@ -72,6 +80,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    chartkick (3.4.2)
     childprocess (3.0.0)
     coderay (1.1.3)
     concurrent-ruby (1.1.8)
@@ -83,11 +92,15 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.4.4)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.10.0)
+    erubis (2.7.0)
+    execjs (2.7.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.1.0)
@@ -96,10 +109,47 @@ GEM
     faker (2.15.1)
       i18n (>= 1.6, < 2)
     ffi (1.14.2)
+    ffi (1.14.2-java)
+    ffi (1.14.2-x64-mingw32)
+    ffi (1.14.2-x86-mingw32)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
+    geocoder (1.6.4)
     gimei (0.5.1)
       romaji
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    haml (5.2.1)
+      temple (>= 0.8.0)
+      tilt
+    haml-rails (2.0.1)
+      actionpack (>= 5.1)
+      activesupport (>= 5.1)
+      haml (>= 4.0.6, < 6.0)
+      html2haml (>= 1.0.1)
+      railties (>= 5.1)
+    hash-deep-merge (0.1.1)
+    hpricot (0.8.6)
+    hpricot (0.8.6-i386-mswin32)
+    hpricot (0.8.6-java)
+    html2haml (2.2.0)
+      erubis (~> 2.7.0)
+      haml (>= 4.0, < 6)
+      nokogiri (>= 1.6.0)
+      ruby_parser (~> 3.5)
+    html2slim (0.2.0)
+      hpricot
+    http (4.4.1)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      http-parser (~> 1.2.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    http-form_data (2.3.0)
+    http-parser (1.2.3)
+      ffi-compiler (>= 1.0, < 2.0)
     i18n (1.8.7)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.1)
@@ -111,6 +161,8 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    lazy_high_charts (1.6.1)
+      hash-deep-merge
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -137,21 +189,42 @@ GEM
       money (~> 6.13.2)
       railties (>= 3.0)
     msgpack (1.3.3)
+    msgpack (1.3.3-java)
+    msgpack (1.3.3-x64-mingw32)
+    msgpack (1.3.3-x86-mingw32)
     mysql2 (0.5.3)
+    mysql2 (0.5.3-x64-mingw32)
+    mysql2 (0.5.3-x86-mingw32)
+    mysql2 (0.5.3-x86-mswin32-60)
     nio4r (2.5.4)
+    nio4r (2.5.4-java)
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
+    nokogiri (1.11.1-java)
+      racc (~> 1.4)
+    nokogiri (1.11.1-x64-mingw32)
+      racc (~> 1.4)
+    nokogiri (1.11.1-x86-mingw32)
+      racc (~> 1.4)
+    openssl (2.2.0)
     orm_adapter (0.5.0)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    pry (0.13.1-java)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+      spoon (~> 0.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.6)
     puma (4.3.7)
       nio4r (~> 2.0)
+    puma (4.3.7-java)
+      nio4r (~> 2.0)
     racc (1.5.2)
+    racc (1.5.2-java)
     rack (2.2.3)
     rack-proxy (0.6.5)
       rack
@@ -215,10 +288,14 @@ GEM
     rspec-support (3.10.1)
     ruby-vips (2.0.17)
       ffi (~> 1.9)
+    ruby_parser (3.15.1)
+      sexp_processor (~> 4.9)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc (2.4.0-x64-mingw32)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
@@ -229,6 +306,16 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    sexp_processor (4.15.2)
+    slim (4.1.0)
+      temple (>= 0.7.6, < 0.9)
+      tilt (>= 2.0.6, < 2.1)
+    slim-rails (3.2.0)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      slim (>= 3.0, < 5.0)
+    spoon (0.0.6)
+      ffi
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -240,11 +327,21 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    temple (0.8.2)
     thor (1.1.0)
     thread_safe (0.3.6)
+    thread_safe (0.3.6-java)
     tilt (2.0.10)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2021.1)
+      tzinfo (>= 1.0.0)
+    unf (0.1.4)
+      unf_ext
+    unf (0.1.4-java)
+    unf_ext (0.0.7.7)
+    unf_ext (0.0.7.7-x64-mingw32)
+    unf_ext (0.0.7.7-x86-mingw32)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.1.0)
@@ -262,30 +359,44 @@ GEM
       railties (>= 4.2)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
+    websocket-driver (0.7.3-java)
+      websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.2)
 
 PLATFORMS
+  java
   ruby
+  x64-mingw32
+  x86-mingw32
+  x86-mswin32
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
+  bootstrap-sass
   byebug
   capybara (>= 2.15)
+  chartkick
   devise
   dotenv-rails
   factory_bot_rails
   faker
+  geocoder
   gimei
+  haml-rails
+  html2slim
+  http
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jquery-rails
+  lazy_high_charts
   listen (~> 3.2)
   mini_magick
   money-rails
-  mysql2 (>= 0.5.3)
+  mysql2 (= 0.5.3)
+  openssl
   pry-rails
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
@@ -293,6 +404,7 @@ DEPENDENCIES
   rspec-rails (~> 4.0.0)
   sass-rails (>= 6)
   selenium-webdriver
+  slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
