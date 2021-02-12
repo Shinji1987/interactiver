@@ -1,0 +1,105 @@
+.friend_unrequest_img {
+  filter: opacity(30%);
+  margin-left: 30px;
+}
+
+.request-indication {
+  font-size: 20px;
+  color: red;
+}
+
+.edit-request {
+  display: flex;
+}
+
+.friend-request-icon {
+  margin-left: 30px;
+}
+
+.request-empty-indication {
+  font-size: 20px;
+  color: blue;
+  margin-top: 15px;
+  margin-left: 5px;
+}
+
+.already_friend_img {
+  margin-left: 30px;
+}
+
+.requested-indication-top {
+  font-size: 20px;
+  color: blue;
+  margin-left: 90px;
+  margin-top: -70px;
+}
+
+.requested-indication-bottom {
+  font-size: 20px;
+  color: blue;
+  margin-left: 90px;
+}
+
+.friend_request_icon {
+  margin-left: 30px;
+}
+
+.already-friend-indication-top {
+  font-size: 20px;
+  color: blue;
+  margin-left: 90px; 
+  margin-top: -70px;
+}
+
+.already-friend-indication-bottom {
+  font-size: 20px;
+  color: blue;
+  margin-left: 90px;
+}
+
+.request-count {
+  font-size: 20px;
+  color: blue;
+  margin-top: 15px;
+  margin-left: 8px;
+}
+
+.user-edit-btn {
+  text-decoration: none;
+  margin-left: 30px;
+  font-size: 20px;
+  background-color: #0066FF;
+  color: white;
+  border-radius: 10px;
+}
+
+.user-edit-btn:hover {
+  background-color: #0099FF;
+  color: white;
+}
+
+.received-request {
+  color: purple;
+}
+
+.already-received-request {
+  color: brown;
+}
+
+.is-already-friend {
+  color: green;
+}
+
+.now-request-indication {
+  color: blue;
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.now-request-block {
+  display: flex;
+}
+
+.now-request-section {
+  margin-top: 10px;
+}

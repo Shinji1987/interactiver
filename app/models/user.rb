@@ -1,15 +1,41 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  validates :nickname, presence: true
-  
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  geocoded_by :shop_address
+  after_validation :geocode, if: :shop_address_changed?
+
 
   
+  has_one_attached :image
+  has_many :posts
+  has_many :comments
+  has_many :likes, dependent: :destroy
+  has_many :like_posts, through: :likes, source: :post
+  has_many :friend_requests, dependent: :destroy
+  has_many :chats, through: :chat_users
+  has_many :messages, dependent: :destroy
+  has_many :chat_users, dependent: :destroy
+  has_many :footprints, dependent: :destroy
+  has_many :securitys, dependent: :destroy
+
+  validates :nickname, presence: true
+                       
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable
+        #  :validatable
+
+  VALID_EMAIL_REGEX = /@/.freeze
+  validates :email,              presence: true,
+                                 uniqueness: true,
+                                 format: { with: VALID_EMAIL_REGEX,
+                                 message: 'に@を含めてください' }
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
-  validates :password, format: { with: VALID_PASSWORD_REGEX,
+  validates :password,           on: :create,
+                                 presence: true,
+                                 length: { minimum: 6 },
+                                 confirmation: true,
+                                 format: { with: VALID_PASSWORD_REGEX,
                                  message: 'は半角6文字以上、英字・数字それぞれ１文字以上含む必要があります' }
 
   VALID_FAMILY_NAME_KANJI = /\A[ぁ-んァ-ン一-龥]/.freeze
@@ -33,4 +59,16 @@ class User < ApplicationRecord
                                         message: 'は全角カタカナを入力する必要がります' }
   
   validates :birthday, presence: true
+
+  def already_liked?(post)
+    self.likes.exists?(post_id: post.id)
+  end
+
+  def self.search(search)
+    if search != ""
+      User.where('nickname LIKE(?)', "%#{search}%")
+    # else
+      # User.all
+    end
+  end
 end

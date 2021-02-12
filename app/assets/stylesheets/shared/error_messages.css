@@ -9,3 +9,10 @@
   list-style: none;
   color: red;
 }
+
+.error-message-postnew {
+  font-size: 1.3vw;
+  list-style: none;
+  color: red;
+  margin-left: -440px;
+}

@@ -1,0 +1,92 @@
+<% if user_signed_in? %>
+  <% content_for :header do %>
+    <div class="top-middle-main">
+      <%= form_with(url: search_user_path(@users), local: true, method: :get, class: "search-form") do |form| %>
+        <div class="top-middle-icons">
+          <%= form.text_field :keyword, placeholder: "ユーザーを検索する", class: "search-input" %>
+          <%= form.submit "検索", class: "search-btn" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="messanger-main">
+  <div class="messanger-top">
+    <div class="messanger-top-indication">
+      <span class="messanger-indication"><%= current_user.nickname %>さんのメッセンジャー</span>
+    </div>
+    <div class="messanger-trim">
+      <%= link_to image_tag(current_user.image.variant(resize: '100x100')), user_path(current_user.id), class: :messanger_img if current_user.image.attached? %>
+    </div>
+  </div>
+      
+  <div class="chat-mid-object">  
+    <div class="friend-list-sections">
+      <div class="friend-list-block">
+        <%= link_to "友達リスト: #{@friend_lists.count}人", user_friend_requests_path(current_user.id), class: "friend-list-indication" %>
+      </div>
+      <div class="friend-lists-group">
+        <% @friend_lists.each do |friend_list| %>
+          <% to_from_user = friend_list.select do |x| %>
+            <% x != current_user.id %>
+          <% end %>
+          <% user = User.find_by(id: to_from_user) %>
+            <ul class='friend-lists'>
+              <li class='friend-list'>
+                <div class="image-border">
+                  <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :friend_list_img if user.image.attached? %>
+                </div>
+                <div class="friend-list-name">
+                  <%= user.nickname %>
+                </div>
+              </li>
+            </ul>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="mid-object-right">
+      <div class="chat-list-block">
+        <span class="chat-list-indication">チャット履歴</span>
+      </div>
+      <% if @chat_users != nil %>
+      <% @chat_users.each do |chat_user| %>
+        <% user = User.find_by(id: chat_user) %>
+        <% unless Security.find_by(block_user_id: current_user.id, blocked_user_id: user.id ) || Security.find_by(block_user_id: user.id, blocked_user_id: current_user.id) %>
+        <ul class='messanger-lists'>
+          <li class='messanger-list'>
+            <div class="messanger-objects">
+              <div class="trim-messanger">
+                <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :messanger_list_img if user.image.attached? %>
+              </div>
+              <div class="messanger-list-right">
+                <div class="messanger-nickname">
+                  <%= user.nickname %>
+                </div>
+                <div class="messanger-list-right-bottom">
+                  <div>
+                    <% chat_user = ChatUser.where("created_user_id = ? or invited_user_id = ?", current_user.id, current_user.id).where("created_user_id = ? or invited_user_id = ?", user.id, user.id).slice(0) %>
+                    <% chat_id = chat_user.chat_id %>
+                    <% message = Message.where(chat_id: chat_id).last %>
+                    <% if message != nil %>
+                      <% user_name = User.find_by(id: message.sent_user_id) %>
+                      <% if user_name.id != current_user.id %>
+                        <%= user_name.nickname %>:
+                      <% else %>
+                        あなた:
+                      <% end %>
+                  </div>
+                  <div class="last-message">
+                    <%= link_to message.content, new_chat_message_path(message.chat_id), class: "message" %>
+                  </div>
+                    <% end %>
+                </div>
+          </li>
+        </ul>
+        <% end %>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<%if user_signed_in? %>
+  <% if Like.find_by(user_id: current_user.id, post_id: post.id) %>
+    <div class="like">
+      <span class='liked-icon'><%= link_to image_tag("liked.png", width: '60', alt: "いいねアイコン"), post_like_path(post, post.likes), method: :delete, remote: true, class: :liked_img %></span>
+      <span class='like-count'><%= post.likes.count %></span>
+    </div>
+  <% else %>  
+    <div class="like">
+      <span><%= link_to image_tag("like.jpg", width: '60', alt: "いいねアイコン"), post_likes_path(post.id), method: :post, remote: true, class: :like_img %></span>
+      <span class='like-count'><%= post.likes.count %></span>
+    </div>
+  <% end %>
+<% end %>

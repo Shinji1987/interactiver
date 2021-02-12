@@ -1,0 +1,1 @@
+Webpacker::Compiler.env["GMAP_API_KEY"] = ENV["GMAP_API_KEY"]

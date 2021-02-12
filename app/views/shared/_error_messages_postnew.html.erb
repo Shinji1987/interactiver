@@ -1,0 +1,9 @@
+<% if @post.errors.any? %>
+<div class="error-alert">
+  <ul>
+    <% @post.errors.full_messages.each do |message| %>
+    <li class='error-message-postnew'><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>

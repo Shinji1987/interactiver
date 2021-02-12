@@ -1,0 +1,8 @@
+<div class="main">
+  <div class="inner">
+    <div class="form__wrapper">
+      <%= render 'shared/error_messages_postnew', model: @post %>
+      <%= render partial: "form_new", locals: { post: @post } %>
+    </div>
+  </div>
+</div>

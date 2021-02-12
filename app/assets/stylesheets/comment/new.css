@@ -1,0 +1,134 @@
+.container {
+  margin: 10px 0;
+  padding: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40em;
+  box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.trim-comment {
+  position:relative;
+  overflow: hidden;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  border: solid 1px #C0C0C0;
+}
+.trim-comment img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  height:100%;
+}
+
+.comment-list {
+  display: flex;
+}
+
+.comment-right {
+  position:relative;
+  top: 10px;
+  margin-left: 5px;
+  width: 500px;
+  display: flex;
+}
+
+.comment {
+  width: 400px;
+  word-break: break-word;
+}
+
+.balloon {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0 1.5em 20px;
+  margin-left: 60px;
+  padding: 7px 10px;
+  min-width: 500px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #FFF;
+  border: solid 2px #C0C0C0;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.balloon:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -24px;
+  margin-top: -12px;
+  border: 12px solid transparent;
+  border-right: 12px solid #FFF;
+  z-index: 2;
+}
+
+.balloon:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -14px;
+  border: 14px solid transparent;
+  border-right: 14px solid #C0C0C0;
+  z-index: 1;
+}
+
+.balloon p {
+  margin: 0;
+  padding: 0;
+}
+
+.btn_gradient_radius {
+  width: 300px;
+  font-size: 18px;
+  display: inline-block;
+  margin-left: 50px;
+  padding: 5px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  background-color: #0066FF;
+  transition: .4s;
+  color: white;
+  border: solid 2px #C0C0C0;
+  text-shadow:
+    1px 0 0 black,
+    0 1px 0 black,
+    -1px 0 0 black,
+    0 -1px 0 black
+}
+
+.btn_gradient_radius:hover {
+  background-image: linear-gradient(45deg, #CCFFFF 0%, #CCFFFF 100%);
+}
+
+.comment-box {
+  margin-left: -20px;
+  margin-top: -40px;
+}
+
+.comment-btn {
+  margin: -20px 0 30px 95px;
+}
+
+.comment-error-message {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  width: 15em;
+  color: red;
+}
+
+.contents-row {
+  height: 590px;
+}

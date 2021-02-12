@@ -1,0 +1,125 @@
+<% content_for :header do %>
+  <%= form_with(url: search_user_path, local: true, method: :get, class: "search-form") do |form| %>
+    <div class="top-middle-icons">
+      <%= form.text_field :keyword, placeholder: "ユーザーを検索する", class: "search-input" %>
+      <%= form.submit "検索", class: "search-btn" %>
+    </div>
+  <% end %>  
+<% end %>
+
+<% if @users != nil && @users != [] %>
+<div class="search-top-main">
+<div class="contents row">
+  <% @users.each do |user| %>
+  <% if user.id != current_user.id %>
+  <% unless Security.find_by(block_user_id: user.id, blocked_user_id: current_user.id) || Security.find_by(block_user_id: current_user.id, blocked_user_id: user.id) %>
+
+  <% record = FriendRequest.where(from_user_id: user.id).or(FriendRequest.where(to_user_id: user.id)).where("from_user_id = ? or to_user_id = ?", current_user.id, current_user.id) %>
+  <% from_record = record.pluck(:requesting_status) %>
+  <% if from_record.slice(0) == 1 && record.slice(0).to_user_id == current_user.id %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="search-already-friend">
+            <span class="search-indication">友達申請受信済みです<br>詳細画面からリクエストの処理をしましょう</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  <% elsif from_record.slice(0) == 1 %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="search-already-friend">
+            <span class="search-request-waiting">友達申請承認待ちです</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  <% elsif from_record.slice(0) == 2 %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="search-already-friend">
+            <span class="search-already-friend">既に友達です</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  <% else %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="search-already-friend">
+            <span class="search-not-friend">友達ではありません<br>詳細画面から友達申請をしましょう</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+  <% else %>
+    <% if Security.find_by(block_user_id: current_user.id, blocked_user_id: user.id) %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="search-already-friend">
+            <span class="search-block-indication">ブロック中のユーザーです</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <% end %>
+    <% end %>
+ <% end %>
+ <% end %>
+<% elsif @users == nil %>
+  <div class="no-result-block">
+    <span class="no-result-indication">ユーザー名を入力してください</span>
+  </div>
+<% elsif @users == [] %>
+  <div class="no-result-block">
+    <span class="not-found-indication">一致するユーザーは見つかりませんでした</span>
+  </div>
+<% end %>
+</div>
+</div>
