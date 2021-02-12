@@ -1,0 +1,89 @@
+.footprint-top-indication-block {
+  display: flex;
+  justify-content: center;
+}
+
+.footprint-top-indication {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.footprint-access-block {
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.footprint-body {
+  border: 1px solid;
+  border-color: #DDDDDD;
+  width: 600px;
+  min-height: 500px;
+}
+
+.footprint-body-parent {
+  display: flex;
+  justify-content: center;
+}
+
+.footprint-lists {
+  list-style: none;
+}
+
+.footprint-lists:nth-child(n+21) {
+  display: none;
+}
+
+.footprint-records {
+  display: flex;
+  align-items: center;
+  /* border: 1px solid black; */
+  height: 45px;
+  margin-left: 55px;
+}
+
+.footprint-trim {
+  position:relative;
+  overflow: hidden;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border: solid 1px #C0C0C0;
+  margin-left: 20px;
+}
+
+.footprint-trim img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  height:100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.footprint-name {
+  margin-left: 10px;
+}
+
+.footprint_name_indication {
+  text-decoration: none;
+}
+
+.footprint-body-header-block {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.footprint-body-header {
+  font-size: 20px;
+}
+
+.footpirnt_counts {
+  font-weight: bold;
+  color: blue;
+}
