@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   resources :footprints, only: :index
   
   resources :graphs, only: :index
+
+  resources :securitys, only: [:new, :create, :destroy]
 end

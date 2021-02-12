@@ -1,0 +1,256 @@
+<% content_for :header do %>
+  <%= form_with(url: new_security_path, local: true, method: :get, class: "search-form") do |form| %>
+    <div class="top-middle-icons">
+      <%= form.text_field :keyword, placeholder: "ユーザーを検索する", class: "search-input" %>
+      <%= form.submit "検索", class: "search-btn" %>
+    </div>
+  <% end %>  
+<% end %>
+<% if @users != nil && @users != [] %>
+<div class="block-contents-main">
+<div class="contents row">
+  <% @users.each do |user| %>
+  <% if user.id != current_user.id %>
+  <% unless Security.find_by(block_user_id: user.id, blocked_user_id: current_user.id) %>
+  <% record = FriendRequest.where(from_user_id: user.id).or(FriendRequest.where(to_user_id: user.id)).where("from_user_id = ? or to_user_id = ?", current_user.id, current_user.id) %>
+  <% from_record = record.pluck(:requesting_status) %>
+
+  <% if Security.find_by(block_user_id: current_user.id, blocked_user_id: user.id) && from_record.slice(0) == 1 && record.slice(0).to_user_id == current_user.id %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="block-list-right">
+            <div class="block_button">
+              <%= button_to("ブロック解除", security_path(user.id), method: :delete, class: :block_button_icon) %>
+            </div>
+            <div class="search-already-friend-block">
+              <span class="security-blcoked">ブロックしています<br>ブロックを解除する場合は、ボタンをクリックしてください</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  <% elsif Security.find_by(block_user_id: current_user.id, blocked_user_id: user.id) && from_record.slice(0) == 1 %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="block-list-right">
+            <div class="block_button">
+              <%= button_to("ブロック解除", security_path(user.id), method: :delete, class: :block_button_icon) %>
+            </div>
+            <div class="search-already-friend-block">
+              <span class="security-blcoked">ブロックしています<br>ブロックを解除する場合は、ボタンをクリックしてください</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+<% elsif Security.find_by(block_user_id: current_user.id, blocked_user_id: user.id) && from_record.slice(0) == 2 %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="block-list-right">
+            <div class="block_button">
+              <%= button_to("ブロック解除", security_path(user.id), method: :delete, class: :block_button_icon) %>
+            </div>
+            <div class="search-already-friend-block">
+              <span class="security-blcoked">ブロックしています<br>ブロックを解除する場合は、ボタンをクリックしてください</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+<% elsif Security.find_by(block_user_id: current_user.id, blocked_user_id: user.id) && from_record == [] %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="block-list-right">
+            <div class="block_button">
+              <%= button_to("ブロック解除", security_path(user.id), method: :delete, class: :block_button_icon) %>
+            </div>
+            <div class="search-already-friend-block">
+              <span class="security-blcoked">ブロックしています<br>ブロックを解除する場合は、ボタンをクリックしてください</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  <% elsif from_record.slice(0) == 1 && record.slice(0).to_user_id == current_user.id %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="block-list-right">
+            <div class="block_button">
+              <%= button_to("ブロック", securitys_path(user.id), method: :post, class: :block_button_icon) %>
+            </div>
+            <div class="search-already-friend-block">
+              <span class="security-requst-received">友達申請受信済みです<br>ブロックする場合はボタンをクリックしてください</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  <% elsif from_record.slice(0) == 1 %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="block-list-right">
+            <div class="block_button">
+              <%= button_to("ブロック", securitys_path(user.id), method: :post, class: :block_button_icon) %>
+            </div>
+            <div class="search-already-friend-block">
+              <span class="security-request-waiting">友達申請承認待ちです<br>ブロックする場合はボタンをクリックしてください</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  <% elsif from_record.slice(0) == 2 %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="block-list-right">
+            <div class="block_button">
+              <%= button_to("ブロック", securitys_path(user.id), method: :post, class: :block_button_icon) %>
+            </div>
+            <div class="search-already-friend-block">
+              <span class="security-already-friend">既に友達です<br>ブロックする場合はボタンをクリックしてください</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  <% elsif from_record == [] %>
+    <div class="top-requests">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= user.nickname %>
+            </div>
+          </div>
+          <div class="block-list-right">
+            <div class="block_button">
+              <%= button_to("ブロック", securitys_path(user.id), method: :post, class: :block_button_icon) %>
+            </div>
+            <div class="search-already-friend-block">
+              <span class="security-not-friend">友達ではありません<br>ブロックする場合はボタンをクリックしてください</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+ <% end %>
+ <% end %>
+</div>
+</div>
+<% elsif @users == nil %>
+  <div class="instruction-block">
+    <div class="instruction-arr-section">
+      <span class="instruction-arr">↑　↑　↑</span>
+    </div>
+    <div class="instruction-section">
+      <span class="instruction">上の検索バーからブロックしたいユーザーを検索してください</span>
+    </div>
+    <div class="block-list-header-block">
+      <span class="block-list-header">＜ブロックリスト＞</span>
+    </div>
+    <div>
+      
+      <% @block_users.each do |block_user| %>
+      <% blocked_user = User.find_by(id: block_user.blocked_user_id) %>
+      <div class="block-list-top">
+      <ul class='request-lists'>
+        <li class='search-list'>
+          <div class="top-icon">
+            <div class="trim-post"> 
+              <%= link_to image_tag(blocked_user.image.variant(resize: '100x100')), user_path(blocked_user.id), class: :topicon_img if blocked_user.image.attached? %>
+            </div>
+            <div class="topicon-name">
+              <%= blocked_user.nickname %>
+            </div>
+          </div>
+          <div class="block-list-right">
+            <div class="block_button">
+              <%= button_to("ブロック解除", security_path(blocked_user.id), method: :delete, class: :block_button_icon) %>
+            </div>
+            <div class="search-already-friend-block">
+              <span class="security-blcoked">ブロックしています<br>ブロックを解除する場合は、ボタンをクリックしてください</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+      </div>
+      <% end %>
+    </div>
+  </div>
+<% elsif @users == [] %>
+  <div class="no-result-block">
+    <span class="not-found-indication">一致するユーザーは見つかりませんでした</span>
+  </div>
+<% end %>
