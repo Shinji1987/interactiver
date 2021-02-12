@@ -11,10 +11,11 @@
 .message-footer {
   width: 49.4%;
   height: 80px;
-  background-color: #89c7de;
+  background-color: #00CCFF;
   position: fixed;
   bottom: 0;
   margin-left: 357px;
+  box-shadow: 0 0 8px #0066FF;
 }
 
 .message-input {
@@ -29,17 +30,22 @@
 
 .message-send-btn {
   color: #fff;
-  background-color: skyblue;
+  background-color: #0066FF;
   border-radius: 10px;
   width: 60px;
   height: 35px;
   border: solid 1px black;
   font-size: 18px;
-  text-shadow:
-    1px 0 0 black,
-    0 1px 0 black,
-    -1px 0 0 black,
-    0 -1px 0 black;
+}
+
+.message-send-btn:hover {
+  color: #fff;
+  background-color: #0099FF;
+  border-radius: 10px;
+  width: 60px;
+  height: 35px;
+  border: solid 1px black;
+  font-size: 18px;
 }
 
 .message-footer-icons {
@@ -77,6 +83,7 @@
 .message-icon-name {
   margin-top: 28px;
   margin-left: 5px;
+  color: white;
 }
 
 .message-content-other {
@@ -241,13 +248,33 @@
   text-indent: 100%;
 	white-space: nowrap;
   overflow: hidden;
-  width: 50px;
+  width: 80px;
   margin-left: 10px;
+  border: 1px solid red;
 }
 
 .message_label {
   display: block;
   background-color: aqua;
+  width: 90px;
+  height: 30px;
+  margin-left: 10px;
+  border-radius: 5px;
+  padding-top: 2px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid black;
+  text-shadow:
+    1px 0 0 black,
+    0 1px 0 black,
+    -1px 0 0 black,
+    0 -1px 0 black;
+}
+
+.message_label:hover {
+  display: block;
+  background-color: #CCFFFF;
   width: 90px;
   height: 30px;
   margin-left: 10px;

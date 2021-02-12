@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   def show
     @user = User.find(params[:id])
     @friend_request_from = FriendRequest.where(to_user_id: current_user).pluck(:from_user_id)
@@ -18,6 +19,10 @@ class UsersController < ApplicationController
           @friend_request = FriendRequest.find_by(from_user_id: @user.id, to_user_id: current_user.id)
         end
       end
+    end
+    @footprint = Footprint.new(footprint_params)
+    if @footprint.visitor_user_id != @footprint.visited_user_id
+      @footprint.save
     end
   end
 
@@ -44,6 +49,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:image, :nickname, :family_name_kanji, :first_name_kanji, :family_name_kana, :first_name_kana, :birthday, :profile)
+    params.require(:user).permit(:image, :nickname, :family_name_kanji, :first_name_kanji, :family_name_kana, :first_name_kana, :birthday, :profile, :shop_address)
+  end
+
+  def footprint_params
+    params.permit().merge(visitor_user_id: current_user.id, visited_user_id: @user.id)
   end
 end

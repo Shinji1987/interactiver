@@ -1,28 +1,13 @@
-<% if user_signed_in? %>
-  <% content_for :header do %>
-    <div class="top-middle-main">
-      <%= form_with(url: search_user_path(@users), local: true, method: :get, class: "search-form") do |form| %>
-        <div class="top-middle-icons">
-          <%= form.text_field :keyword, placeholder: "ユーザーを検索する", class: "search-input" %>
-          <%= form.submit "検索", class: "search-btn" %>
-        </div>
-      <% end %>
-      <div class="messenger-object">
-        <%= link_to image_tag("Messenger Icon.png", width: '40', alt: "メッセンジャーアイコン"), new_chat_path, class: "messenger-icon" %>
-      </div>
-    </div>
-  <% end %>
-<% end %>
-
-<% if user_signed_in? %>
-  <div class="top-indication">
+<div class="top-indication">
+  <% if user_signed_in? %>
     <div class="trim">
-      <%= image_tag current_user.image.variant(resize: '100x100'), class: :trim_image if current_user.image.attached? %>
+      <%= image_tag current_user.image.variant(resize: '100x100') if current_user.image.attached? %>
     </div>
     <div class="balloon-left">
       <%= link_to "思ったことを書きましょう！(投稿はココをクリック)", new_post_path, class: "tweet" %>
     </div>
   </div>
+
   <% posts = @posts.where(user_id: @post_list_users) %>
   <% posts.each do |post| %>
   <div class="top-posts">
@@ -48,20 +33,6 @@
     </div>
   </div>
   <% end %>
-<% else %>
-<div class="main-sentences">
-  <div class="top1">
-    ようこそ、Interactiverへ！！！
-  </div>
-  <div class="top2">
-    Interactiverは、海外で飲食店を経営している方々向けの<br>コミュニティスペースになります。
-  </div>
-  <div class="top3">
-    海外で事業をしていく上での悩みや問題等を共有し、相互に助け合えるような場所になることを目指しております。
-  </div>
-  <div class="top4">
-    興味がある方は、ヘッダーの「<span class="new-account">新規登録</span>」からアカウントを作成して、交流を開始してください。
-  </div>
 </div>
 <% end %>
 <p></p>

@@ -1,0 +1,109 @@
+.block_button_icon {
+  color: #fff;
+  background-color: skyblue;
+  border-radius: 100vh;
+  width: 230px;
+  height: 40px;
+  border: solid 2px #C0C0C0;
+  font-size: 20px;
+  text-shadow:
+    1px 0 0 black,
+    0 1px 0 black,
+    -1px 0 0 black,
+    0 -1px 0 black
+}
+
+.block_button_icon:hover {
+  color: #fff;
+  background: aqua;
+}
+
+.block-list-right {
+  margin-top: 10px;
+}
+
+.search-already-friend-block {
+  margin-top: 10px;
+}
+
+.instruction-block {
+  margin-top: 50px;
+  min-height: 550px;
+}
+
+.instruction {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "游ゴシック体","YuGothic";
+}
+
+.instruction-arr {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.instruction-arr-section {
+  display: flex;
+  justify-content: center;
+}
+
+.instruction-section {
+  display: flex;
+  justify-content: center;
+}
+
+.block-list-header {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "游ゴシック体","YuGothic";
+}
+
+.block-list-header-block {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.block-list-top {
+  margin-left: 25%;
+  margin-top: 10px;
+  /* display: flex; */
+  border: 1px solid;
+  border-color: #DDDDDD;
+  width: 700px;
+  padding: 5px;
+}
+
+.block-contents-main {
+  min-height: 590px;
+}
+
+.security-blcoked {
+  font-size: 25px;
+  color: red;
+  font-weight: bold;
+}
+
+.security-requst-received {
+  font-size: 25px;
+  color: brown;
+  font-weight: bold;
+}
+
+.security-request-waiting {
+  font-size: 25px;
+  color: purple;
+  font-weight: bold;
+}
+
+.security-already-friend {
+  font-size: 25px;
+  color: green;
+  font-weight: bold;
+}
+
+.security-not-friend {
+  font-size: 25px;
+  color: blue;
+  font-weight: bold;
+}
