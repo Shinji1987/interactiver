@@ -89,3 +89,5 @@ gem "geocoder"
 gem 'http'
 
 gem 'openssl'
+
+gem 'rails_12factor', group: :production
