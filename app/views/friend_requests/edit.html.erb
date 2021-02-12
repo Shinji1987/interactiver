@@ -1,0 +1,29 @@
+<div class="friend-request-edit-main">
+<% @users.each do |user| %>
+<% from_record = FriendRequest.where(from_user_id: user.id).where(to_user_id: current_user.id).pluck(:requesting_status) %>
+<% unless from_record.include?(2) || from_record.include?(3) %>
+  <div class="top-requests">
+    <ul class='request-lists'>
+      <li class='list'>
+        <div class="top-icon">
+          <div class="trim-post"> 
+            <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :topicon_img if user.image.attached? %>
+          </div>
+          <div class="topicon-name">
+            <%= user.nickname %>
+          </div>
+        </div>
+        <div class="accept-reject-btn">
+          <div class="accept_button">
+            <%= button_to("承認", user_friend_request_path(user.id), method: :patch, class: :accept_button_icon) %>
+          </div>
+          <div class="reject_button">
+            <%= button_to("承認拒否", reject_user_friend_request_path(user.id), method: :delete, class: :accept_button_icon) %>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <% end %>
+ <% end %>
+ </div>

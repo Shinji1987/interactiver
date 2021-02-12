@@ -1,0 +1,98 @@
+<script type="text/javascript">
+    $(function(){
+    var targetOffset = $('#blank').offset().top;
+    $('html,body').delay(10).animate({scrollTop: targetOffset}, "slow");
+    });
+  </script>
+
+<% content_for :header do %>
+  <div class="top-middle-message">
+    <div class="trim-message-icon"> 
+      <%= link_to image_tag(@user.image.variant(resize: '100x100')), user_path(@user.id), class: :topicon_img if @user.image.attached? %>
+    </div>
+    <div class="message-icon-name">
+      <%= @user.nickname %>
+    </div>
+  </div>
+<% end %>
+
+<div class="message-main">
+  <% @messages.each do |message| %>
+    <ul class='message-list'>
+      <li class='message-list'>
+        <div class="chat-message">
+          <% if message.sent_user_id == @user.id %>
+            <div class="other">
+              <div class="trim-message-other-icon"> 
+                <%= link_to image_tag(@user.image.variant(resize: '100x100')), user_path(@user.id), class: :message_other_icon if @user.image.attached? %>
+              </div>
+              <div class="message-other">
+                <div class="message-time">
+                  <%= message.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
+                </div>
+                <span class="message-content-other"><%= message.content %></span>
+              </div>
+            </div>
+            <% reads_arr = Read.where(message_id: message.id) %>
+              <% if reads_arr.count >= 2 %>
+                <% reads = reads_arr.slice(0) %>
+                <% reads.each do |read| %>
+                  <% if read != nil && current_user.id == read.received_user_id %>
+                    <% read.update(complete: true) %>
+                  <% end %>
+                <% end %>
+              <% elsif reads_arr != [] && current_user.id == reads_arr.slice(0).received_user_id %>
+                <% read = reads_arr.slice(0) %>
+                <% read.update(complete: true) %>
+              <% end %>
+          <% else %>
+            <div class="message-time-right">
+              <% read = Read.find_by(message_id: message.id) %>
+                <% if read == nil %>
+                  <% read_new = Read.create(message_id: message.id, received_user_id: message.received_user_id, complete: false) %>
+                  <% read_new.complete == false %>
+                  <span class="unread"><%= read_new.complete ? '既読' : '未読' %></span>
+                <% elsif read.complete == true %>
+                  <span class="read"><%= read.complete ? '既読' : '未読' %></span>
+                <% else %>
+                  <span class="read"><%= read.complete ? '既読' : '未読' %></span>
+                <% end %>
+              <%= message.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
+            </div>
+            <div class="message-myself-image">
+              <%= image_tag message.message_image.variant(resize: '150x150'), class: :message_img if message.message_image.attached? %>
+            </div>
+            <% if message.content != "" %>
+              <div class="message-myself">
+                <span class="message-content-myself" id="message-myself"><%= message.content %></span>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </li>
+    </ul>
+  <% end %>
+  <div id="blank"></div>
+  <% if flash[:notice] %>
+    <p class="message-flash" id="message-notice"><%= flash[:notice] %></p>
+  <% end %>
+  <div class="push" id="push"></div>
+</div>
+
+
+<footer>
+  <div class="message-footer">
+    <%= form_with(url: chat_messages_path(@chat.id), local: true, method: :post, class: "message-form", id: "new_message") do |form| %>
+      <div class="message-footer-icons">
+        <%= form.text_area :content, placeholder: "メッセージを入力する", class: "message-input" %>
+        <div id="message-send-btn">
+          <%= form.submit "送信", class: "message-send-btn" %>
+        </div>
+        <div class="message-attachment">
+          <%= form.label :message_image, "画像添付", class: "message_label" %>
+          <%= form.file_field :message_image, id: "message_image", class: "message_images" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</footer>

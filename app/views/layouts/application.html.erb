@@ -11,29 +11,52 @@
   </head>
 
   <body>
-    <header class="header">
-      <div class="header-bar">
-        <a href="/" class="top-title">Interactiver</a>
+
+    <header class="header-main" id="header-main">
+      <div class="header-bar-left">
+        <%= link_to image_tag("logo2.png", width: '170', alt: "ロゴアイコン"), root_path, class: :logo_img %>
+      </div>
+      
+      <header class="header-sub">
+      <div class="header-bar-middle">
+          <%= yield :header %>
+      </div>
+      </header>
+
+      <div class="header-bar-right">
         <% if user_signed_in? %>
-          <div class="user_nav grid-6">
+          <div class="user_nav-grid-6">
             <%= link_to current_user.nickname, user_path(current_user.id), class: "post" %>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "post" %>
+            <div class="logout-block">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "post-j" %>
+            </div>
           </div>
         <% else %>
-          <div class="grid-6">
-            <%= link_to "ログイン", new_user_session_path, class: "post" %>
-            <%= link_to "新規登録", new_user_registration_path, class: "post" %>
+          <div class="user_nav-grid-6">
+            <%= link_to "ログイン", new_user_session_path, class: "post-j" %>
+            <div class="logout-block" id="logout-block">
+              <%= link_to "新規登録", new_user_registration_path(anchor: 'header-main'), class: "post-j" %>
+            </div>
           </div>
         <% end %>
       </div>
     </header>
+
+   
+
     <%= yield %>
+
+    
     <footer>
+    <% unless request.path.include?("messages") %>
       <div class="footer">
         <div class="footer-object">
           Copyright Interactiver 2021.
         </div>
       </div>
+    <% end %>
     </footer>
+   
+
   </body>
 </html>

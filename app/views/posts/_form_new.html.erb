@@ -2,13 +2,13 @@
   <div class="field">
     <%= f.text_area :text, class: :form__text, placeholder:"思ったことを書きましょう！" %>
   </div>
-
-  <div class="field">
-    <%= f.label :post_image, "画像" %><br />
-    <%= f.file_field :post_image %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "投稿する", class: :form__btn  %>
+  <div class="posts-buttons">
+    <div class="actions">
+      <%= f.submit "投稿する", class: :form__btn  %>
+    </div>
+    <div class="post-attachment">
+      <%= f.label :post_image, "画像添付", class: "post-attachment_label" %><br />
+      <%= f.file_field :post_image, class: "message_images" %>
+    </div>
   </div>
 <% end %>
