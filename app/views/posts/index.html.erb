@@ -17,9 +17,6 @@
     <div class="balloon-left">
       <%= link_to "思ったことを書きましょう！(投稿はココをクリック)", new_post_path, class: "tweet" %>
     </div>
-    <%# <div class="friend_confirmation">
-      <%= link_to image_tag("friend_request.png", width: '50', alt: "友達申請確認アイコン"), user_friend_requests_path(current_user.id), class: :friend_confirmation_img %>
-    <%# </div> %>
   </div>
 
   <% posts = @posts.where(user_id: @post_list_users) %>
