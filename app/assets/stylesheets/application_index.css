@@ -1,34 +1,95 @@
-.header {
+.header-main {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   height: 60px;
   width: 100%;
-  background-color: #CCFFFF;
+  background-color: #0066FF;
   border: 1px solid;
   border-color: #DDDDDD;
   font: yellow;
+  box-shadow: 0 0 8px #0066FF;
 }
 
-.header-bar {
+.header-bar-left {
   font: yellow;
   font-size: 20px;
   display: flex;
+  justify-content: flex-end;
+  width: 21%;
+}
+
+.header-sub {
+  font: yellow;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  width: 32%;
+}
+
+.header-bar-right {
+  font: yellow;
+  font-size: 20px;
+  display: flex;
+  width: 23%;
 }
 
 .top-title {
   text-decoration: none;
+  /* margin-left: 350px; */
 }
 
 .grid-6 {
-  margin-left: 400px;
+  /* margin-left: 400px; */
 }
 
 .post {
   text-decoration: none;
+  font-family: arial black;
+  color: white;
+}
+
+.post:hover {
+  text-decoration: none;
+  font-family: arial black;
+  color: aqua;
 }
 
 .footer {
   display: flex;
   justify-content: center;
+}
+
+.logo-mark {
+  font-family: Tahoma;
+}
+
+.post-j {
+  text-decoration: none;
+  font-family: "游ゴシック体","YuGothic";
+  font-weight: bold;
+  color: white;
+}
+
+.post-j:hover {
+  text-decoration: none;
+  font-family: "游ゴシック体","YuGothic";
+  font-weight: bold;
+  color: aqua;
+}
+
+.logo_img {
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+}
+
+.logo_img:hover {
+  filter: invert(88%) sepia(100%) saturate(2929%) hue-rotate(104deg) brightness(99%) contrast(104%);
+}
+
+.user_nav-grid-6 {
+  display: flex;
+}
+
+.logout-block {
+  margin-left: 15px;
 }

@@ -1,4 +1,4 @@
-<div class="main">
+<div class="user-show-main">
   <div class="inner">
     <div class="user__wrapper">
       <h2 class="page-heading">
@@ -6,6 +6,13 @@
         <div id="request_button_<%= @user.id %>">
           <%= render partial: "friend_requests/friend_request", locals: { user: @user } %>
         </div>
+        <% unless current_user.id == @user.id %>
+          <% unless Security.find_by(block_user_id: current_user.id, blocked_user_id: @user.id) || Security.find_by(block_user_id: @user.id, blocked_user_id: current_user.id) %>
+            <div class="chat-icon">
+              <%= link_to image_tag("chat_create_icon.png", width: '70', alt: "チャットアイコン"), chats_path(@user.id), method: :post, class: :messanger_img if current_user.image.attached? %>
+            </div>
+          <% end %>
+        <% end %>
       </h2>
       <div class="mid-object">
         <%= image_tag @user.image, class:"item-box-img" if @user.image.attached? %>
@@ -59,12 +66,10 @@
                   </ul>
               <% end %>
             </div>
-          
           <% end %>
-
-
         </div>
       </div>
+      <div class="show-bottom-section">
       <table class="table">
         <tbody>
           <tr>
@@ -91,8 +96,72 @@
             <th class="table__col1">生年月日</th>
             <td class="table__col2"><%= @user.birthday %></td>
           </tr>
+          <tr>
+            <th class="table__col1">お店の住所</th>
+            <td class="table__col2"><%= @user.shop_address %></td>
+          </tr>
         </tbody>
       </table>
+      <div>
+        
+      <div class="map-header">
+        <span class="map-header-indication">お店の場所を確認してみましょう！↓　↓　↓</span>
+      </div>
+
+      <input id="address" type="textbox" value="GeekSalon">
+      <input class="map-button" type="button" value="検索" onclick="codeAddress()">
+      <div id="display">緯度・経度が表示されます</div>
+
+      <div id='map'></div>
+
+      <style>
+      #map {
+        height: 400px;
+        width: 400px;
+      }
+      </style>
+
+      <script>
+      let map
+
+      const display = document.getElementById('display')
+
+      function initMap(){
+        geocoder = new google.maps.Geocoder()
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 40.7828, lng:-73.9653},
+          zoom: 12,
+        });
+
+        marker = new google.maps.Marker({
+          position:  {lat: 40.7828, lng:-73.9653},
+          map: map
+        });
+      }
+      let geocoder
+
+      function codeAddress(){
+        let inputAddress = document.getElementById('address').value;
+
+        geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+          if (status == 'OK') {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+            display.textContent = "検索結果：" + results[ 0 ].geometry.location
+          } else {
+            alert('該当する結果がありませんでした：' + status);
+          }
+        });   
+      }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GMAP_API_KEY"] %>&callback=initMap" async defer></script>
+      
+      </div>
+      </div>
     </div>
   </div>
 </div>

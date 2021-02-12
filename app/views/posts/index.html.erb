@@ -1,11 +1,7 @@
-<% content_for :header do %>
-  
-<% end %>
-
-<% if user_signed_in? %>
-  <div class="top-indication">
+<div class="top-indication">
+  <% if user_signed_in? %>
     <div class="trim">
-      <%= image_tag current_user.image.variant(resize: '100x100'), class: :trim_image if current_user.image.attached? %>
+      <%= image_tag current_user.image.variant(resize: '100x100') if current_user.image.attached? %>
     </div>
     <div class="balloon-left">
       <%= link_to "思ったことを書きましょう！(投稿はココをクリック)", new_post_path, class: "tweet" %>
@@ -37,19 +33,5 @@
     </div>
   </div>
   <% end %>
-<% end %>
-
-<div class="main-sentences">
-  <div class="top1">
-    ようこそ、Interactiverへ！！！
-  </div>
-  <div class="top2">
-    Interactiverは、海外で飲食店を経営している方々向けの<br>コミュニティスペースになります。
-  </div>
-  <div class="top3">
-    海外で事業をしていく上での悩みや問題等を共有し、相互に助け合えるような場所になることを目指しております。
-  </div>
-  <div class="top4">
-    興味がある方は、ヘッダーの「<span class="new-account">新規登録</span>」からアカウントを作成して、交流を開始してください。
-  </div>
 </div>
+  <%= render partial: "post", collection: @posts, as: :post %>

@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'posts#index'
   resources :users, only: [:show, :edit, :update] do
+    member do
+      get 'search'
+    end
     resources :friend_requests, only: [:index, :create, :destroy, :edit, :update, :reject] do
       member do
         delete 'reject'
@@ -14,4 +17,14 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
   post   '/like/:post_id' => 'likes#like',   as: 'like'
+
+  resources :chats, only: [:new, :create] do
+    resources :messages, only: [:new, :create]
+  end
+  get "news/data"
+  resources :footprints, only: :index
+  
+  resources :graphs, only: :index
+
+  resources :securitys, only: [:new, :create, :destroy]
 end

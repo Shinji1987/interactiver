@@ -16,21 +16,23 @@
   border-collapse: collapse;
   margin-bottom: 32px;
   width: 50%;
+  margin-right: 20px;
 }
 
 .table__col1{
   text-align: left;
   font-weight: bold;
-  background: #fafafa;
+  background: #0066FF;
   border-collapse: collapse;
-  border: 1px solid #f5f5f5;
+  border: 1px solid #DDDDDD;
   width: 30%;
   padding: 8px;
+  color: white;
 }
 
 .table__col2{
   text-align: left;
-  border: 1px solid #f5f5f5;
+  border: 1px solid #DDDDDD;
   border-collapse: collapse;
   width: 70%;
   padding: 16px 8px;
@@ -104,4 +106,33 @@
 
 .friend-list-name {
   text-align: center;
+}
+
+.chat-icon {
+  margin-left: 20px;
+  margin-top: -10px;
+}
+
+.show-bottom-section {
+  display: flex;
+}
+
+.map-header-indication {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.user-show-main {
+  padding-bottom: 30px;
+}
+
+.map-button {
+  background-color: #0066FF;
+  color: white;
+  border-radius: 10px;
+}
+
+.map-button:hover {
+  background-color: #0099FF;
+  color: white;
 }
