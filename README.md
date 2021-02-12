@@ -12,6 +12,8 @@
 | birthday              | date       | null: false |
 | profile               | text       |             |
 | request_status        | integer    |             |
+| shop_address          | string     | null: false |
+
 
 ### Association
 
@@ -25,6 +27,7 @@
 - has_many :chats
 - has_many :chat_users
 - has_many :footprints
+- has_many :securitys
 
 ## posts テーブル
 
@@ -158,6 +161,17 @@
 | ----------------- | -----------| ----------- |
 | visitor_user_id   | integer    | null: false |
 | visited_user_id   | integer    | null: false |
+
+### Association
+
+- belongs_to :user
+
+## securitys テーブル
+
+| Column            | Type       | Options     |
+| ----------------- | -----------| ----------- |
+| block_user_id     | integer    | null: false |
+| blocked_user_id   | integer    | null: false |
 
 ### Association
 

@@ -2,7 +2,6 @@
   <div class="inner">
     <div class="form__wrapper">
       <%= render 'shared/error_messages_postnew', model: @post %>
-      <%= image_tag current_user.image.variant(resize: '300x300'), class: 'image-icon' if current_user.image.attached? %>
       <%= render partial: "form_new", locals: { post: @post } %>
     </div>
   </div>

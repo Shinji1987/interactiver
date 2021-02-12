@@ -33,7 +33,6 @@
   height:60px;
   border-radius:50%;
   margin-top: 10px;
-  /* margin-left: 25%; */
   margin-bottom: 30px;
   border: solid 1px #C0C0C0;
 }
@@ -46,6 +45,8 @@
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   height:100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .trim_image {
@@ -195,12 +196,29 @@
 }
 
 .main-sentences {
-  /* text-align: center; */
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 330px;
   width: 700px;
+  position: absolute;
+  top: 0;
+  left: 25%;
+  color: rgba(255, 255, 255, 1);
+}
+
+.entrance-img {
+  width: 100%;
+  opacity: .6;
+}
+
+.entrance-img-block {
+  background: black;
+}
+
+.entrance-main {
+  border: 1px solid black;
+  position: relative;
 }
 
 .top1 {
@@ -232,12 +250,30 @@
 .search-btn {
   color: #fff;
   background-color: skyblue;
-  /* border-radius: 100vh; */
   border-radius:0 10px 10px 0;
   width: 60px;
   height: 35px;
   border: solid 1px black;
   font-size: 18px;
+  font-family: "游ゴシック体","YuGothic";
+  font-weight: bold;
+  text-shadow:
+    1px 0 0 black,
+    0 1px 0 black,
+    -1px 0 0 black,
+    0 -1px 0 black
+}
+
+.search-btn:hover {
+  color: #fff;
+  background-color: #CCFFFF;
+  border-radius:0 10px 10px 0;
+  width: 60px;
+  height: 35px;
+  border: solid 1px black;
+  font-size: 18px;
+  font-family: "游ゴシック体","YuGothic";
+  font-weight: bold;
   text-shadow:
     1px 0 0 black,
     0 1px 0 black,
@@ -253,7 +289,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 550px;
+  width: 600px;
 }
 
 .messenger-object {
@@ -275,7 +311,6 @@
 }
 
 .news-objects {
-  /* border: 1px solid black; */
   width: 430px;
 }
 
@@ -345,10 +380,6 @@
   font-size: 15px;
 }
 
-.sell-object {
-
-}
-
 .USD-indication {
   font-size: 15px;
 }
@@ -357,4 +388,106 @@
   display: flex;
   justify-content: center;
   margin-top: 5px;
+}
+
+.may-know-block {
+  width: 380px;
+  min-height: 400px;
+  margin-top: 30px;
+}
+
+.may-know-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 30px;
+}
+
+.may-know-trim {
+  position:relative;
+  overflow: hidden;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  margin-top: 10px;
+  /* margin-left: 25%; */
+  margin-bottom: 30px;
+  border: solid 1px #C0C0C0;
+}
+
+.may-know-trim img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  height:100%;
+}
+
+.may-know-indication {
+  display: flex;
+  justify-content: center;
+}
+
+.may-know-name-block {
+  margin-top: 40px;
+  margin-left: 10px;
+  width: 80px;
+}
+
+.may-know-people {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -25px;
+  min-height: 300px;
+  margin-top: -10px;
+}
+
+.may-know-lists {
+  list-style: none;
+}
+
+.may-know-lists:nth-child(n + 3) {
+  margin-top: -80px;
+}
+
+.may-know-header {
+  border-bottom: 2px solid gray;
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: -8px;
+}
+
+.graph-icon {
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+}
+
+.graph-icon:hover {
+  filter: invert(88%) sepia(100%) saturate(2929%) hue-rotate(104deg) brightness(99%) contrast(104%);
+}
+
+.footprint-icon {
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+}
+
+.footprint-icon:hover {
+  filter: invert(88%) sepia(100%) saturate(2929%) hue-rotate(104deg) brightness(99%) contrast(104%);
+}
+
+.messenger-icon {
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+}
+
+.messenger-icon:hover {
+  filter: invert(88%) sepia(100%) saturate(2929%) hue-rotate(104deg) brightness(99%) contrast(104%);
+}
+
+.security-icon {
+  filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+}
+
+.security-icon:hover {
+  filter: invert(88%) sepia(100%) saturate(2929%) hue-rotate(104deg) brightness(99%) contrast(104%);
 }

@@ -16,22 +16,22 @@
   font-weight: bold;
 }
 
-table{
+.like-table {
   width: 100%;
   border-collapse:separate;
   border-spacing: 0;
 }
 
-table th:first-child{
+.like-table th:first-child{
   border-radius: 5px 0 0 0;
 }
 
-table th:last-child{
+.like-table th:last-child{
   border-radius: 0 5px 0 0;
   border-right: 1px solid #3c6690;
 }
 
-table th{
+.like-table th{
   text-align: center;
   color:white;
   background: linear-gradient(#829ebc,#225588);
@@ -43,7 +43,7 @@ table th{
   padding: 10px 0;
 }
 
-table td{
+.like-table td{
   text-align: center;
   border-left: 1px solid #a8b7c5;
   border-bottom: 1px solid #a8b7c5;
@@ -53,15 +53,15 @@ table td{
   word-break: break-word;
 }
 
-table td:last-child{
+.like-table td:last-child{
   border-right: 1px solid #a8b7c5;
 }
 
-table tr:last-child td:first-child {
+.like-table tr:last-child td:first-child {
   border-radius: 0 0 0 5px;
 }
 
-table tr:last-child td:last-child {
+.like-table tr:last-child td:last-child {
   border-radius: 0 0 5px 0;
 }
 
@@ -70,7 +70,7 @@ table tr:last-child td:last-child {
 }
 
 .id-th {
-  width: 30px;
+  width: 10px;
 }
 
 .content-th {
@@ -82,7 +82,7 @@ table tr:last-child td:last-child {
 }
 
 .table-object {
-  width: 700px;
+  width: 800px;
 }
 
 .graph-block {
@@ -93,6 +93,7 @@ table tr:last-child td:last-child {
 .table-block {
   display: flex;
   justify-content: center;
+  margin-bottom: 120px;
 }
 
 .like-graph-vertical {

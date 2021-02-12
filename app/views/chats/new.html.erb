@@ -53,6 +53,7 @@
       <% if @chat_users != nil %>
       <% @chat_users.each do |chat_user| %>
         <% user = User.find_by(id: chat_user) %>
+        <% unless Security.find_by(block_user_id: current_user.id, blocked_user_id: user.id ) || Security.find_by(block_user_id: user.id, blocked_user_id: current_user.id) %>
         <ul class='messanger-lists'>
           <li class='messanger-list'>
             <div class="messanger-objects">
@@ -83,6 +84,7 @@
                 </div>
           </li>
         </ul>
+        <% end %>
       <% end %>
       <% end %>
     </div>
