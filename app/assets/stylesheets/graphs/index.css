@@ -93,6 +93,7 @@
 .table-block {
   display: flex;
   justify-content: center;
+  margin-bottom: 120px;
 }
 
 .like-graph-vertical {

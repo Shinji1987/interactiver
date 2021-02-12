@@ -23,7 +23,10 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :image, id:"user-image" %>
+        <div class="message-attachment">
+          <%= f.label :image, "画像添付", class: "registration_label" %>
+          <%= f.file_field :image, class: "registration_image" %>
+        </div>
       </div>
     </div>
 
@@ -99,18 +102,8 @@
     
     <p class='info-text'>※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。</p>
   </div>
-  <div class="form-group">
-    <h2 class='form-bottom-text'>
-      「会員登録」のボタンを押すことにより、
-      <span>利用規約</span>
-      <br>に同意したものとみなします
-    </h2>
-  </div>
   <div class='register-btn'>
     <%= f.submit "変更" ,class:"register-red-btn" %>
   </div>
-  <p class='register-info'>本人情報の登録について</p>
 </div>
 <% end %>
-
-<%# <%= render "shared/second-footer"%>

@@ -8,8 +8,10 @@
 <% end %>
 
 <% if @users != nil && @users != [] %>
+<div class="search-top-main">
 <div class="contents row">
   <% @users.each do |user| %>
+  <% if user.id != current_user.id %>
   <% unless Security.find_by(block_user_id: user.id, blocked_user_id: current_user.id) || Security.find_by(block_user_id: current_user.id, blocked_user_id: user.id) %>
 
   <% record = FriendRequest.where(from_user_id: user.id).or(FriendRequest.where(to_user_id: user.id)).where("from_user_id = ? or to_user_id = ?", current_user.id, current_user.id) %>
@@ -45,7 +47,7 @@
             </div>
           </div>
           <div class="search-already-friend">
-            <span class="search-indication">友達申請承認待ちです</span>
+            <span class="search-request-waiting">友達申請承認待ちです</span>
           </div>
         </li>
       </ul>
@@ -63,7 +65,7 @@
             </div>
           </div>
           <div class="search-already-friend">
-            <span class="search-indication">既に友達です</span>
+            <span class="search-already-friend">既に友達です</span>
           </div>
         </li>
       </ul>
@@ -81,7 +83,7 @@
             </div>
           </div>
           <div class="search-already-friend">
-            <span class="search-indication">友達ではありません<br>詳細画面から友達申請をしましょう</span>
+            <span class="search-not-friend">友達ではありません<br>詳細画面から友達申請をしましょう</span>
           </div>
         </li>
       </ul>
@@ -107,6 +109,7 @@
       </ul>
     </div>
     <% end %>
+    <% end %>
  <% end %>
  <% end %>
 <% elsif @users == nil %>
@@ -118,4 +121,5 @@
     <span class="not-found-indication">一致するユーザーは見つかりませんでした</span>
   </div>
 <% end %>
+</div>
 </div>

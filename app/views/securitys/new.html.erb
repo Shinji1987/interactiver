@@ -7,6 +7,7 @@
   <% end %>  
 <% end %>
 <% if @users != nil && @users != [] %>
+<div class="block-contents-main">
 <div class="contents row">
   <% @users.each do |user| %>
   <% if user.id != current_user.id %>
@@ -31,7 +32,7 @@
               <%= button_to("ブロック解除", security_path(user.id), method: :delete, class: :block_button_icon) %>
             </div>
             <div class="search-already-friend-block">
-              <span class="search-indication">ブロックしています<br>ブロックを解除する場合は、ボタンをクリックしてください</span>
+              <span class="security-blcoked">ブロックしています<br>ブロックを解除する場合は、ボタンをクリックしてください</span>
             </div>
           </div>
         </li>
@@ -55,7 +56,7 @@
               <%= button_to("ブロック解除", security_path(user.id), method: :delete, class: :block_button_icon) %>
             </div>
             <div class="search-already-friend-block">
-              <span class="search-indication">ブロックしています<br>ブロックを解除する場合は、ボタンをクリックしてください</span>
+              <span class="security-blcoked">ブロックしています<br>ブロックを解除する場合は、ボタンをクリックしてください</span>
             </div>
           </div>
         </li>
@@ -79,7 +80,7 @@
               <%= button_to("ブロック解除", security_path(user.id), method: :delete, class: :block_button_icon) %>
             </div>
             <div class="search-already-friend-block">
-              <span class="search-indication">ブロックしています<br>ブロックを解除する場合は、ボタンをクリックしてください</span>
+              <span class="security-blcoked">ブロックしています<br>ブロックを解除する場合は、ボタンをクリックしてください</span>
             </div>
           </div>
         </li>
@@ -103,7 +104,7 @@
               <%= button_to("ブロック解除", security_path(user.id), method: :delete, class: :block_button_icon) %>
             </div>
             <div class="search-already-friend-block">
-              <span class="search-indication">ブロックしています<br>ブロックを解除する場合は、ボタンをクリックしてください</span>
+              <span class="security-blcoked">ブロックしています<br>ブロックを解除する場合は、ボタンをクリックしてください</span>
             </div>
           </div>
         </li>
@@ -127,7 +128,7 @@
               <%= button_to("ブロック", securitys_path(user.id), method: :post, class: :block_button_icon) %>
             </div>
             <div class="search-already-friend-block">
-              <span class="search-indication">友達申請受信済みです<br>ブロックする場合はボタンをクリックしてください</span>
+              <span class="security-requst-received">友達申請受信済みです<br>ブロックする場合はボタンをクリックしてください</span>
             </div>
           </div>
         </li>
@@ -150,7 +151,7 @@
               <%= button_to("ブロック", securitys_path(user.id), method: :post, class: :block_button_icon) %>
             </div>
             <div class="search-already-friend-block">
-              <span class="search-indication">友達申請承認待ちです<br>ブロックする場合はボタンをクリックしてください</span>
+              <span class="security-request-waiting">友達申請承認待ちです<br>ブロックする場合はボタンをクリックしてください</span>
             </div>
           </div>
         </li>
@@ -173,7 +174,7 @@
               <%= button_to("ブロック", securitys_path(user.id), method: :post, class: :block_button_icon) %>
             </div>
             <div class="search-already-friend-block">
-              <span class="search-indication">既に友達です<br>ブロックする場合はボタンをクリックしてください</span>
+              <span class="security-already-friend">既に友達です<br>ブロックする場合はボタンをクリックしてください</span>
             </div>
           </div>
         </li>
@@ -196,7 +197,7 @@
               <%= button_to("ブロック", securitys_path(user.id), method: :post, class: :block_button_icon) %>
             </div>
             <div class="search-already-friend-block">
-              <span class="search-indication">友達ではありません<br>ブロックする場合はボタンをクリックしてください</span>
+              <span class="security-not-friend">友達ではありません<br>ブロックする場合はボタンをクリックしてください</span>
             </div>
           </div>
         </li>
@@ -206,6 +207,7 @@
 <% end %>
  <% end %>
  <% end %>
+</div>
 </div>
 <% elsif @users == nil %>
   <div class="instruction-block">
@@ -238,14 +240,13 @@
               <%= button_to("ブロック解除", security_path(blocked_user.id), method: :delete, class: :block_button_icon) %>
             </div>
             <div class="search-already-friend-block">
-              <span class="search-indication">ブロックしています<br>ブロックを解除する場合は、ボタンをクリックしてください</span>
+              <span class="security-blcoked">ブロックしています<br>ブロックを解除する場合は、ボタンをクリックしてください</span>
             </div>
           </div>
         </li>
       </ul>
       </div>
       <% end %>
-
     </div>
   </div>
 <% elsif @users == [] %>

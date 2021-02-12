@@ -28,12 +28,13 @@
 
 .instruction-block {
   margin-top: 50px;
-  margin-bottom: 400px;
+  min-height: 550px;
 }
 
 .instruction {
   font-size: 30px;
   font-weight: bold;
+  font-family: "游ゴシック体","YuGothic";
 }
 
 .instruction-arr {
@@ -54,6 +55,7 @@
 .block-list-header {
   font-size: 30px;
   font-weight: bold;
+  font-family: "游ゴシック体","YuGothic";
 }
 
 .block-list-header-block {
@@ -70,4 +72,38 @@
   border-color: #DDDDDD;
   width: 700px;
   padding: 5px;
+}
+
+.block-contents-main {
+  min-height: 590px;
+}
+
+.security-blcoked {
+  font-size: 25px;
+  color: red;
+  font-weight: bold;
+}
+
+.security-requst-received {
+  font-size: 25px;
+  color: brown;
+  font-weight: bold;
+}
+
+.security-request-waiting {
+  font-size: 25px;
+  color: purple;
+  font-weight: bold;
+}
+
+.security-already-friend {
+  font-size: 25px;
+  color: green;
+  font-weight: bold;
+}
+
+.security-not-friend {
+  font-size: 25px;
+  color: blue;
+  font-weight: bold;
 }

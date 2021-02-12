@@ -9,7 +9,7 @@
 
 .search-indication {
   font-size: 25px;
-  color: blue;
+  color: brown;
   font-weight: bold;
 }
 
@@ -17,7 +17,7 @@
   display: flex;
   justify-content: center;
   margin-top: 30px;
-  margin-bottom: 500px;
+  min-height: 570px;
 }
 
 .no-result-indication {
@@ -36,4 +36,26 @@
   color: red;
   font-weight: bold;
   
+}
+
+.search-request-waiting {
+  font-size: 25px;
+  color: purple;
+  font-weight: bold;
+}
+
+.search-already-friend {
+  font-size: 25px;
+  color: green;
+  font-weight: bold;
+}
+
+.search-not-friend {
+  font-size: 25px;
+  color: blue;
+  font-weight: bold;
+}
+
+.search-top-main {
+  min-height: 600px;
 }
