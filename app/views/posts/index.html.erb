@@ -5,10 +5,7 @@
     </div>
     <div class="balloon-left">
       <%= link_to "思ったことを書きましょう！(投稿はココをクリック)", new_post_path, class: "tweet" %>
-      <%# <%= link_to "ログイン", new_user_session_path, class: "post" %>
-      <%# placeholder:"例) furima太郎" %>
     </div>
   <% end %>
 </div>
-<%= render partial: "post", collection: @posts %>
-<p></p>
+  <%= render partial: "post", collection: @posts, as: :post %>
