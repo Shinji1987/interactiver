@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :chat_users, dependent: :destroy
   has_many :footprints, dependent: :destroy
+  has_many :securitys, dependent: :destroy
 
   validates :nickname, presence: true
                        
@@ -66,8 +67,8 @@ class User < ApplicationRecord
   def self.search(search)
     if search != ""
       User.where('nickname LIKE(?)', "%#{search}%")
-    else
-      User.all
+    # else
+      # User.all
     end
   end
 end
