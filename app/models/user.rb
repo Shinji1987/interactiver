@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  geocoded_by :shop_address
+  after_validation :geocode, if: :shop_address_changed?
+
+
+  
   has_one_attached :image
   has_many :posts
   has_many :comments
@@ -11,6 +16,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :chat_users, dependent: :destroy
   has_many :footprints, dependent: :destroy
+  has_many :securitys, dependent: :destroy
 
   validates :nickname, presence: true
                        
@@ -61,8 +67,8 @@ class User < ApplicationRecord
   def self.search(search)
     if search != ""
       User.where('nickname LIKE(?)', "%#{search}%")
-    else
-      User.all
+    # else
+      # User.all
     end
   end
 end
