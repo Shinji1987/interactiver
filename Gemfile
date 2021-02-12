@@ -6,7 +6,8 @@ ruby '2.6.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use sqlite3 as the database for Active Record
-gem 'mysql2', '>= 0.5.3'
+gem 'mysql2', '0.5.3'
+
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -27,6 +28,7 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+gem "chartkick"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -65,3 +67,25 @@ gem 'pry-rails'
 
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
+
+gem 'jquery-rails'
+
+gem 'dotenv-rails'
+
+gem 'money-rails'
+
+gem 'lazy_high_charts'
+
+gem 'haml-rails'
+
+gem 'slim-rails'
+
+gem 'html2slim'
+
+gem 'bootstrap-sass'
+
+gem "geocoder"
+
+gem 'http'
+
+gem 'openssl'

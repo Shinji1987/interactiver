@@ -1,0 +1,37 @@
+<div class="contents-row">
+   <div class="comment-error-message">
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+  </div>
+  <div class="container">
+    <% if user_signed_in? %>
+      <%= form_with(model: [@post, @comment], url: post_comments_path ,local: true) do |form| %>
+      <div class="comment-box">
+        <%= form.text_area :comment, placeholder: "コメントする", rows: "2", class: :balloon %>
+      </div>
+      <div class="comment-btn">
+        <%= form.submit "コメント", class: :btn_gradient_radius %>
+      </div>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+    <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% @post.comments.each do |comment| %>
+        <div class="comment-list">
+          <div class="trim-comment ">
+            <%= image_tag comment.user.image.variant(resize: '100x100') if comment.user.image.attached? %>
+          </div>
+          <div class="comment-right">
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <div class="comment">
+              <%= comment.comment %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

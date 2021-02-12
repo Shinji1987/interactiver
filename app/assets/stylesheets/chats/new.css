@@ -1,0 +1,130 @@
+.messanger-trim {
+  position:relative;
+  overflow: hidden;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  /* margin-top: 10px;
+  margin-left: 25%;
+  margin-bottom: 30px; */
+  border: solid 1px #C0C0C0;
+  margin-left: 10px;
+}
+
+.messanger-trim img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  height:100%;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.messanger-top {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.messanger-indication {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.messanger-main {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  margin-bottom: 100px;
+}
+
+.friend-list-sections {
+  border: 1px solid;
+  border-color: #DDDDDD;
+  margin-left: 20px;
+  width: 400px;
+  height: 400px;
+}
+
+.mid-object-right {
+  border: 1px solid;
+  border-color: #DDDDDD;
+  margin-left: 40px;
+  width: 400px;
+  min-height: 400px;
+}
+
+.chat-mid-object {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.friend-list-block {
+  display: flex;
+  justify-content: center;
+}
+
+.trim-messanger {
+  position:relative;
+  overflow: hidden;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  border: solid 1px #C0C0C0;
+}
+.trim-messanger img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  height:100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.messanger-lists {
+  list-style: none;
+}
+
+.messanger-objects {
+  display: flex;
+}
+
+.messanger-list-right {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.messanger-nickname {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.messanger-list-right-bottom {
+  display: flex;
+}
+
+.last-message {
+  margin-left: 10px;
+  width: 220px;
+}
+
+.chat-list-indication {
+  font-size: 25px;
+  font-weight: bold; 
+}
+
+.chat-list-block {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,63 @@
+    <div class="request-index-main">
+      <h2 class="page-heading-friend-list">
+        <div class="friend-list-top">
+        <div class="trim-friend-list">
+          <%= link_to image_tag(@user.image.variant(resize: '100x100')), user_path(@user.id), class: :icon_img if @user.image.attached? %>
+        </div>
+        <div class="friend-list-top-indication">
+          <%= @user.nickname %>さんの友達リスト一覧
+        </div>
+      </h2>
+      <div class="mid-object">
+        <div class="friend-list-main-section">
+          <% if current_user.id == @user.id %>
+            <div class="friend-list-block">
+              <%= link_to "友達リスト: #{@friend_lists.count}人", "#", class: "friend-list-indication" %>
+            </div>
+          <% else %>
+            <div class="friend-list-block">
+              <%= link_to "友達リスト: #{@friend_list_others.count}人", "#", class: "friend-list-indication" %>
+            </div>
+          <% end %>
+          <% if current_user.id == @user.id %>
+            <div class="friend-lists-group">
+              <% @friend_lists.each do |friend_list| %>
+                <% to_from_user = friend_list.select do |x| %>
+                  <% x != current_user.id %>
+                <% end %>
+                <% user = User.find_by(id: to_from_user) %>
+                  <ul class='friend-lists-main'>
+                    <li class='friend-list'>
+                      <div class="image-border">
+                        <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :friend_list_img if user.image.attached? %>
+                      </div>
+                      <div class="friend-list-name">
+                        <%= user.nickname %>
+                      </div>
+                    </li>
+                  </ul>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="friend-lists-group">
+              <% @friend_list_others.each do |friend_list_other| %>
+                <% to_from_user = friend_list_other.select do |x| %>
+                  <% x != @user.id %>
+                <% end %>
+                <% user = User.find_by(id: to_from_user) %>
+                  <ul class='friend-lists'>
+                    <li class='friend-list'>
+                      <div class="image-border">
+                        <%= link_to image_tag(user.image.variant(resize: '100x100')), user_path(user.id), class: :friend_list_img if user.image.attached? %>
+                      </div>
+                      <div class="friend-list-name">
+                        <%= user.nickname %>
+                      </div>
+                    </li>
+                  </ul>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
