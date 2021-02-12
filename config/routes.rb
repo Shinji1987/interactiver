@@ -21,4 +21,10 @@ Rails.application.routes.draw do
   resources :chats, only: [:new, :create] do
     resources :messages, only: [:new, :create]
   end
+  get "news/data"
+  resources :footprints, only: :index
+  
+  resources :graphs, only: :index
+
+  resources :securitys, only: [:new, :create, :destroy]
 end

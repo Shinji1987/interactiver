@@ -1,7 +1,7 @@
+<div class="friend-request-edit-main">
 <% @users.each do |user| %>
-<%# <% from_record = FriendRequest.find_by(from_user_id: user.id) %>
 <% from_record = FriendRequest.where(from_user_id: user.id).where(to_user_id: current_user.id).pluck(:requesting_status) %>
-<% unless from_record.include?(2) %>
+<% unless from_record.include?(2) || from_record.include?(3) %>
   <div class="top-requests">
     <ul class='request-lists'>
       <li class='list'>
@@ -26,3 +26,4 @@
   </div>
   <% end %>
  <% end %>
+ </div>

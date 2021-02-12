@@ -91,12 +91,13 @@
 
 .btn_gradient_radius {
   width: 300px;
+  font-size: 18px;
   display: inline-block;
   margin-left: 50px;
-  padding: 7px 20px;
+  padding: 5px 20px;
   border-radius: 25px;
   text-decoration: none;
-  background-image: linear-gradient(45deg, #00FFFF 0%, skyblue 100%);
+  background-color: #0066FF;
   transition: .4s;
   color: white;
   border: solid 2px #C0C0C0;
@@ -126,4 +127,8 @@
   margin-top: 5px;
   width: 15em;
   color: red;
+}
+
+.contents-row {
+  height: 590px;
 }
