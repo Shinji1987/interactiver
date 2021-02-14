@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: interactiver_production
-  username: interactiver
+  username: root
   password: <%= ENV['INTERACTIVER_DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
