@@ -410,7 +410,6 @@
   height:60px;
   border-radius:50%;
   margin-top: 10px;
-  /* margin-left: 25%; */
   margin-bottom: 30px;
   border: solid 1px #C0C0C0;
 }
@@ -423,6 +422,8 @@
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   height:100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .may-know-indication {
