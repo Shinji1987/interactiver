@@ -60,6 +60,22 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     autoprefixer-rails (10.2.4.0)
       execjs
+    aws-eventstream (1.1.0)
+    aws-partitions (1.416.0)
+    aws-sdk-core (3.111.1)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.239.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.41.0)
+      aws-sdk-core (~> 3, >= 3.109.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.87.0)
+      aws-sdk-core (~> 3, >= 3.109.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.1)
+    aws-sigv4 (1.2.2)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
     bcrypt (3.1.16-java)
     bindex (0.8.1)
@@ -129,8 +145,8 @@ GEM
       railties (>= 5.1)
     hash-deep-merge (0.1.1)
     hpricot (0.8.6)
-    hpricot (0.8.6-i386-mswin32)
     hpricot (0.8.6-java)
+    hpricot (0.8.6-x86-mswin32)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
       haml (>= 4.0, < 6)
@@ -155,6 +171,7 @@ GEM
       ruby-vips (>= 2.0.17, < 3)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
+    jmespath (1.4.0)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -375,6 +392,7 @@ PLATFORMS
   x86-mswin32
 
 DEPENDENCIES
+  aws-sdk-s3
   bootsnap (>= 1.4.2)
   bootstrap-sass
   byebug
