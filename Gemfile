@@ -102,3 +102,7 @@ gem 'openssl'
 gem 'rails_12factor', group: :production
 
 gem "aws-sdk-s3", require: false
+
+gem 'sprockets', '~> 4.0.2.beta.8'
+
+gem 'sprockets-es6', require: 'sprockets/es6'
