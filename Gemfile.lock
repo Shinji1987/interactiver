@@ -456,7 +456,7 @@ DEPENDENCIES
   mini_magick
   money-rails
   mysql2 (= 0.5.3)
-  openssl
+  openssl (~> 2.2.0)
   pry-rails
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
