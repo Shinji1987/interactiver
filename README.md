@@ -1,5 +1,4 @@
-![Gem](https://img.shields.io/gem/v/rails)
-
+!(https://img.shields.io/badge/Rails-6.0.3.4-blue)
 
 
 ## users テーブル
