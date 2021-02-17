@@ -1,4 +1,8 @@
+![Rails](https://img.shields.io/badge/Ruby-2.6.5-blue)
 ![Rails](https://img.shields.io/badge/Rails-6.0.3.4-blue)
+![Rails](https://img.shields.io/badge/MySQL2-0.5.3-blue)
+
+
 
 
 ## users テーブル
