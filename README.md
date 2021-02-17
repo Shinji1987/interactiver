@@ -1,3 +1,7 @@
+![Gem](https://img.shields.io/gem/v/rails)
+
+
+
 ## users テーブル
 
 | Column                | Type       | Options     |
