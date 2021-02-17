@@ -1,4 +1,4 @@
-!(https://img.shields.io/badge/Rails-6.0.3.4-blue)
+![Rails](https://img.shields.io/badge/Rails-6.0.3.4-blue)
 
 
 ## users テーブル
