@@ -115,23 +115,28 @@ http://35.72.111.10/
   - 「いいね」の非同期解除
 ![いいね](https://user-images.githubusercontent.com/76105302/108314938-08e83680-71fe-11eb-9b10-2b4d9fc7dba0.gif)
 6. 友達機能
-  - 友達申請
-  - 友達申請承認
+  - 友達申請(非同期)
+  - 友達申請承認(非同期)
   - 友達申請拒否
-  - 友達キャンセル
+  - 友達キャンセル(非同期)
   - 友達リスト
 ![友達申請](https://user-images.githubusercontent.com/76105302/108315266-83b15180-71fe-11eb-9b64-db3851497b31.gif)
 ![友達承認](https://user-images.githubusercontent.com/76105302/108315753-41d4db00-71ff-11eb-9eef-f6e6423cb252.gif)
 7. ユーザー検索機能
   - ニックネームで曖昧検索
+  - 友達申請状態を表示(友達です・友達ではありません・友達申請承認待ちです・友達申請受信済み・ブロック中のユーザーです)
+![ユーザー検索](https://user-images.githubusercontent.com/76105302/108317441-a2fdae00-7201-11eb-8cbf-f4882ebaa9a4.gif)
 8. ニュース機能
   - NEWS APIによるビジネスニュースの表示
+![ニュース](https://user-images.githubusercontent.com/76105302/108317625-e821e000-7201-11eb-869f-13582086979a.gif)
 9. メッセンジャー機能
   - テキストと画像のチャット機能
   - 既読機能
   - チャット履歴表示
+![メッセンジャー](https://user-images.githubusercontent.com/76105302/108318151-ae050e00-7202-11eb-96bb-d745fd7001ba.gif)
 10. 足跡機能
   - 自身のユーザー詳細ページへアクセスしたユーザーを表示
+
 11. 為替表示機能
   - USD→JPYの為替情報を表示
 12. いいね数グラフ化機能
