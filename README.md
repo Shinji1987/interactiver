@@ -149,12 +149,14 @@ http://35.72.111.10/
 ![地図](https://user-images.githubusercontent.com/76105302/108321766-f3780a00-7207-11eb-81c6-11ab3cca9086.gif)
 14. 知り合いかも機能
   - 自分の友達の友達で自分が友達出ないユーザーを表示
+![知り合いかも](https://user-images.githubusercontent.com/76105302/108325506-7a2ee600-720c-11eb-96de-29a3876cea47.gif)
 15. ブロック機能
   - ブロックするユーザーの検索機能
   - 各ユーザーのブロック状態表示機能
   - ブロック状態にすると「した側」はそのユーザーを検索できるが、「された側」は「した側」を検索しても表示されなくなる
   - ブロック解除
-
+![ブロック](https://user-images.githubusercontent.com/76105302/108331499-29ba8700-7212-11eb-95f4-0e395a21c405.gif)
+![ブロック解除](https://user-images.githubusercontent.com/76105302/108332057-bb29f900-7212-11eb-887a-e5b04c783684.gif)
 
 ## users テーブル
 
