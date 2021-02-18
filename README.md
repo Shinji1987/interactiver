@@ -20,8 +20,6 @@
 - has_many :posts
 - has_many :comments
 - has_many :likes
-- has_many :follows
-- has_many :user_follows
 - has_many :friend_requests
 - has_many :messages
 - has_many :chats
@@ -66,30 +64,6 @@
 
 - belongs_to :user
 - belongs_to :post
-
-## follows テーブル
-
-| Column                | Type       | Options           |
-| ----------------------| -----------| ----------------- |
-| user                  | references | foreign_key: true |
-
-### Association
-
-- has_many :users
-- has_many :user_follows
-
-## user_follows テーブル
-
-| Column                | Type       | Options           |
-| ----------------------| -----------| ----------------- |
-| user                  | references | foreign_key: true |
-| follower              | references | foreign_key: true |
-| followered            | references | foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :follow
 
 ## friend_requests テーブル
 

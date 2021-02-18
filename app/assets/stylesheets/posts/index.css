@@ -429,6 +429,7 @@
 .may-know-indication {
   display: flex;
   justify-content: center;
+  margin-bottom: 40px;
 }
 
 .may-know-name-block {
