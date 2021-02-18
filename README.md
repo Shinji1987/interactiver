@@ -47,28 +47,7 @@ http://35.72.111.10/
 ### デプロイ方法(手順①〜⑤)
 <img src="https://user-images.githubusercontent.com/76105302/108294319-fe677600-71d8-11eb-8e2a-8efa9ba2cd88.png" width="500">
 
-### ライセンス情報
-MIT License
 
-Copyright (c) [2021] [Shinji Kato]
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 
 
 
@@ -115,7 +94,48 @@ SOFTWARE.
 ### システム構成図
 <img src="https://user-images.githubusercontent.com/76105302/108286166-f1905580-71cb-11eb-82a4-f87613ee5edd.png" width="500">
 
-
+### 機能
+1. ユーザー機能
+  - ユーザー登録
+  - ユーザーログイン
+  - ユーザー情報編集
+2. マイページ機能(ユーザー詳細ページ)
+  - ユーザーのプロフィール表示
+3. 投稿機能
+  - テキストと画像投稿
+4. コメント機能
+  - テキストのみのコメント
+5. いいね機能
+  - 投稿に対する「いいね」
+6. 友達機能
+  - 友達申請
+  - 友達申請承認
+  - 友達キャンセル
+  - 友達リスト
+7. ユーザー検索機能
+  - ニックネームで曖昧検索
+8. ニュース機能
+  - NEWS APIによるビジネスニュースの表示
+9. メッセンジャー機能
+  - テキストと画像のチャット機能
+  - 既読機能
+  - チャット履歴表示
+10. 足跡機能
+  - 自身のユーザー詳細ページへアクセスしたユーザーを表示
+11. 為替表示機能
+  - USD→JPYの為替情報を表示
+12. いいね数グラフ化機能
+  - 自身の投稿に対する「いいね」数を棒グラフで表示
+13. 地図表示機能
+  - Google Map APIで住所を入力すると場所を表示
+  - 検索した場所の緯度・経度を表示
+14. 知り合いかも機能
+  - 自分の友達の友達で自分が友達出ないユーザーを表示
+15. ブロック機能
+  - ブロックするユーザーの検索機能
+  - 各ユーザーのブロック状態表示機能
+  - ブロック状態にすると「した側」はそのユーザーを検索できるが、「された側」は「した側」を検索しても表示されなくなる
+  - ブロック解除
 
 
 ## users テーブル
@@ -296,3 +316,26 @@ SOFTWARE.
 ### Association
 
 - belongs_to :user
+
+### ライセンス情報
+MIT License
+
+Copyright (c) [2021] [Shinji Kato]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
