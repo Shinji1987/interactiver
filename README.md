@@ -158,10 +158,13 @@ http://35.72.111.10/
 ![ブロック](https://user-images.githubusercontent.com/76105302/108331499-29ba8700-7212-11eb-95f4-0e395a21c405.gif)
 ![ブロック解除](https://user-images.githubusercontent.com/76105302/108332057-bb29f900-7212-11eb-887a-e5b04c783684.gif)
 
-### データベース設計
+
+## データベース設計
+
+### ER図
 <img src="https://user-images.githubusercontent.com/76105302/108435905-c5d5a400-728d-11eb-8891-51fc45d05092.png" width="800">
 
-
+### テーブル設計
 ## users テーブル
 
 | Column                | Type       | Options     |
