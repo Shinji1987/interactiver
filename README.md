@@ -39,6 +39,39 @@ http://35.72.111.10/
 16. ヘッダーの自分のニックネームのアイコンをクリックし、詳細ページの右下にある地図に住所を入力し、お店の場所を確認します
 17. 自分の詳細画面から必要なら「編集」アイコンをクリックして、プロフィールを更新します
 
+### テスト方法
+- テストツール： RSpec
+- テストの種類： 正常系、異常系
+- 実施テスト： 単体テスト、結合テスト
+
+### デプロイ方法(手順①〜⑤)
+<img src="https://user-images.githubusercontent.com/76105302/108294319-fe677600-71d8-11eb-8e2a-8efa9ba2cd88.png" width="500">
+
+### ライセンス情報
+MIT License
+
+Copyright (c) [2021] [Shinji Kato]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+
 ### 目指した課題解決
 本アプリを通じて、海外で飲食店事業に関わる人の下記課題を解決しようと試みました。
 
