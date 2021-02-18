@@ -99,19 +99,29 @@ http://35.72.111.10/
   - ユーザー登録
   - ユーザーログイン
   - ユーザー情報編集
+![20a68397b3c31e86b5e0a95a229bfa7e](https://user-images.githubusercontent.com/76105302/108310174-41841200-71f6-11eb-8bf1-407cc4215a46.gif)
 2. マイページ機能(ユーザー詳細ページ)
   - ユーザーのプロフィール表示
+![マイページ](https://user-images.githubusercontent.com/76105302/108311562-988ae680-71f8-11eb-81e6-9f0e57c17494.gif)
 3. 投稿機能
   - テキストと画像投稿
+![投稿](https://user-images.githubusercontent.com/76105302/108314516-5dd77d00-71fd-11eb-8746-23af17100fba.gif)
 4. コメント機能
   - テキストのみのコメント
+![コメント](https://user-images.githubusercontent.com/76105302/108314721-b4dd5200-71fd-11eb-91be-2bb72e7c839c.gif)
 5. いいね機能
-  - 投稿に対する「いいね」
+  - 投稿に対する非同期「いいね」
+  - 「いいね」数を非同期で表示
+  - 「いいね」の非同期解除
+![いいね](https://user-images.githubusercontent.com/76105302/108314938-08e83680-71fe-11eb-9b10-2b4d9fc7dba0.gif)
 6. 友達機能
   - 友達申請
   - 友達申請承認
+  - 友達申請拒否
   - 友達キャンセル
   - 友達リスト
+![友達申請](https://user-images.githubusercontent.com/76105302/108315266-83b15180-71fe-11eb-9b64-db3851497b31.gif)
+![友達承認](https://user-images.githubusercontent.com/76105302/108315753-41d4db00-71ff-11eb-9eef-f6e6423cb252.gif)
 7. ユーザー検索機能
   - ニックネームで曖昧検索
 8. ニュース機能
