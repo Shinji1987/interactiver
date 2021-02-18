@@ -136,14 +136,17 @@ http://35.72.111.10/
 ![メッセンジャー](https://user-images.githubusercontent.com/76105302/108318151-ae050e00-7202-11eb-96bb-d745fd7001ba.gif)
 10. 足跡機能
   - 自身のユーザー詳細ページへアクセスしたユーザーを表示
-
+![足跡](https://user-images.githubusercontent.com/76105302/108320313-0093f980-7206-11eb-999e-ea8b18624488.gif)
 11. 為替表示機能
   - USD→JPYの為替情報を表示
+![為替情報](https://user-images.githubusercontent.com/76105302/108320537-4650c200-7206-11eb-9647-87ad5379abda.gif)
 12. いいね数グラフ化機能
   - 自身の投稿に対する「いいね」数を棒グラフで表示
+![いいね集計](https://user-images.githubusercontent.com/76105302/108321067-fde5d400-7206-11eb-8765-e2a460325bc0.gif)
 13. 地図表示機能
   - Google Map APIで住所を入力すると場所を表示
   - 検索した場所の緯度・経度を表示
+![地図](https://user-images.githubusercontent.com/76105302/108321766-f3780a00-7207-11eb-81c6-11ab3cca9086.gif)
 14. 知り合いかも機能
   - 自分の友達の友達で自分が友達出ないユーザーを表示
 15. ブロック機能
