@@ -109,3 +109,5 @@ gem 'sprockets', '~> 4.0.2.beta.8'
 gem 'sprockets-es6', require: 'sprockets/es6'
 
 gem 'active_hash'
+
+gem 'pry-byebug'
