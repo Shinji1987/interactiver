@@ -10,7 +10,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'mysql2', '0.5.3'
 
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -73,8 +73,6 @@ gem 'devise'
 
 gem 'rails-i18n'
 
-gem 'pry-rails'
-
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 
@@ -110,4 +108,4 @@ gem 'sprockets-es6', require: 'sprockets/es6'
 
 gem 'active_hash'
 
-gem 'pry-byebug'
+gem 'pry-rails'
