@@ -1,0 +1,62 @@
+<%= form_with(url: shop_path(@user.id), local: true, method: :patch, class: "registration-main", local: true) do |f| %>
+
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h3 class='form-header-text'>
+      会員情報入力
+    </h3>
+  </div>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">店舗写真</label>
+      <span class="optional">任意</span>
+    </div>
+    <div>
+      <p>
+        クリックしてファイルをアップロード
+      </p>
+      <div class="message-attachment">
+        <%= f.label :shop_image, "画像添付", class: "registration_label" %>
+        <%= f.file_field :shop_image, class: "registration_image" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">店舗名</label>
+      <span class="optional">任意</span>
+    </div>
+    <%= f.text_area :shop_name, class:"input-default", id:"nickname", placeholder:"例) Dynasty Restaurant", maxlength:"40" %>
+  </div>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">カテゴリー</label>
+      <span class="optional">任意</span>
+    </div>
+    <%= f.collection_select(:shop_category_id, ShopCategory.all, :id, :name, {}, {class:"shop-category-select"}) %>
+  </div>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">店舗説明</label>
+      <span class="optional">任意</span>
+    </div>
+    <%= f.text_area :shop_description, class:"input-default-large", id:"profile", placeholder:"例) 当店は、イタリアン料理が中心のレストランとなっております", maxlength:"600" %>
+  </div>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">店舗住所</label>
+      <span class="optional">任意</span>
+    </div>
+    <%= f.text_area :shop_address, class:"input-default", id:"nickname", placeholder:"例) 神奈川県横須賀市長浦町1-1", maxlength:"40" %>
+  </div>
+    
+  <div class='register-btn'>
+    <%= f.submit "更新" ,class:"register-red-btn" %>
+  </div>
+</div>
+<% end %>

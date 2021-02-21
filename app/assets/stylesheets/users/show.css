@@ -15,7 +15,7 @@
 .table{
   border-collapse: collapse;
   margin-bottom: 32px;
-  width: 50%;
+  width: 520px;
   margin-right: 20px;
 }
 
@@ -135,4 +135,44 @@
 .map-button:hover {
   background-color: #0099FF;
   color: white;
+}
+
+.show-bottom-left-section {
+  width: 550px;
+}
+
+.user-info-heading {
+  display: flex;
+  justify-content: center;
+}
+
+.user-info-indication {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.user-table{
+  border-collapse: collapse;
+  margin-bottom: 32px;
+  width: 520px;
+  margin-right: 20px;
+}
+
+.user-table__col1{
+  text-align: left;
+  font-weight: bold;
+  background: #000080;
+  border-collapse: collapse;
+  border: 1px solid #DDDDDD;
+  width: 30%;
+  padding: 8px;
+  color: white;
+}
+
+.user-table__col2{
+  text-align: left;
+  border: 1px solid #DDDDDD;
+  border-collapse: collapse;
+  width: 70%;
+  padding: 16px 8px;
 }

@@ -1,6 +1,6 @@
-<mxfile host="65bd71144e" modified="2021-02-18T23:27:58.304Z" agent="5.0 (Macintosh; Intel Mac OS X 11_0_1) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.53.2 Chrome/87.0.4280.141 Electron/11.2.1 Safari/537.36" etag="Et9_H8AIPIURgGb6pTrJ" version="14.2.4" type="embed">
+<mxfile host="65bd71144e" modified="2021-02-20T04:46:28.313Z" agent="5.0 (Macintosh; Intel Mac OS X 11_0_1) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.53.2 Chrome/87.0.4280.141 Electron/11.2.1 Safari/537.36" etag="-4sa-zrL1dLqyqjTFSx3" version="14.2.4" type="embed">
     <diagram id="MEoM591exM-4EiPBx88T" name="Page-1">
-        <mxGraphModel dx="1701" dy="1620" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1112" dy="920" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -38,7 +38,7 @@
                     <mxGeometry y="56" width="160" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="22" value="usersテーブル" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
-                    <mxGeometry x="278.07" width="170" height="360" as="geometry"/>
+                    <mxGeometry x="278.07" width="170" height="330" as="geometry"/>
                 </mxCell>
                 <mxCell id="23" value="ユーザーのニックネーム" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="22" vertex="1">
                     <mxGeometry y="26" width="170" height="30" as="geometry"/>
@@ -69,9 +69,6 @@
                 </mxCell>
                 <mxCell id="32" value="アイコン画像" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="22" vertex="1">
                     <mxGeometry y="300" width="170" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="76" value="お店の住所" style="text;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="22" vertex="1">
-                    <mxGeometry y="330" width="170" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="45" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="23" target="7" edge="1">
                     <mxGeometry width="100" height="100" relative="1" as="geometry">
@@ -182,7 +179,7 @@
                     <mxGeometry y="100" width="170" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="103" value="readsテーブル" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
-                    <mxGeometry x="260" y="-260" width="170" height="130" as="geometry"/>
+                    <mxGeometry x="260" y="-180" width="170" height="130" as="geometry"/>
                 </mxCell>
                 <mxCell id="104" value="送信先のユーザーID" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="103" vertex="1">
                     <mxGeometry y="40" width="170" height="30" as="geometry"/>
@@ -227,6 +224,33 @@
                     <mxGeometry width="100" height="100" relative="1" as="geometry">
                         <mxPoint x="446.92" y="320" as="sourcePoint"/>
                         <mxPoint x="469.99999999999994" y="407.99" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="121" value="shopsテーブル" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="278.07" y="432" width="170" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="122" value="お店の名前" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="121">
+                    <mxGeometry y="40" width="170" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="123" value="カテゴリ" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="121">
+                    <mxGeometry y="70" width="170" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="124" value="お店の説明" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="121">
+                    <mxGeometry y="100" width="170" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="127" value="お店の住所" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="121">
+                    <mxGeometry y="130" width="170" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="128" value="ユーザー情報" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="121">
+                    <mxGeometry y="160" width="170" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="125" value="お店の写真" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="121">
+                    <mxGeometry y="190" width="170" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="126" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;entryX=0.5;entryY=1.067;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="121" target="32">
+                    <mxGeometry width="100" height="100" relative="1" as="geometry">
+                        <mxPoint x="213" y="496" as="sourcePoint"/>
+                        <mxPoint x="362.04999999999995" y="363" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
             </root>

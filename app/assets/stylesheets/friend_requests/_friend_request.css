@@ -103,3 +103,21 @@
 .now-request-section {
   margin-top: 10px;
 }
+
+.user-update-btns {
+  margin-top: -25px;
+}
+
+.shop-edit-btn {
+  text-decoration: none;
+  margin-left: 30px;
+  font-size: 20px;
+  background-color: #000080;
+  color: white;
+  border-radius: 10px;
+}
+
+.shop-edit-btn:hover {
+  background-color: #800080;
+  color: white;
+}

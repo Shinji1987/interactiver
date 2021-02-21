@@ -70,98 +70,128 @@
         </div>
       </div>
       <div class="show-bottom-section">
-      <table class="table">
-        <tbody>
-          <tr>
-            <th class="table__col1">ニックネーム</th>
-            <td class="table__col2"><%= @user.nickname %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">プロフィール</th>
-            <td class="table__col2"><%= @user.profile %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">メールアドレス</th>
-            <td class="table__col2"><%= @user.email %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">お名前 </th>
-            <td class="table__col2"><%= @user.family_name_kanji + @user.first_name_kanji %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">お名前カナ</th>
-            <td class="table__col2"><%= @user.family_name_kana + @user.first_name_kana %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">生年月日</th>
-            <td class="table__col2"><%= @user.birthday %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">お店の住所</th>
-            <td class="table__col2"><%= @user.shop_address %></td>
-          </tr>
-        </tbody>
-      </table>
-      <div>
-        
-      <div class="map-header">
-        <span class="map-header-indication">お店の場所を確認してみましょう！↓　↓　↓</span>
-      </div>
+        <div class="show-bottom-left-section">
+          <div class="user-info-heading">
+            <span class="user-info-indication">【ユーザー情報】</span>
+          </div>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th class="table__col1">ニックネーム</th>
+                <td class="table__col2"><%= @user.nickname %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">プロフィール</th>
+                <td class="table__col2"><%= @user.profile %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">メールアドレス</th>
+                <td class="table__col2"><%= @user.email %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">お名前 </th>
+                <td class="table__col2"><%= @user.family_name_kanji + @user.first_name_kanji %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">お名前カナ</th>
+                <td class="table__col2"><%= @user.family_name_kana + @user.first_name_kana %></td>
+              </tr>
+              <tr>
+                <th class="table__col1">生年月日</th>
+                <td class="table__col2"><%= @user.birthday %></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="user-info-heading">
+            <span class="user-info-indication">【店舗情報】</span>
+          </div>
+          <table class="user-table">
+            <tbody>
+              <tr>
+                <th class="user-table__col1">店舗名</th>
+                <td class="user-table__col2"><%= @shop.shop_name %></td>
+              </tr>
+              <tr>
+                <th class="user-table__col1">カテゴリー</th>
+                <td class="user-table__col2"><%= @shop.shop_category.name %></td>
+              </tr>
+              <tr>
+                <th class="user-table__col1">店舗説明</th>
+                <td class="user-table__col2"><%= @shop.shop_description %></td>
+              </tr>
+              <tr>
+                <th class="user-table__col1">店舗住所 </th>
+                <td class="user-table__col2"><%= @shop.shop_address %></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="shop-info-heading">
+            <div class="user-info-heading">
+              <span class="user-info-indication">＜店舗写真＞</span>
+            </div>
+            <div class="user-info-heading">
+              <%= image_tag @shop.shop_image.variant(resize: '500x500') if @shop.shop_image.attached? %>
+            </div>
+          </div>
+        </div>
 
-      <input id="address" type="textbox" value="GeekSalon">
-      <input class="map-button" type="button" value="検索" onclick="codeAddress()">
-      <div id="display">緯度・経度が表示されます</div>
+        <div>      
+          <div class="map-header">
+            <span class="map-header-indication">お店の場所を確認してみましょう！↓　↓　↓</span>
+          </div>
+          <input id="address" type="textbox" value="GeekSalon">
+          <input class="map-button" type="button" value="検索" onclick="codeAddress()">
+          <div id="display">緯度・経度が表示されます</div>
+          <div id='map'></div>
 
-      <div id='map'></div>
-
-      <style>
-      #map {
-        height: 400px;
-        width: 400px;
-      }
-      </style>
-
-      <script>
-      let map
-
-      const display = document.getElementById('display')
-
-      function initMap(){
-        geocoder = new google.maps.Geocoder()
-
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 40.7828, lng:-73.9653},
-          zoom: 12,
-        });
-
-        marker = new google.maps.Marker({
-          position:  {lat: 40.7828, lng:-73.9653},
-          map: map
-        });
-      }
-      let geocoder
-
-      function codeAddress(){
-        let inputAddress = document.getElementById('address').value;
-
-        geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-          if (status == 'OK') {
-            map.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-            });
-            display.textContent = "検索結果：" + results[ 0 ].geometry.location
-          } else {
-            alert('該当する結果がありませんでした：' + status);
+          <style>
+          #map {
+            height: 400px;
+            width: 400px;
           }
-        });   
-      }
-      </script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GMAP_API_KEY"] %>&callback=initMap" async defer></script>
+          </style>
+
+          <script>
+          let map
+
+          const display = document.getElementById('display')
+
+          function initMap(){
+            geocoder = new google.maps.Geocoder()
+
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: 40.7828, lng:-73.9653},
+              zoom: 12,
+            });
+
+            marker = new google.maps.Marker({
+              position:  {lat: 40.7828, lng:-73.9653},
+              map: map
+            });
+          }
+          let geocoder
+
+          function codeAddress(){
+            let inputAddress = document.getElementById('address').value;
+
+            geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+              if (status == 'OK') {
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+                display.textContent = "検索結果：" + results[ 0 ].geometry.location
+              } else {
+                alert('該当する結果がありませんでした：' + status);
+              }
+            });   
+          }
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GMAP_API_KEY"] %>&callback=initMap" async defer></script>
       
-      </div>
-      </div>
+          </div>
+        </div>
     </div>
   </div>
 </div>

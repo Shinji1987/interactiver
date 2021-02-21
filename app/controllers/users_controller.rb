@@ -24,6 +24,11 @@ class UsersController < ApplicationController
     if @footprint.visitor_user_id != @footprint.visited_user_id
       @footprint.save
     end
+    @shop = Shop.find_by(user_id: @user)
+    if @shop == nil
+      @shop = Shop.new(shop_params)
+      @shop.save
+    end
   end
 
   def edit
@@ -49,10 +54,14 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:image, :nickname, :family_name_kanji, :first_name_kanji, :family_name_kana, :first_name_kana, :birthday, :profile, :shop_address)
+    params.require(:user).permit(:image, :nickname, :family_name_kanji, :first_name_kanji, :family_name_kana, :first_name_kana, :birthday, :profile)
   end
 
   def footprint_params
     params.permit().merge(visitor_user_id: current_user.id, visited_user_id: @user.id)
+  end
+
+  def shop_params
+    params.permit().merge(shop_name: "", shop_category_id: 1, shop_description: "", shop_address: "", user_id: @user.id)
   end
 end
