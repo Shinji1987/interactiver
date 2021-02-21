@@ -27,4 +27,6 @@ Rails.application.routes.draw do
   resources :graphs, only: :index
 
   resources :securitys, only: [:new, :create, :destroy]
+
+  resources :shops, only: [:edit, :update]
 end

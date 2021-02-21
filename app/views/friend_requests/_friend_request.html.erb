@@ -2,16 +2,19 @@
 <% unless Security.find_by(block_user_id: current_user.id, blocked_user_id: @user.id) || Security.find_by(block_user_id: @user.id, blocked_user_id: current_user.id) %>
   <% if @user == current_user %>
     <div class="edit-request">
-      <%= button_to "編集", edit_user_path, method: :get, class: "user-edit-btn" %>
-    <% if @friend_request != nil && @friend_request_status.include?(1) %>
-      <%= link_to image_tag("friend_request.png", width: '50', alt: "友達申請アイコン"), edit_user_friend_request_path(@friend_request_from), class: "friend-request-icon" %>
-      <div class="request-count">
-        <span class="received-request"><%= @request_count %>件の友達申請</span>
+      <div class="user-update-btns">
+        <%= button_to "ユーザー情報編集", edit_user_path, method: :get, class: "user-edit-btn" %>
+        <%= button_to "　店舗情報編集　", edit_shop_path, method: :get, class: "shop-edit-btn" %>
       </div>
-    <% else %>
-      <%= link_to image_tag("friend_request.png", width: '50', alt: "友達申請アイコン"), "#", class: "friend-request-icon" %>
-      <span class="request-empty-indication">友達申請はありません</span>
-    <% end %>
+      <% if @friend_request != nil && @friend_request_status.include?(1) %>
+        <%= link_to image_tag("friend_request.png", width: '50', alt: "友達申請アイコン"), edit_user_friend_request_path(@friend_request_from), class: "friend-request-icon" %>
+        <div class="request-count">
+          <span class="received-request"><%= @request_count %>件の友達申請</span>
+        </div>
+      <% else %>
+        <%= link_to image_tag("friend_request.png", width: '50', alt: "友達申請アイコン"), "#", class: "friend-request-icon" %>
+        <span class="request-empty-indication">友達申請はありません</span>
+      <% end %>
     </div>
   <% elsif FriendRequest.find_by(from_user_id: current_user.id, to_user_id: @user.id) || FriendRequest.find_by(from_user_id: @user.id, to_user_id: current_user.id) %>
     <% if @friend_request.requesting_status != 2 %>

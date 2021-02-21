@@ -4,7 +4,9 @@ class User < ApplicationRecord
   geocoded_by :shop_address
   after_validation :geocode, if: :shop_address_changed?
 
-
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable
+        #  :validatable
   
   has_one_attached :image
   has_many :posts
@@ -17,13 +19,10 @@ class User < ApplicationRecord
   has_many :chat_users, dependent: :destroy
   has_many :footprints, dependent: :destroy
   has_many :securitys, dependent: :destroy
+  has_one  :shop
 
   validates :nickname, presence: true
                        
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable
-        #  :validatable
-
   VALID_EMAIL_REGEX = /@/.freeze
   validates :email,              presence: true,
                                  uniqueness: true,

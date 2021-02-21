@@ -178,8 +178,6 @@ http://35.72.111.10/
 | first_name_kana       | string     | null: false |
 | birthday              | date       | null: false |
 | profile               | text       |             |
-| request_status        | integer    |             |
-| shop_address          | string     | null: false |
 
 
 ### Association
@@ -193,6 +191,7 @@ http://35.72.111.10/
 - has_many :chat_users
 - has_many :footprints
 - has_many :securitys
+- has_one  :shop
 
 ## posts テーブル
 
@@ -313,6 +312,20 @@ http://35.72.111.10/
 | ----------------- | -----------| ----------- |
 | block_user_id     | integer    | null: false |
 | blocked_user_id   | integer    | null: false |
+
+### Association
+
+- belongs_to :user
+
+## shops テーブル
+
+| Column            | Type       | Options           |
+| ----------------- | -----------| ----------------- |
+| shop_name         | string     |                   |
+| shop_category_id  | integer    |                   |
+| shop_description  | text       |                   |
+| shop_address      | string     |                   |
+| user_id           | references | foreign_key: true |
 
 ### Association
 
