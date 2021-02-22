@@ -162,7 +162,7 @@ http://35.72.111.10/
 ## データベース設計
 
 ### ER図
-<img src="https://user-images.githubusercontent.com/76105302/108435905-c5d5a400-728d-11eb-8891-51fc45d05092.png" width="800">
+<img src="https://user-images.githubusercontent.com/76105302/108664536-4f97a280-7516-11eb-858d-dc4eab1d43dc.png" width="800">
 
 ### テーブル設計
 ## users テーブル
