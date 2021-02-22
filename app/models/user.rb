@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   geocoded_by :shop_address
   after_validation :geocode, if: :shop_address_changed?
 
@@ -66,8 +64,6 @@ class User < ApplicationRecord
   def self.search(search)
     if search != ""
       User.where('nickname LIKE(?)', "%#{search}%")
-    # else
-      # User.all
     end
   end
 end

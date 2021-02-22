@@ -21,7 +21,6 @@ class ChatsController < ApplicationController
         @chat_user.save
         @message = Message.new
         redirect_to new_chat_message_path(@chat.id, @user.id)
-        # binding.pry
       else
         render("users/show")
       end
