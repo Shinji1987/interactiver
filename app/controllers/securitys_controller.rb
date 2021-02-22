@@ -1,5 +1,4 @@
 class SecuritysController < ApplicationController
-  
   def new
     if User.search(params[:keyword]) != nil
       if request.referer&.include?("/securitys") && User.search(params[:keyword]).count != User.all.count

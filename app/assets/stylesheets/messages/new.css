@@ -89,8 +89,6 @@
 .message-content-other {
   position: relative;
   display: inline-block;
-  /* margin: 1.5em 0 1.5em 15px; */
-  /* margin-top: 15px; */
   padding: 7px 10px;
   min-width: 120px;
   max-width: 100%;
@@ -166,7 +164,6 @@
 
 .message-time {
   font-size: 13px;
-  /* margin-top: -10px; */
 }
 
 .message-time-right {
@@ -187,7 +184,6 @@
 
 .message-flash {
   margin-left: 170px;
-  /* margin-top: 30px; */
   color: red;
   font-weight: bold;
 }

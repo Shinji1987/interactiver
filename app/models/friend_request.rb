@@ -3,6 +3,5 @@ class FriendRequest < ApplicationRecord
   validates :from_user_id, presence: true
   validates :to_user_id, presence: true
 
-
   belongs_to :user, optional: true
 end

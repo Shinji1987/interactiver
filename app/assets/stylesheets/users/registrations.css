@@ -131,7 +131,6 @@
   display: contents;
 }
 
-
 .form-bottom-text {
   font-size: 15px;
   margin-top: 10px;
@@ -207,10 +206,6 @@
   flex-direction: column;
   margin: 0 auto;
   padding-top: 20px;
-}
-
-.registration-attachment-btn {
-
 }
 
 .registration_label {
