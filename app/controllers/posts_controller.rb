@@ -3,6 +3,8 @@ class PostsController < ApplicationController
   require 'open-uri'
   require 'date'
 
+  before_action :authenticate_user!, except: :index
+
   def index
     if user_signed_in?
       @posts = Post.all.order('created_at DESC')

@@ -1,4 +1,6 @@
 class ChatsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @friend_lists = FriendRequest.where("from_user_id = ? or to_user_id = ?", current_user.id, current_user.id).where(requesting_status: 2).pluck(:from_user_id, :to_user_id)
     @chat_users_arrs = ChatUser.where("created_user_id = ? or invited_user_id = ?", current_user.id, current_user.id).pluck(:created_user_id, :invited_user_id)
