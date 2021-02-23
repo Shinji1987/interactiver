@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    
     @friend_request_from = FriendRequest.where(to_user_id: current_user).pluck(:from_user_id)
     @friend_requests = FriendRequest.where(to_user_id: current_user, requesting_status: 1)
     @request_count = @friend_requests.count
@@ -10,7 +11,6 @@ class UsersController < ApplicationController
     if user_signed_in?
       if current_user.id == @user.id
         @friend_request = FriendRequest.find_by(to_user_id: current_user)
-        # これは、空である場合にわかればいいから、find_byでいい。
         @friend_request_status = FriendRequest.where(to_user_id: current_user).pluck(:requesting_status)
       else
         @friend_request = FriendRequest.find_by(from_user_id: current_user.id, to_user_id: @user.id)
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     end
     @shop = Shop.find_by(user_id: @user)
     if @shop == nil
-      @shop = Shop.new(shop_params)
+       @shop = Shop.new(shop_params)
       @shop.save
     end
   end
