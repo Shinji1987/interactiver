@@ -58,10 +58,8 @@
                 <% friend_id = friend.to_user_id %>
               <% end %>
               <% friend_fellow_ids_dup = FriendRequest.where("from_user_id = ? or to_user_id = ?", friend_id, friend_id).where(requesting_status: 2).pluck(:from_user_id, :to_user_id).flatten! %>
-              <%# 友達の友達を全て取得 %>
               <% friend_fellow_ids = friend_fellow_ids_dup.uniq %>
               <% friend_fellow_ids.delete(current_user.id) %>
-              <%# 友達の全ての友達のID %>
               <% friend_fellow_ids.each do |friend_fellow_id| %>
                 <% unless @friend_ids.include?(friend_fellow_id) %>
                   <% unless @friend_stock.include?(friend_fellow_id) %>

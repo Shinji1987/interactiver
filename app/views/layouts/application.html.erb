@@ -4,14 +4,11 @@
     <title>Interactiver</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all'  %>
     <%= javascript_pack_tag 'application' %>
-
   </head>
 
   <body>
-
     <header class="header-main" id="header-main">
       <div class="header-bar-left">
         <%= link_to image_tag("logo2.png", width: '170', alt: "ロゴアイコン"), root_path, class: :logo_img %>
@@ -42,10 +39,7 @@
       </div>
     </header>
 
-   
-
     <%= yield %>
-
     
     <footer>
     <% unless request.path.include?("messages") %>
@@ -57,6 +51,5 @@
     <% end %>
     </footer>
    
-
   </body>
 </html>

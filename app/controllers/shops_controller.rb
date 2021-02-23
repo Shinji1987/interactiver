@@ -1,5 +1,4 @@
 class ShopsController < ApplicationController
-
   def edit
     @user = User.find(params[:id])
     @shop = Shop.find_by(user_id: @user.id)

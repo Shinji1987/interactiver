@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
+  before_action :find_chat, only: [:new, :create]
+
   def new
-    @chat = Chat.find(params[:chat_id])
     if request.referer&.include?("/messages")
       @user_record_double = ChatUser.where(chat_id: @chat.id).pluck(:created_user_id, :invited_user_id)
       @user_record = @user_record_double.slice(0)
@@ -22,7 +23,6 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @chat = Chat.find(params[:chat_id])
     @user_record_double = ChatUser.where(chat_id: @chat.id).pluck(:created_user_id, :invited_user_id)
     @user_record = @user_record_double.slice(0)
     @user_arr = @user_record.select do |x|
@@ -47,5 +47,9 @@ class MessagesController < ApplicationController
 
   def message_params
     params.permit(:content, :message_image).merge(sent_user_id: current_user.id, received_user_id: @user.id)
+  end
+
+  def find_chat
+    @chat = Chat.find(params[:chat_id])
   end
 end

@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update]
   
   def show
     @user = User.find(params[:id])
-    
+
     @friend_request_from = FriendRequest.where(to_user_id: current_user).pluck(:from_user_id)
     @friend_requests = FriendRequest.where(to_user_id: current_user, requesting_status: 1)
     @request_count = @friend_requests.count
@@ -32,14 +33,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
     if @user != current_user
       redirect_to root_path
     end
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to user_path
     else
@@ -63,5 +62,9 @@ class UsersController < ApplicationController
 
   def shop_params
     params.permit().merge(shop_name: "", shop_category_id: 1, shop_description: "", shop_address: "", user_id: @user.id)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
