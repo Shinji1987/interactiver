@@ -1,6 +1,7 @@
 class FriendRequestsController < ApplicationController
   before_action :find_user, only: [:index, :create, :destroy, :reject, :remove]
   before_action :findby_user, only: [:reject, :remove]
+  before_action :authenticate_user!
 
   
   def index

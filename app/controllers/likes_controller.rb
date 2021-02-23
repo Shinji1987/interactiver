@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
   before_action :find_post, only: [:create, :destroy]
   before_action :where_like, only: [:create, :destroy]
+  before_action :authenticate_user!
 
   def create
     like = current_user.likes.build(post_id: params[:post_id])

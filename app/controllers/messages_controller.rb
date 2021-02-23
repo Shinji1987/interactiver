@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :find_chat, only: [:new, :create]
+  before_action :authenticate_user!
 
   def new
     if request.referer&.include?("/messages")
