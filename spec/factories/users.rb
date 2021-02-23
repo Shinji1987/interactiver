@@ -19,5 +19,6 @@ FactoryBot.define do
     first_name_kana       { person.first.katakana }
     birthday              { p Random.rand(from..to) }
     profile               { '宜しくお願いします' }
+
   end
 end

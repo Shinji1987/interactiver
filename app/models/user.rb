@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  geocoded_by :shop_address
-  after_validation :geocode, if: :shop_address_changed?
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable

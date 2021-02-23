@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   
   def show
+    @user = User.find(params[:id])
+
     @friend_request_from = FriendRequest.where(to_user_id: current_user).pluck(:from_user_id)
     @friend_requests = FriendRequest.where(to_user_id: current_user, requesting_status: 1)
     @request_count = @friend_requests.count
@@ -25,7 +27,7 @@ class UsersController < ApplicationController
     end
     @shop = Shop.find_by(user_id: @user)
     if @shop == nil
-      @shop = Shop.new(shop_params)
+       @shop = Shop.new(shop_params)
       @shop.save
     end
   end
