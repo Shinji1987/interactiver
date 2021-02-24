@@ -35,7 +35,7 @@ RSpec.describe "Users", type: :request do
         get edit_user_path(@user)
         expect(response.status).to eq 200
       end
-      it 'editアクションにリクエストすると正常にレスポンスが返ってくる' do 
+      it 'ユーザー編集画面へ移動するとユーザー情報のカラムが返ってくる' do 
         get edit_user_path(@user)
         expect(response.body).to include('プロフィール画像', 'ニックネーム', 'プロフィール', 'お名前(全角)', 'お名前カナ(全角)', '生年月日', 'お店の住所')
       end
@@ -47,6 +47,11 @@ RSpec.describe "Users", type: :request do
         sign_in @another_user
         get edit_user_path(@user)
         expect(response).to redirect_to root_path
+      end
+      it 'ログアウト状態でeditアクションにリクエストするとログイン画面にリダイレクトされる' do 
+        sign_out @user
+        get edit_user_path(@user)
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end
@@ -71,7 +76,7 @@ RSpec.describe "Users", type: :request do
       end
     end
     context "正常にユーザー情報を更新できない場合" do
-      it '不正な値が入力された時は、更新できなくなているか?' do 
+      it '不正な値が入力された時は、更新できなくなっているか?' do 
         user_update_params = {nickname: "", family_name_kanji: "", first_name_kanji: "", family_name_kana: "", first_name_kana: "", birthday: ""}
         patch user_path(@user), params: {id: @user.id, user: user_update_params}
         expect(@user.reload.nickname).to eq "ジョン"
