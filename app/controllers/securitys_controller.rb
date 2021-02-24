@@ -13,8 +13,10 @@ class SecuritysController < ApplicationController
   def create
     @user = User.find(params[:format])
     @security = Security.new(security_params)
-    @security.save
-    redirect_back(fallback_location: new_security_path)
+    if @security.block_user_id != nil
+      @security.save
+      redirect_back(fallback_location: new_security_path)
+    end
   end
 
   def destroy
