@@ -86,4 +86,8 @@ RSpec.describe "Securitys", type: :request do
       end
     end
   end
+
+  after do
+    sign_out @user
+  end
 end
