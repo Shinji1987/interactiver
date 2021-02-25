@@ -18,6 +18,8 @@ class MessagesController < ApplicationController
         x != current_user.id
       end
       @user = User.find_by(id: chat_user_record)
+    else
+      @user = User.find_by(id: params[:format])
     end
     @messages = Message.where(chat_id: @chat.id)
     @message = Message.new
@@ -30,7 +32,6 @@ class MessagesController < ApplicationController
       x != current_user.id
     end
     @user = User.find_by(id: @user_arr)
-    
     @message = @chat.messages.new(message_params)
     if @message.save
       respond_to do |format|
@@ -38,6 +39,14 @@ class MessagesController < ApplicationController
         format.json
       end
     else
+      if (params[:content]) != ""
+        @message = Message.find_by(sent_user_id: current_user.id, received_user_id: @user.id)
+        @new_message = @chat.messages.new(message_params)
+        if @message != nil
+          @new_message.content = @message.content
+          @new_message.save
+        end
+      end
       flash[:notice] = "メッセージを入力、又は画像を添付してください"
       @messages = @chat.messages.includes(:user)
       redirect_to new_chat_message_path(@chat.id)

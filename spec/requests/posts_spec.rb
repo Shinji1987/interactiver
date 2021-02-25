@@ -48,7 +48,7 @@ RSpec.describe "Posts", type: :request do
           post posts_path(@user.id, @post), params: {id: @post.id, post: post_create_params}        
         end.to change(Post, :count).by 1
       end
-      it 'リクエストが成功すること' do 
+      it 'createアクションへのリクエストが成功すること' do 
         post_create_params = {text: @post.text}
         post posts_path(@user.id, @post), params: {id: @post.id, post: post_create_params}
         expect(response.status).to eq 302
