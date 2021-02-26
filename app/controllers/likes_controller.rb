@@ -16,6 +16,7 @@ class LikesController < ApplicationController
   private
 
   def find_post
+    # binding.pry
     @post = Post.find(params[:post_id])
   end
 

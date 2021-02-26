@@ -9,7 +9,7 @@ RSpec.describe "Posts", type: :request do
   
   describe "GET#index" do
     context "正常にトップ画面へ移動できる場合" do
-      it 'showアクションにリクエストすると正常にレスポンスが返ってくる' do 
+      it 'indexアクションにリクエストすると正常にレスポンスが返ってくる' do 
         get root_path
         expect(response.status).to eq 200
       end
