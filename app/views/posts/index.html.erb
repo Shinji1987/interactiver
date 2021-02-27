@@ -98,6 +98,9 @@
   </div>
   
   <% posts = @posts.where(user_id: @post_list_users) %>
+  <% if posts == [] %>
+    <% posts = @posts.where(user_id: current_user.id) %>
+  <% end %>
   <% posts.each do |post| %>
   <div class="top-posts-object">
     <div class="top-posts">
