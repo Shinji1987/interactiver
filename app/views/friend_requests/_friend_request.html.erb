@@ -3,8 +3,8 @@
   <% if @user == current_user %>
     <div class="edit-request">
       <div class="user-update-btns">
-        <%= button_to "ユーザー情報編集", edit_user_path, method: :get, class: "user-edit-btn" %>
-        <%= button_to "　店舗情報編集　", edit_shop_path, method: :get, class: "shop-edit-btn" %>
+        <%= button_to "ユーザー情報編集", edit_user_path, method: :get, class: "user-edit-btn", name: "user_edit_btn" %>
+        <%= button_to "　店舗情報編集　", edit_shop_path, method: :get, class: "shop-edit-btn", name: "shop_edit_btn" %>
       </div>
       <% if @friend_request != nil && @friend_request_status.include?(1) %>
         <%= link_to image_tag("friend_request.png", width: '50', alt: "友達申請アイコン"), edit_user_friend_request_path(@friend_request_from), class: "friend-request-icon" %>
