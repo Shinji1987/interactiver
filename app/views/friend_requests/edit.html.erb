@@ -18,7 +18,7 @@
             <%= button_to("承認", user_friend_request_path(user.id), method: :patch, class: :accept_button_icon) %>
           </div>
           <div class="reject_button">
-            <%= button_to("承認拒否", reject_user_friend_request_path(user.id), method: :delete, class: :accept_button_icon) %>
+            <%= button_to("承認拒否", reject_user_friend_request_path(user.id), method: :delete, class: :reject_button_icon) %>
           </div>
         </div>
       </li>
