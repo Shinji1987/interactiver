@@ -67,3 +67,42 @@ RSpec.describe 'いいね', type: :system do
     end
   end
 end
+
+RSpec.describe 'いいね集計', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+    @post = FactoryBot.create(:post)
+  end
+  context '「いいね」の集計結果が確認できるとき'do
+    it '「いいね」の集計結果が確認できる' do
+      # ログインする
+      sign_in(@user)
+      # 投稿ページに移動する
+      visit new_post_path
+      # フォームに情報を入力する
+      attach_file "post-image", "#{Rails.root}/spec/fixtures/Yokosuka.jpg", make_visible: true
+      fill_in 'post_text', with: @post.text
+      # 送信するとPostモデルのカウントが1上がることを確認する
+      expect{
+        find('input[name="commit"]').click
+      }.to change { Post.count }.by(1)
+      # 投稿があることを確認する
+      expect(page).to have_selector("img[src$='Yokosuka.jpg']")
+      expect(page).to have_content(@post.text)
+      # その投稿の「いいね」ボタンをクリックするとLikeモデルのカウントが1上がることを確認する
+      expect{
+        find(".like_img").click
+        visit root_path
+      }.to change { Like.count }.by(1)
+      # 「いいね」集計アイコンをクリック
+      find(".graph-icon").click
+      # 「いいね」集計ページへ遷移したことを確認する
+      expect(current_path).to eq("/graphs")
+      # いいね数と投稿ID、投稿文章を確認できる
+      expect(page).to have_content('いいね数')
+      expect(page).to have_content(1)
+      expect(page).to have_content('ID')
+      expect(page).to have_content(@post.id + 1)
+    end
+  end
+end
