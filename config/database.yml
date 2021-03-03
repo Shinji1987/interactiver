@@ -13,14 +13,15 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch('MYSQL_USER') { 'root' } %>
-  password: <%= ENV.fetch('MYSQL_PASSWORD') { '717ninyuus' } %>
+  username: <%= ENV['MYSQL_DATABASE'] %>
   socket: /tmp/mysql.sock
-  # host: db
+  
 
 development:
   <<: *default
   database: interactiver_development
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
+  host: db
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -28,6 +29,8 @@ development:
 test:
   <<: *default
   database: interactiver_test
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
+  host: db
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -51,6 +54,6 @@ test:
 production:
   <<: *default
   database: interactiver_production
-  username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  username: <%= ENV['MYSQL_DATABASE'] %>
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
