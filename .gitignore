@@ -42,4 +42,4 @@ yarn-debug.log*
 
 .env
 docker-compose.yml
-config.yml
+/config.yml
