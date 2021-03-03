@@ -97,8 +97,6 @@ gem "geocoder"
 
 gem 'http'
 
-gem 'openssl', '~> 2.2.0'
-
 gem 'rails_12factor', group: :production
 
 gem "aws-sdk-s3", require: false
