@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Messages", type: :request do
+RSpec.describe "Messages", :type => :request do
   before do
     @user = FactoryBot.create(:user)
     sign_in @user
@@ -39,8 +39,8 @@ RSpec.describe "Messages", type: :request do
         @another_user.save
         @user.id = 1
         @user.save
-        message_create_params = {content: @message.content, sent_user_id: @user.id, received_user_id: @another_user.id}
-        post chat_messages_path(@chat.id, @user.id), params: {id: @message.id, message: message_create_params}
+        message_create_params = {:content => @message.content, :sent_user_id => @user.id, :received_user_id => @another_user.id}
+        post chat_messages_path(@chat.id, @user.id), :params => {:id => @message.id, :message => message_create_params}
         expect(response.status).to eq 302
       end
       it '正常にメッセージを送信できるか?' do
@@ -56,8 +56,8 @@ RSpec.describe "Messages", type: :request do
           @message.id = 1
           @message.content = "Hello"
           @message.save
-          message_create_params = {content: 'テスト', sent_user_id: @user.id, received_user_id: @another_user.id}
-          post chat_messages_path(@chat.id, @user.id, @message.content), params: {id: @message.id, message: message_create_params}    
+          message_create_params = {:content => 'テスト', :sent_user_id => @user.id, :received_user_id => @another_user.id}
+          post chat_messages_path(@chat.id, @user.id, @message.content), :params => {:id => @message.id, :message => message_create_params}    
         end.to change(Message, :count).by 1
       end
       it '正常にメッセージを送信した後、チャット画面へリダイレクトされるか?' do 
@@ -72,8 +72,8 @@ RSpec.describe "Messages", type: :request do
         @message.id = 1
         @message.content = "Hello"
         @message.save
-        message_create_params = {content: 'テスト', sent_user_id: @user.id, received_user_id: @another_user.id}
-        post chat_messages_path(@chat.id, @user.id, @message.content), params: {id: @message.id, message: message_create_params}
+        message_create_params = {:content => 'テスト', :sent_user_id => @user.id, :received_user_id => @another_user.id}
+        post chat_messages_path(@chat.id, @user.id, @message.content), :params => {:id => @message.id, :message => message_create_params}
         expect(response).to redirect_to new_chat_message_path(@chat.id)
       end
     end

@@ -7,7 +7,7 @@ class SecuritysController < ApplicationController
           @users = User.search(params[:keyword])
       end
     end
-    @block_users = Security.where(block_user_id: current_user.id)
+    @block_users = Security.where(:block_user_id => current_user.id)
   end
 
   def create
@@ -15,20 +15,20 @@ class SecuritysController < ApplicationController
     @security = Security.new(security_params)
     if @security.block_user_id != nil
       @security.save
-      redirect_back(fallback_location: new_security_path)
+      redirect_back(:fallback_location => new_security_path)
     end
   end
 
   def destroy
     @user = User.find(params[:id])
-    @security = Security.find_by(block_user_id: current_user.id, blocked_user_id: @user.id)
+    @security = Security.find_by(:block_user_id => current_user.id, :blocked_user_id => @user.id)
     @security.destroy
-    redirect_back(fallback_location: new_security_path)
+    redirect_back(:fallback_location => new_security_path)
   end
 
   private
 
   def security_params
-    params.permit().merge(block_user_id: current_user.id, blocked_user_id: @user.id)
+    params.permit().merge(:block_user_id => current_user.id, :blocked_user_id => @user.id)
   end
 end

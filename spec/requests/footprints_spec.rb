@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Footprints", type: :request do
+RSpec.describe "Footprints", :type => :request do
   before do
     @user = FactoryBot.create(:user)
     sign_in @user

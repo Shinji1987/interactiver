@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'コメント', type: :system do
+RSpec.describe 'コメント', :type => :system do
   before do
     @user = FactoryBot.create(:user)
     @post = FactoryBot.create(:post)
@@ -13,8 +13,8 @@ RSpec.describe 'コメント', type: :system do
       # 投稿ページに移動する
       visit new_post_path
       # フォームに情報を入力する
-      attach_file "post-image", "#{Rails.root}/spec/fixtures/Yokosuka.jpg", make_visible: true
-      fill_in 'post_text', with: @post.text
+      attach_file "post-image", "#{Rails.root}/spec/fixtures/Yokosuka.jpg", :make_visible => true
+      fill_in 'post_text', :with => @post.text
       # 送信するとPostモデルのカウントが1上がることを確認する
       expect{
         find('input[name="commit"]').click
@@ -25,7 +25,7 @@ RSpec.describe 'コメント', type: :system do
       # その投稿のコメントページに移動する
       visit new_post_comment_path(@post.id)
       # フォームに情報を入力する
-      fill_in 'comment_comment', with: @comment_comment
+      fill_in 'comment_comment', :with => @comment_comment
       # 送信するとCommentモデルのカウントが1上がることを確認する
       expect{
         find('input[name="commit"]').click
@@ -51,8 +51,8 @@ RSpec.describe 'コメント', type: :system do
       # 投稿ページに移動する
       visit new_post_path
       # フォームに情報を入力する
-      attach_file "post-image", "#{Rails.root}/spec/fixtures/Yokosuka.jpg", make_visible: true
-      fill_in 'post_text', with: @post.text
+      attach_file "post-image", "#{Rails.root}/spec/fixtures/Yokosuka.jpg", :make_visible => true
+      fill_in 'post_text', :with => @post.text
       # 送信するとPostモデルのカウントが1上がることを確認する
       expect{
         find('input[name="commit"]').click
@@ -63,7 +63,7 @@ RSpec.describe 'コメント', type: :system do
       # その投稿のコメントページに移動する
       visit new_post_comment_path(@post.id)
       # コメントフォームに空の情報を入力する
-      fill_in 'comment_comment', with: ''
+      fill_in 'comment_comment', :with => ''
       # 送信するとCommentモデルのカウントが変わらないことを確認する
       expect{
         find('input[name="commit"]').click

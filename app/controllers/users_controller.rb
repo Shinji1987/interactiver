@@ -1,22 +1,22 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, :only => [:show, :edit, :update]
   
   def show
-    @friend_request_from = FriendRequest.where(to_user_id: current_user).pluck(:from_user_id)
-    @friend_requests = FriendRequest.where(to_user_id: current_user, requesting_status: 1)
+    @friend_request_from = FriendRequest.where(:to_user_id => current_user).pluck(:from_user_id)
+    @friend_requests = FriendRequest.where(:to_user_id => current_user, :requesting_status => 1)
     @request_count = @friend_requests.count
-    @friend_lists = FriendRequest.where("from_user_id = ? or to_user_id = ?", current_user.id, current_user.id).where(requesting_status: 2).pluck(:from_user_id, :to_user_id)
-    @friend_list_others = FriendRequest.where("from_user_id = ? or to_user_id = ?", @user.id, @user.id).where(requesting_status: 2).pluck(:from_user_id, :to_user_id)
+    @friend_lists = FriendRequest.where("from_user_id = ? or to_user_id = ?", current_user.id, current_user.id).where(:requesting_status => 2).pluck(:from_user_id, :to_user_id)
+    @friend_list_others = FriendRequest.where("from_user_id = ? or to_user_id = ?", @user.id, @user.id).where(:requesting_status => 2).pluck(:from_user_id, :to_user_id)
     if user_signed_in?
       if current_user.id == @user.id
-        @friend_request = FriendRequest.find_by(to_user_id: current_user)
-        @friend_request_status = FriendRequest.where(to_user_id: current_user).pluck(:requesting_status)
+        @friend_request = FriendRequest.find_by(:to_user_id => current_user)
+        @friend_request_status = FriendRequest.where(:to_user_id => current_user).pluck(:requesting_status)
       else
-        @friend_request = FriendRequest.find_by(from_user_id: current_user.id, to_user_id: @user.id)
-        @friend_requested = FriendRequest.find_by(from_user_id: @user.id, to_user_id: current_user.id)
+        @friend_request = FriendRequest.find_by(:from_user_id => current_user.id, :to_user_id => @user.id)
+        @friend_requested = FriendRequest.find_by(:from_user_id => @user.id, :to_user_id => current_user.id)
         if @friend_request == nil
-          @friend_request = FriendRequest.find_by(from_user_id: @user.id, to_user_id: current_user.id)
+          @friend_request = FriendRequest.find_by(:from_user_id => @user.id, :to_user_id => current_user.id)
         end
       end
     end
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     if @footprint.visitor_user_id != @footprint.visited_user_id
       @footprint.save
     end
-    @shop = Shop.find_by(user_id: @user)
+    @shop = Shop.find_by(:user_id => @user)
     if @shop == nil
        @shop = Shop.new(shop_params)
       @shop.save
@@ -56,11 +56,11 @@ class UsersController < ApplicationController
   end
 
   def footprint_params
-    params.permit().merge(visitor_user_id: current_user.id, visited_user_id: @user.id)
+    params.permit().merge(:visitor_user_id => current_user.id, :visited_user_id => @user.id)
   end
 
   def shop_params
-    params.permit().merge(shop_name: "", shop_category_id: 1, shop_description: "", shop_address: "", user_id: @user.id)
+    params.permit().merge(:shop_name => "", :shop_category_id => 1, :shop_description => "", :shop_address => "", :user_id => @user.id)
   end
 
   def set_user

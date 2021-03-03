@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "ユーザー新規登録", type: :system do
+RSpec.describe "ユーザー新規登録", :type => :system do
   before do
     @user = FactoryBot.build(:user)
   end
@@ -13,18 +13,18 @@ RSpec.describe "ユーザー新規登録", type: :system do
       # 新規登録ページへ移動する
       visit new_user_registration_path
       # ユーザー情報を入力する
-      fill_in 'nickname', with: @user.nickname
-      fill_in 'profile', with: @user.profile
-      fill_in 'email', with: @user.email
-      fill_in 'password', with: @user.password
-      fill_in 'password-confirmation', with: @user.password_confirmation
-      fill_in 'last-name', with: @user.family_name_kanji
-      fill_in 'first-name', with: @user.first_name_kanji
-      fill_in 'last-name-kana', with: @user.family_name_kana
-      fill_in 'first-name-kana', with: @user.first_name_kana
-      select @user.birthday.to_s.slice(0..3), from: 'user_birthday_1i'
-      select @user.birthday.to_s.slice(5..6).to_i, from: 'user_birthday_2i'
-      select @user.birthday.to_s.slice(8..9).to_i, from: 'user_birthday_3i'
+      fill_in 'nickname', :with => @user.nickname
+      fill_in 'profile', :with => @user.profile
+      fill_in 'email', :with => @user.email
+      fill_in 'password', :with => @user.password
+      fill_in 'password-confirmation', :with => @user.password_confirmation
+      fill_in 'last-name', :with => @user.family_name_kanji
+      fill_in 'first-name', :with => @user.first_name_kanji
+      fill_in 'last-name-kana', :with => @user.family_name_kana
+      fill_in 'first-name-kana', :with => @user.first_name_kana
+      select @user.birthday.to_s.slice(0..3), :from => 'user_birthday_1i'
+      select @user.birthday.to_s.slice(5..6).to_i, :from => 'user_birthday_2i'
+      select @user.birthday.to_s.slice(8..9).to_i, :from => 'user_birthday_3i'
       # サインアップボタンを押すとユーザーモデルのカウントが1上がる
       expect{
         find('input[name="commit"]').click
@@ -45,18 +45,18 @@ RSpec.describe "ユーザー新規登録", type: :system do
       # 新規登録ページへ移動する
       visit new_user_registration_path
       # ユーザー情報を入力する
-      fill_in 'nickname', with: ''
-      fill_in 'profile', with: ''
-      fill_in 'email', with: ''
-      fill_in 'password', with: ''
-      fill_in 'password-confirmation', with: ''
-      fill_in 'last-name', with: ''
-      fill_in 'first-name', with: ''
-      fill_in 'last-name-kana', with: ''
-      fill_in 'first-name-kana', with: ''
-      select @user.birthday.to_s.slice(0..3), from: 'user_birthday_1i'
-      select @user.birthday.to_s.slice(5..6).to_i, from: 'user_birthday_2i'
-      select @user.birthday.to_s.slice(8..9).to_i, from: 'user_birthday_3i'
+      fill_in 'nickname', :with => ''
+      fill_in 'profile', :with => ''
+      fill_in 'email', :with => ''
+      fill_in 'password', :with => ''
+      fill_in 'password-confirmation', :with => ''
+      fill_in 'last-name', :with => ''
+      fill_in 'first-name', :with => ''
+      fill_in 'last-name-kana', :with => ''
+      fill_in 'first-name-kana', :with => ''
+      select @user.birthday.to_s.slice(0..3), :from => 'user_birthday_1i'
+      select @user.birthday.to_s.slice(5..6).to_i, :from => 'user_birthday_2i'
+      select @user.birthday.to_s.slice(8..9).to_i, :from => 'user_birthday_3i'
       # サインアップボタンを押してもユーザーモデルのカウントは上がらない
       expect{
         find('input[name="commit"]').click
@@ -67,7 +67,7 @@ RSpec.describe "ユーザー新規登録", type: :system do
   end
 end
 
-RSpec.describe "ログイン", type: :system do
+RSpec.describe "ログイン", :type => :system do
   before do
     @user = FactoryBot.create(:user)
   end
@@ -80,8 +80,8 @@ RSpec.describe "ログイン", type: :system do
       # ログインページへ遷移する
       visit new_user_session_path
       # 正しいユーザー情報を入力する
-      fill_in 'email', with: @user.email
-      fill_in 'password', with: @user.password
+      fill_in 'email', :with => @user.email
+      fill_in 'password', :with => @user.password
       # ログインボタンを押す
       find('input[name="commit"]').click
       # トップページへ遷移することを確認する
@@ -100,8 +100,8 @@ RSpec.describe "ログイン", type: :system do
       # ログインページへ遷移する
       visit new_user_session_path
       # ユーザー情報を入力する
-      fill_in 'email', with: ''
-      fill_in 'password', with: ''
+      fill_in 'email', :with => ''
+      fill_in 'password', :with => ''
       # ログインボタンを押す
       find('input[name="commit"]').click
       # ログインページへ戻されることを確認する
@@ -110,7 +110,7 @@ RSpec.describe "ログイン", type: :system do
   end
 end
 
-RSpec.describe "詳細ページ", type: :system do
+RSpec.describe "詳細ページ", :type => :system do
   before do
     @user = FactoryBot.create(:user)
   end
@@ -149,7 +149,7 @@ RSpec.describe "詳細ページ", type: :system do
   end
 end
 
-RSpec.describe "編集", type: :system do
+RSpec.describe "編集", :type => :system do
   before do
     @user = FactoryBot.create(:user)
   end
@@ -190,15 +190,15 @@ RSpec.describe "編集", type: :system do
         find('#user_birthday_3i').value
       ).to eq(@user.birthday.to_s.slice(8..9).to_i.to_s)
       # ユーザー情報を編集する
-      fill_in 'nickname', with: 'テスト中'
-      fill_in 'profile', with: 'テストをしています'
-      fill_in 'last-name', with: '近藤'
-      fill_in 'first-name', with: '秀明'
-      fill_in 'last-name-kana', with: 'コンドウ'
-      fill_in 'first-name-kana', with: 'ヒデアキ'
-      select 1970, from: 'user_birthday_1i'
-      select 1, from: 'user_birthday_2i'
-      select 3, from: 'user_birthday_3i'
+      fill_in 'nickname', :with => 'テスト中'
+      fill_in 'profile', :with => 'テストをしています'
+      fill_in 'last-name', :with => '近藤'
+      fill_in 'first-name', :with => '秀明'
+      fill_in 'last-name-kana', :with => 'コンドウ'
+      fill_in 'first-name-kana', :with => 'ヒデアキ'
+      select 1970, :from => 'user_birthday_1i'
+      select 1, :from => 'user_birthday_2i'
+      select 3, :from => 'user_birthday_3i'
       # 編集してもTweetモデルのカウントは変わらないことを確認する
       expect{
         find('input[name="commit"]').click
@@ -258,15 +258,15 @@ RSpec.describe "編集", type: :system do
         find('#user_birthday_3i').value
       ).to eq(@user.birthday.to_s.slice(8..9).to_i.to_s)
       # ユーザー情報を編集する
-      fill_in 'nickname', with: ''
-      fill_in 'profile', with: ''
-      fill_in 'last-name', with: ''
-      fill_in 'first-name', with: ''
-      fill_in 'last-name-kana', with: ''
-      fill_in 'first-name-kana', with: ''
-      select '--', from: 'user_birthday_1i'
-      select '--', from: 'user_birthday_2i'
-      select '--', from: 'user_birthday_3i'
+      fill_in 'nickname', :with => ''
+      fill_in 'profile', :with => ''
+      fill_in 'last-name', :with => ''
+      fill_in 'first-name', :with => ''
+      fill_in 'last-name-kana', :with => ''
+      fill_in 'first-name-kana', :with => ''
+      select '--', :from => 'user_birthday_1i'
+      select '--', :from => 'user_birthday_2i'
+      select '--', :from => 'user_birthday_3i'
       # 変更ボタンをクリック
         find('input[name="commit"]').click
       # 編集ページへ戻ったことを確認する
@@ -275,7 +275,7 @@ RSpec.describe "編集", type: :system do
   end
 end
 
-RSpec.describe "検索", type: :system do
+RSpec.describe "検索", :type => :system do
   before do
     @user = FactoryBot.create(:user)
     @user2 = FactoryBot.build(:user)
@@ -290,18 +290,18 @@ RSpec.describe "検索", type: :system do
       # 新規登録ページへ移動する
       visit new_user_registration_path
       # ユーザー情報を入力する
-      fill_in 'nickname', with: @user2.nickname
-      fill_in 'profile', with: @user2.profile
-      fill_in 'email', with: @user2.email
-      fill_in 'password', with: @user2.password
-      fill_in 'password-confirmation', with: @user2.password_confirmation
-      fill_in 'last-name', with: @user2.family_name_kanji
-      fill_in 'first-name', with: @user2.first_name_kanji
-      fill_in 'last-name-kana', with: @user2.family_name_kana
-      fill_in 'first-name-kana', with: @user2.first_name_kana
-      select @user2.birthday.to_s.slice(0..3), from: 'user_birthday_1i'
-      select @user2.birthday.to_s.slice(5..6).to_i, from: 'user_birthday_2i'
-      select @user2.birthday.to_s.slice(8..9).to_i, from: 'user_birthday_3i'
+      fill_in 'nickname', :with => @user2.nickname
+      fill_in 'profile', :with => @user2.profile
+      fill_in 'email', :with => @user2.email
+      fill_in 'password', :with => @user2.password
+      fill_in 'password-confirmation', :with => @user2.password_confirmation
+      fill_in 'last-name', :with => @user2.family_name_kanji
+      fill_in 'first-name', :with => @user2.first_name_kanji
+      fill_in 'last-name-kana', :with => @user2.family_name_kana
+      fill_in 'first-name-kana', :with => @user2.first_name_kana
+      select @user2.birthday.to_s.slice(0..3), :from => 'user_birthday_1i'
+      select @user2.birthday.to_s.slice(5..6).to_i, :from => 'user_birthday_2i'
+      select @user2.birthday.to_s.slice(8..9).to_i, :from => 'user_birthday_3i'
       # サインアップボタンを押すとユーザーモデルのカウントが1上がる
       expect{
         find('input[name="commit"]').click
@@ -313,7 +313,7 @@ RSpec.describe "検索", type: :system do
       # ログインする
       sign_in(@user)
       # 検索したいユーザーのニックネームを検索バーに入力する
-      fill_in 'keyword', with: @user2.nickname
+      fill_in 'keyword', :with => @user2.nickname
       # ヘッダーの検索ボタンをクリックする
       find('input[name="commit"]').click
       # 検索したユーザー名が表示されていることを確認する

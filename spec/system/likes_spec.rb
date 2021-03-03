@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'いいね', type: :system do
+RSpec.describe 'いいね', :type => :system do
   before do
     @user = FactoryBot.create(:user)
     @post = FactoryBot.create(:post)
@@ -12,8 +12,8 @@ RSpec.describe 'いいね', type: :system do
       # 投稿ページに移動する
       visit new_post_path
       # フォームに情報を入力する
-      attach_file "post-image", "#{Rails.root}/spec/fixtures/Yokosuka.jpg", make_visible: true
-      fill_in 'post_text', with: @post.text
+      attach_file "post-image", "#{Rails.root}/spec/fixtures/Yokosuka.jpg", :make_visible => true
+      fill_in 'post_text', :with => @post.text
       # 送信するとPostモデルのカウントが1上がることを確認する
       expect{
         find('input[name="commit"]').click
@@ -45,8 +45,8 @@ RSpec.describe 'いいね', type: :system do
       # 投稿ページに移動する
       visit new_post_path
       # フォームに情報を入力する
-      attach_file "post-image", "#{Rails.root}/spec/fixtures/Yokosuka.jpg", make_visible: true
-      fill_in 'post_text', with: @post.text
+      attach_file "post-image", "#{Rails.root}/spec/fixtures/Yokosuka.jpg", :make_visible => true
+      fill_in 'post_text', :with => @post.text
       # 送信するとPostモデルのカウントが1上がることを確認する
       expect{
         find('input[name="commit"]').click
@@ -68,7 +68,7 @@ RSpec.describe 'いいね', type: :system do
   end
 end
 
-RSpec.describe 'いいね集計', type: :system do
+RSpec.describe 'いいね集計', :type => :system do
   before do
     @user = FactoryBot.create(:user)
     @post = FactoryBot.create(:post)
@@ -80,8 +80,8 @@ RSpec.describe 'いいね集計', type: :system do
       # 投稿ページに移動する
       visit new_post_path
       # フォームに情報を入力する
-      attach_file "post-image", "#{Rails.root}/spec/fixtures/Yokosuka.jpg", make_visible: true
-      fill_in 'post_text', with: @post.text
+      attach_file "post-image", "#{Rails.root}/spec/fixtures/Yokosuka.jpg", :make_visible => true
+      fill_in 'post_text', :with => @post.text
       # 送信するとPostモデルのカウントが1上がることを確認する
       expect{
         find('input[name="commit"]').click

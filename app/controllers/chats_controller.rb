@@ -2,7 +2,7 @@ class ChatsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @friend_lists = FriendRequest.where("from_user_id = ? or to_user_id = ?", current_user.id, current_user.id).where(requesting_status: 2).pluck(:from_user_id, :to_user_id)
+    @friend_lists = FriendRequest.where("from_user_id = ? or to_user_id = ?", current_user.id, current_user.id).where(:requesting_status => 2).pluck(:from_user_id, :to_user_id)
     @chat_users_arrs = ChatUser.where("created_user_id = ? or invited_user_id = ?", current_user.id, current_user.id).pluck(:created_user_id, :invited_user_id)
     if @chat_users_arrs != []
       @chat_users_arr = @chat_users_arrs.flatten!.uniq
@@ -15,7 +15,7 @@ class ChatsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(id: params[:format])
+    @user = User.find_by(:id => params[:format])
     unless ChatUser.where("created_user_id = ? or invited_user_id = ?", @user.id, @user.id).where("created_user_id = ? or invited_user_id = ?", current_user.id, current_user.id) != []
       @chat = Chat.new
       if @chat.save
@@ -35,6 +35,6 @@ class ChatsController < ApplicationController
   private
 
   def chat_user_params
-    params.permit().merge(created_user_id: current_user.id, invited_user_id: @user.id, chat_id: @chat.id)
+    params.permit().merge(:created_user_id => current_user.id, :invited_user_id => @user.id, :chat_id => @chat.id)
   end
 end

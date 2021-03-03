@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "FriendRequests", type: :request do
+RSpec.describe "FriendRequests", :type => :request do
   before do
     @user = FactoryBot.create(:user)
     sign_in @user
@@ -32,13 +32,13 @@ RSpec.describe "FriendRequests", type: :request do
     context "正常に投稿できる場合" do
       it '正常に投稿できるか?' do
         expect do
-          friend_create_params = {from_user_id: @friend_request.from_user_id, to_user_id: @friend_request.to_user_id, requesting_status: @friend_request.requesting_status}
-          post user_friend_requests_path(@another_user.id), xhr: true, params: {id: @friend_request.id, friend_request: friend_create_params}        
+          friend_create_params = {:from_user_id => @friend_request.from_user_id, :to_user_id => @friend_request.to_user_id, :requesting_status => @friend_request.requesting_status}
+          post user_friend_requests_path(@another_user.id), :xhr => true, :params => {:id => @friend_request.id, :friend_request => friend_create_params}        
         end.to change(FriendRequest, :count).by 1
       end
       it 'createアクションへのリクエストが成功すること' do 
-        friend_create_params = {from_user_id: @friend_request.from_user_id, to_user_id: @friend_request.to_user_id, requesting_status: @friend_request.requesting_status}
-        post user_friend_requests_path(@another_user.id), xhr: true, params: {id: @friend_request.id, friend_request: friend_create_params}
+        friend_create_params = {:from_user_id => @friend_request.from_user_id, :to_user_id => @friend_request.to_user_id, :requesting_status => @friend_request.requesting_status}
+        post user_friend_requests_path(@another_user.id), :xhr => true, :params => {:id => @friend_request.id, :friend_request => friend_create_params}
         expect(response.status).to eq 200
       end
     end
@@ -52,8 +52,8 @@ RSpec.describe "FriendRequests", type: :request do
           @another_user.save
           @user.id = 1
           @user.save
-          friend_create_params = {from_user_id: @friend_request.from_user_id, to_user_id: @friend_request.to_user_id, requesting_status: @friend_request.requesting_status}
-          delete user_friend_request_path(@another_user.id, @user.id), xhr: true, params: {id: @friend_request.id, friend_request: friend_create_params}        
+          friend_create_params = {:from_user_id => @friend_request.from_user_id, :to_user_id => @friend_request.to_user_id, :requesting_status => @friend_request.requesting_status}
+          delete user_friend_request_path(@another_user.id, @user.id), :xhr => true, :params => {:id => @friend_request.id, :friend_request => friend_create_params}        
         end.to change(FriendRequest, :count).by -1
       end
       it '友達申請キャンセルのリクエストが成功すること' do 
@@ -61,8 +61,8 @@ RSpec.describe "FriendRequests", type: :request do
         @another_user.save
         @user.id = 1
         @user.save
-        friend_create_params = {from_user_id: @friend_request.from_user_id, to_user_id: @friend_request.to_user_id, requesting_status: @friend_request.requesting_status}
-        delete user_friend_request_path(@another_user.id, @user.id), xhr: true, params: {id: @friend_request.id, friend_request: friend_create_params}
+        friend_create_params = {:from_user_id => @friend_request.from_user_id, :to_user_id => @friend_request.to_user_id, :requesting_status => @friend_request.requesting_status}
+        delete user_friend_request_path(@another_user.id, @user.id), :xhr => true, :params => {:id => @friend_request.id, :friend_request => friend_create_params}
         expect(response.status).to eq 200
       end
     end
@@ -76,8 +76,8 @@ RSpec.describe "FriendRequests", type: :request do
           @another_user.save
           @user.id = 2
           @user.save
-          friend_create_params = {from_user_id: @friend_request.from_user_id, to_user_id: @friend_request.to_user_id, requesting_status: @friend_request.requesting_status}
-          delete reject_user_friend_request_path(@another_user.id, @user.id), params: {id: @friend_request.id, friend_request: friend_create_params}        
+          friend_create_params = {:from_user_id => @friend_request.from_user_id, :to_user_id => @friend_request.to_user_id, :requesting_status => @friend_request.requesting_status}
+          delete reject_user_friend_request_path(@another_user.id, @user.id), :params => {:id => @friend_request.id, :friend_request => friend_create_params}        
         end.to change(FriendRequest, :count).by -1
       end
       it '友達申請キャンセルのリクエストが成功すること' do 
@@ -85,8 +85,8 @@ RSpec.describe "FriendRequests", type: :request do
         @another_user.save
         @user.id = 2
         @user.save
-        friend_create_params = {from_user_id: @friend_request.from_user_id, to_user_id: @friend_request.to_user_id, requesting_status: @friend_request.requesting_status}
-        delete reject_user_friend_request_path(@another_user.id, @user.id), params: {id: @friend_request.id, friend_request: friend_create_params}
+        friend_create_params = {:from_user_id => @friend_request.from_user_id, :to_user_id => @friend_request.to_user_id, :requesting_status => @friend_request.requesting_status}
+        delete reject_user_friend_request_path(@another_user.id, @user.id), :params => {:id => @friend_request.id, :friend_request => friend_create_params}
         expect(response.status).to eq 302
       end
     end
@@ -100,8 +100,8 @@ RSpec.describe "FriendRequests", type: :request do
           @another_user.save
           @user.id = 2
           @user.save
-          friend_create_params = {from_user_id: @friend_request.from_user_id, to_user_id: @friend_request.to_user_id, requesting_status: @friend_request.requesting_status}
-          delete remove_user_friend_request_path(@another_user.id, @user.id), params: {id: @friend_request.id, friend_request: friend_create_params}        
+          friend_create_params = {:from_user_id => @friend_request.from_user_id, :to_user_id => @friend_request.to_user_id, :requesting_status => @friend_request.requesting_status}
+          delete remove_user_friend_request_path(@another_user.id, @user.id), :params => {:id => @friend_request.id, :friend_request => friend_create_params}        
         end.to change(FriendRequest, :count).by -1
       end
       it '友達関係キャンセルのリクエストが成功すること' do 
@@ -109,8 +109,8 @@ RSpec.describe "FriendRequests", type: :request do
         @another_user.save
         @user.id = 2
         @user.save
-        friend_create_params = {from_user_id: @friend_request.from_user_id, to_user_id: @friend_request.to_user_id, requesting_status: @friend_request.requesting_status}
-        delete remove_user_friend_request_path(@another_user.id, @user.id), params: {id: @friend_request.id, friend_request: friend_create_params}
+        friend_create_params = {:from_user_id => @friend_request.from_user_id, :to_user_id => @friend_request.to_user_id, :requesting_status => @friend_request.requesting_status}
+        delete remove_user_friend_request_path(@another_user.id, @user.id), :params => {:id => @friend_request.id, :friend_request => friend_create_params}
         expect(response.status).to eq 302
       end
     end

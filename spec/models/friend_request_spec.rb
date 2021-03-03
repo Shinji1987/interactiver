@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe FriendRequest, type: :model do
+RSpec.describe FriendRequest, :type => :model do
   describe '#create' do
     before do
       @friend_request = FactoryBot.build(:friend_request)

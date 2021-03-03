@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Read, type: :model do
+RSpec.describe Read, :type => :model do
   describe '#create' do
     before do
       @read = FactoryBot.build(:read)

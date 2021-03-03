@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :request do
-  let(:rspec_session) { { current_user: 2 } }
+RSpec.describe "Users", :type => :request do
+  let(:rspec_session) { { :current_user => 2 } }
 
   before do
     @user = FactoryBot.create(:user)
@@ -59,8 +59,9 @@ RSpec.describe "Users", type: :request do
   describe "PATCH#update" do
     context "正常にユーザー情報を更新できる場合" do
       it '正常にユーザー情報を更新できるか?' do 
-        user_update_params = {nickname: "ロバート", family_name_kanji: "山田", first_name_kanji: "太朗", family_name_kana: "ヤマダ", first_name_kana: "タロウ", birthday: "1980-01-01", profile: "楽しくいきましょう！"}
-        patch user_path(@user), params: {id: @user.id, user: user_update_params}
+        user_update_params = {:nickname => "ロバート", :family_name_kanji => "山田", :first_name_kanji => "太朗", :family_name_kana => "ヤマダ", :first_name_kana => "タロウ", :birthday => "1980-01-01", 
+                              :profile => "楽しくいきましょう！"}
+        patch user_path(@user), :params => {:id => @user.id, :user => user_update_params}
         expect(@user.reload.nickname).to eq "ロバート"
         expect(@user.family_name_kanji).to eq "山田"
         expect(@user.first_name_kanji).to eq "太朗"
@@ -70,20 +71,22 @@ RSpec.describe "Users", type: :request do
         expect(@user.profile).to eq "楽しくいきましょう！"
       end
       it '正常にユーザー情報を更新した後、更新されたユーザー詳細ページへリダイレクトされるか?' do 
-        user_update_params = {nickname: "ロバート", family_name_kanji: "山田", first_name_kanji: "太朗", family_name_kana: "ヤマダ", first_name_kana: "タロウ", birthday: "1980-01-01", profile: "楽しくいきましょう！"}
-        patch user_path(@user), params: {id: @user.id, user: user_update_params}
+        user_update_params = {:nickname => "ロバート", :family_name_kanji => "山田", :first_name_kanji => "太朗", :family_name_kana => "ヤマダ", :first_name_kana => "タロウ", :birthday => "1980-01-01", 
+                              :profile => "楽しくいきましょう！"}
+        patch user_path(@user), :params => {:id => @user.id, :user => user_update_params}
         expect(response).to redirect_to user_path(@user)
       end
       it '正常にユーザー情報を更新した時、リクエストが成功することされるか?' do 
-        user_update_params = {nickname: "ロバート", family_name_kanji: "山田", first_name_kanji: "太朗", family_name_kana: "ヤマダ", first_name_kana: "タロウ", birthday: "1980-01-01", profile: "楽しくいきましょう！"}
-        patch user_path(@user), params: {id: @user.id, user: user_update_params}
+        user_update_params = {:nickname => "ロバート", :family_name_kanji => "山田", :first_name_kanji => "太朗", :family_name_kana => "ヤマダ", :first_name_kana => "タロウ", :birthday => "1980-01-01", 
+                              :profile => "楽しくいきましょう！"}
+        patch user_path(@user), :params => {:id => @user.id, :user => user_update_params}
         expect(response.status).to eq 302
       end
     end
     context "正常にユーザー情報を更新できない場合" do
       it '不正な値が入力された時は、更新できなくなっているか?' do 
-        user_update_params = {nickname: "", family_name_kanji: "", first_name_kanji: "", family_name_kana: "", first_name_kana: "", birthday: ""}
-        patch user_path(@user), params: {id: @user.id, user: user_update_params}
+        user_update_params = {:nickname => "", :family_name_kanji => "", :first_name_kanji => "", :family_name_kana => "", :first_name_kana => "", :birthday => ""}
+        patch user_path(@user), :params => {:id => @user.id, :user => user_update_params}
         expect(@user.reload.nickname).to eq "ジョン"
         expect(@user.family_name_kanji).to eq "滝本"
         expect(@user.first_name_kanji).to eq "圭一"
@@ -92,8 +95,8 @@ RSpec.describe "Users", type: :request do
         expect(@user.birthday.to_s).to eq "1988-02-06"
       end
       it '不正な値が入力された時は、編集画面へ戻るか?' do 
-        user_update_params = {nickname: "", family_name_kanji: "", first_name_kanji: "", family_name_kana: "", first_name_kana: "", birthday: ""}
-        patch user_path(@user), params: {id: @user.id, user: user_update_params}
+        user_update_params = {:nickname => "", :family_name_kanji => "", :first_name_kanji => "", :family_name_kana => "", :first_name_kana => "", :birthday => ""}
+        patch user_path(@user), :params => {:id => @user.id, :user => user_update_params}
         expect(response).to render_template :edit
       end
     end
