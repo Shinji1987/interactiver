@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Comments", type: :request do
+RSpec.describe "Comments", :type => :request do
   before do
     @user = FactoryBot.create(:user)
     sign_in @user
@@ -35,24 +35,24 @@ RSpec.describe "Comments", type: :request do
           @comment.user_id = @user.id
           @comment.post_id = @post.id
           @comment.save
-          comment_create_params = {comment: @comment.comment}
-          post post_comments_path(@post.id), params: {id: @comment.id, comment: comment_create_params}        
+          comment_create_params = {:comment => @comment.comment}
+          post post_comments_path(@post.id), :params => {:id => @comment.id, :comment => comment_create_params}        
         end.to change(Comment, :count).by 1
       end
       it 'createアクションへのリクエストが成功すること' do 
         @comment.user_id = @user.id
         @comment.post_id = @post.id
         @comment.save
-        comment_create_params = {comment: @comment.comment}
-        post post_comments_path(@post.id), params: {id: @comment.id, comment: comment_create_params}
+        comment_create_params = {:comment => @comment.comment}
+        post post_comments_path(@post.id), :params => {:id => @comment.id, :comment => comment_create_params}
         expect(response.status).to eq 302
       end
       it '正常に投稿した後、トップページへリダイレクトされるか?' do 
         @comment.user_id = @user.id
         @comment.post_id = @post.id
         @comment.save
-        comment_create_params = {comment: @comment.comment}
-        post post_comments_path(@post.id), params: {id: @comment.id, comment: comment_create_params}
+        comment_create_params = {:comment => @comment.comment}
+        post post_comments_path(@post.id), :params => {:id => @comment.id, :comment => comment_create_params}
         expect(response).to redirect_to new_post_comment_path
       end
     end
@@ -62,16 +62,16 @@ RSpec.describe "Comments", type: :request do
           @comment.user_id = @user.id
           @comment.post_id = @post.id
           @comment.save
-          comment_create_params = {comment: ""}
-          post post_comments_path(@post.id), params: {id: @comment.id, comment: comment_create_params}        
+          comment_create_params = {:comment => ""}
+          post post_comments_path(@post.id), :params => {:id => @comment.id, :comment => comment_create_params}        
         end.to_not change(Comment, :count)
       end
       it '不正な値が含まれている場合、投稿画面へ戻るか?' do
         @comment.user_id = @user.id
         @comment.post_id = @post.id
         @comment.save
-        comment_create_params = {comment: ""}
-        post post_comments_path(@post.id), params: {id: @comment.id, comment: comment_create_params}
+        comment_create_params = {:comment => ""}
+        post post_comments_path(@post.id), :params => {:id => @comment.id, :comment => comment_create_params}
         expect(response).to redirect_to new_post_comment_path        
       end
     end

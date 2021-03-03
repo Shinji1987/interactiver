@@ -14,13 +14,13 @@ class CommentsController < ApplicationController
        @comment.save
        redirect_to new_post_comment_path
     else
-      redirect_to new_post_comment_path, flash: {notice: "コメントを入力してください"}
+      redirect_to new_post_comment_path, :flash => {:notice => "コメントを入力してください"}
     end
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:comment).merge(user_id: current_user.id, post_id: params[:post_id])
+    params.require(:comment).permit(:comment).merge(:user_id => current_user.id, :post_id => params[:post_id])
   end
 end

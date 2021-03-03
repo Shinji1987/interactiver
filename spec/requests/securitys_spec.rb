@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Securitys", type: :request do
+RSpec.describe "Securitys", :type => :request do
   before do
     @user = FactoryBot.create(:user)
     sign_in @user
@@ -32,20 +32,20 @@ RSpec.describe "Securitys", type: :request do
       it '正常にブロックできるか?' do
         expect do
           @another_user = FactoryBot.create(:user) 
-          block_create_params = {block_user_id: @user.id, blocked_user_id: @another_user}
-          post securitys_path(@another_user.id), params: {id: @security.id, shop: block_create_params}        
+          block_create_params = {:block_user_id => @user.id, :blocked_user_id => @another_user}
+          post securitys_path(@another_user.id), :params => {:id => @security.id, :shop => block_create_params}        
         end.to change(Security, :count).by 1
       end
       it 'リクエストが成功すること' do 
         @another_user = FactoryBot.create(:user) 
-        block_create_params = {block_user_id: @user.id, blocked_user_id: @another_user}
-        post securitys_path(@another_user.id), params: {id: @security.id, shop: block_create_params} 
+        block_create_params = {:block_user_id => @user.id, :blocked_user_id => @another_user}
+        post securitys_path(@another_user.id), :params => {:id => @security.id, :shop => block_create_params} 
         expect(response.status).to eq 302
       end
       it '正常にブロックした後、ブロック機能ページへリダイレクトされるか?' do 
         @another_user = FactoryBot.create(:user) 
-        block_create_params = {block_user_id: @user.id, blocked_user_id: @another_user}
-        post securitys_path(@another_user.id), params: {id: @security.id, shop: block_create_params} 
+        block_create_params = {:block_user_id => @user.id, :blocked_user_id => @another_user}
+        post securitys_path(@another_user.id), :params => {:id => @security.id, :shop => block_create_params} 
         expect(response).to redirect_to new_security_path
       end
     end
@@ -60,8 +60,8 @@ RSpec.describe "Securitys", type: :request do
           @another_user.save
           @user.id = 1
           @user.save
-          block_create_params = {block_user_id: @user.id, blocked_user_id: @another_user.id}
-          delete security_path(@another_user.id), params: {id: @security.id, shop: block_create_params}        
+          block_create_params = {:block_user_id => @user.id, :blocked_user_id => @another_user.id}
+          delete security_path(@another_user.id), :params => {:id => @security.id, :shop => block_create_params}        
         end.to change(Security, :count).by -1
       end
       it 'リクエストが成功すること' do 
@@ -70,8 +70,8 @@ RSpec.describe "Securitys", type: :request do
         @another_user.save
         @user.id = 1
         @user.save
-        block_create_params = {block_user_id: @user.id, blocked_user_id: @another_user.id}
-        delete security_path(@another_user.id), params: {id: @security.id, shop: block_create_params}  
+        block_create_params = {:block_user_id => @user.id, :blocked_user_id => @another_user.id}
+        delete security_path(@another_user.id), :params => {:id => @security.id, :shop => block_create_params}  
         expect(response.status).to eq 302
       end
       it '正常にブロックした後、ブロック機能ページへリダイレクトされるか?' do 
@@ -80,8 +80,8 @@ RSpec.describe "Securitys", type: :request do
         @another_user.save
         @user.id = 1
         @user.save
-        block_create_params = {block_user_id: @user.id, blocked_user_id: @another_user.id}
-        delete security_path(@another_user.id), params: {id: @security.id, shop: block_create_params}   
+        block_create_params = {:block_user_id => @user.id, :blocked_user_id => @another_user.id}
+        delete security_path(@another_user.id), :params => {:id => @security.id, :shop => block_create_params}   
         expect(response).to redirect_to new_security_path
       end
     end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Chat, type: :model do
+RSpec.describe Chat, :type => :model do
   describe '#create' do
     before do
       @chat = FactoryBot.build(:chat)

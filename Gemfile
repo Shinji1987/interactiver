@@ -28,12 +28,12 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
+gem 'bootsnap', '>= 1.4.2', :require => false
 gem "chartkick"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', :platforms => [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.0'
   gem 'factory_bot_rails'
   gem 'faker'
@@ -55,6 +55,10 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
+  gem 'rubocop', :require => false
+  gem 'rubocop-performance', :require => false
+  gem 'rubocop-rails', :require => false
+  gem 'rubocop-rspec'
 end
 
 group :test do
@@ -72,7 +76,7 @@ group :production do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', :platforms => [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
@@ -101,13 +105,13 @@ gem "geocoder"
 
 gem 'http'
 
-gem 'rails_12factor', group: :production
+gem 'rails_12factor', :group => :production
 
-gem "aws-sdk-s3", require: false
+gem "aws-sdk-s3", :require => false
 
 gem 'sprockets', '~> 4.0.2.beta.8'
 
-gem 'sprockets-es6', require: 'sprockets/es6'
+gem 'sprockets-es6', :require => 'sprockets/es6'
 
 gem 'active_hash'
 

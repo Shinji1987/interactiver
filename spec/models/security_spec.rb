@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Security, type: :model do
+RSpec.describe Security, :type => :model do
   describe '#create' do
     before do
       @security = FactoryBot.build(:security)

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "店舗編集", type: :system do
+RSpec.describe "店舗編集", :type => :system do
   before do
     @user = FactoryBot.create(:user)
     @shop = FactoryBot.build(:shop)
@@ -28,10 +28,10 @@ RSpec.describe "店舗編集", type: :system do
         find('#shopaddress').value
       ).to eq('')
       # 店舗情報を編集する
-      fill_in 'shopname', with: @shop.shop_name
-      select '居酒屋', from: 'shop_shop_category_id'
-      fill_in 'shopdescription', with: @shop.shop_description
-      fill_in 'shopaddress', with: @shop.shop_address
+      fill_in 'shopname', :with => @shop.shop_name
+      select '居酒屋', :from => 'shop_shop_category_id'
+      fill_in 'shopdescription', :with => @shop.shop_description
+      fill_in 'shopaddress', :with => @shop.shop_address
       # 編集してもTweetモデルのカウントは変わらないことを確認する
       expect{
         find('input[name="commit"]').click

@@ -70,6 +70,6 @@ RSpec.configure do |config|
     config.add_setting(:session, :default => session)
     allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return(RSpec.configuration.session)
   end
-  config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::IntegrationHelpers, :type => :request
   config.include FactoryBot::Syntax::Methods
 end

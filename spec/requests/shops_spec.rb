@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Shops", type: :request do
-  let(:rspec_session) { { current_user: 2 } }
+RSpec.describe "Shops", :type => :request do
+  let(:rspec_session) { { :current_user => 2 } }
 
   before do
     @user = FactoryBot.create(:user)
@@ -39,16 +39,16 @@ RSpec.describe "Shops", type: :request do
   describe "PATCH#update" do
     context "正常に店舗情報を更新できる場合" do
       it '正常に店舗情報を更新できるか?' do 
-        shopping_update_params = {shop_name: "居酒屋 楽", shop_category_id: 5, shop_description: "海鮮居酒屋です", shop_address: "神奈川県横浜市"}
-        patch shop_path(@user.id, @shop), params: {id: @shop.id, shop: shopping_update_params}        
+        shopping_update_params = {:shop_name => "居酒屋 楽", :shop_category_id => 5, :shop_description => "海鮮居酒屋です", :shop_address => "神奈川県横浜市"}
+        patch shop_path(@user.id, @shop), :params => {:id => @shop.id, :shop => shopping_update_params}        
         expect(@shop.reload.shop_name).to eq "居酒屋 楽"
         expect(@shop.shop_category_id).to eq 5
         expect(@shop.shop_description).to eq "海鮮居酒屋です"
         expect(@shop.shop_address).to eq "神奈川県横浜市"
       end
       it '正常に店舗情報を更新した後、更新されたユーザー詳細ページへリダイレクトされるか?' do 
-        shopping_update_params = {shop_name: "居酒屋 楽", shop_category_id: 5, shop_description: "海鮮居酒屋です", shop_address: "神奈川県横浜市"}
-        patch shop_path(@user.id, @shop), params: {id: @shop.id, shop: shopping_update_params}
+        shopping_update_params = {:shop_name => "居酒屋 楽", :shop_category_id => 5, :shop_description => "海鮮居酒屋です", :shop_address => "神奈川県横浜市"}
+        patch shop_path(@user.id, @shop), :params => {:id => @shop.id, :shop => shopping_update_params}
         expect(response).to redirect_to user_path(@user)
       end
     end
