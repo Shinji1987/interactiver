@@ -1,6 +1,11 @@
-![Rails](https://img.shields.io/badge/Ruby-2.6.5-blue)
+![Ruby](https://img.shields.io/badge/Ruby-2.6.5-blue)
 ![Rails](https://img.shields.io/badge/Rails-6.0.3.4-blue)
-![Rails](https://img.shields.io/badge/MySQL2-0.5.3-blue)
+![MySQL](https://img.shields.io/badge/MySQL2-0.5.3-blue)
+![Devise](https://img.shields.io/badge/Devise-4.7.3-blue)
+![RSpec](https://img.shields.io/badge/RSpec-3.10-blue)
+![Capistrano](https://img.shields.io/badge/Capistrano-3.15.0-blue)
+![Docker Desctop](https://img.shields.io/badge/Docker%20Desktop-Preview%207-blue)
+![Docker-Compose](https://img.shields.io/badge/Docker--Compose-1.27.4-blue)
 
 # Interactiver
 
@@ -16,8 +21,12 @@ Interactiverは、そんな海外で飲食店を経営している方々、こ�
 ### アプリのURL
 http://35.72.111.10/
 
-### テスト用アカウント
-メールアドレス：　admin@sample.com
+### テスト用ログイン情報
+- Basic認証情報<br>
+ユーザー名： admin<br>
+パスワード： 12345678<br>
+- テスト用アカウント情報<br>
+メールアドレス：　admin@sample.com<br>
 パスワード：　717ninyuus
 
 ### 利用方法
@@ -44,8 +53,8 @@ http://35.72.111.10/
 - テストの種類： 正常系、異常系
 - 実施テスト： 単体テスト、結合テスト
 
-### デプロイ方法(手順①〜⑤)
-<img src="https://user-images.githubusercontent.com/76105302/108294319-fe677600-71d8-11eb-8e2a-8efa9ba2cd88.png" width="500">
+### デプロイ方法(Capistranoによる自動デプロイ)
+<img src="https://user-images.githubusercontent.com/76105302/109930747-56d76100-7d0b-11eb-8f39-f980fed0a342.png" width="500">
 
 
 
