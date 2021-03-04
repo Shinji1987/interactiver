@@ -104,7 +104,7 @@ http://35.72.111.10/
 <img src="https://user-images.githubusercontent.com/76105302/108219319-f5df5300-7178-11eb-8201-939a708e1f83.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/108219391-0abbe680-7179-11eb-98d4-da34fb42c446.png" width="80"> <img src="https://user-images.githubusercontent.com/76105302/108219500-23c49780-7179-11eb-9b7c-a3a34cc86cfc.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/108219582-38a12b00-7179-11eb-90c0-0b4d3bd283a9.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/108219671-4d7dbe80-7179-11eb-93f2-4c46754664ad.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/108219782-638b7f00-7179-11eb-9a81-d7955ea651a2.png" width="60">
 
 ### システム構成図
-<img src="https://user-images.githubusercontent.com/76105302/108286166-f1905580-71cb-11eb-82a4-f87613ee5edd.png" width="500">
+<img src="https://user-images.githubusercontent.com/76105302/109952848-ab3a0b00-7d22-11eb-8af7-7e0a4b8c6b0f.png" width="500">
 
 ### こだわりポイント
 1. 友達機能<br>
