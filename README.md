@@ -4,6 +4,9 @@
 ![Devise](https://img.shields.io/badge/Devise-4.7.3-blue)
 ![RSpec](https://img.shields.io/badge/RSpec-3.10-blue)
 ![Capistrano](https://img.shields.io/badge/Capistrano-3.15.0-blue)
+![Unicorn](https://img.shields.io/badge/Unicorn-5.4.1-blue)
+![Nginx](https://img.shields.io/badge/Nginx-1.18.0-blue)
+![MariDB](https://img.shields.io/badge/MariDB-5.5.68-blue)
 ![Docker Desctop](https://img.shields.io/badge/Docker%20Desktop-Preview%207-blue)
 ![Docker-Compose](https://img.shields.io/badge/Docker--Compose-1.27.4-blue)
 
@@ -95,7 +98,7 @@ http://35.72.111.10/
 <img src="https://user-images.githubusercontent.com/76105302/108214158-2f14c480-7173-11eb-948d-d0e91366acf0.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/108214302-5bc8dc00-7173-11eb-9da3-338fdcd3f4d1.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/108215013-2cff3580-7174-11eb-83a1-ee5fc395a797.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/108215553-cf1f1d80-7174-11eb-880a-d4ffec600fa4.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/108215177-60da5b00-7174-11eb-9795-db88dbc8c5c5.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/108215250-75b6ee80-7174-11eb-87dd-3095f2aa579d.png" width="60">
 
 ### 環境
-<img src="https://user-images.githubusercontent.com/76105302/108216440-d266d900-7175-11eb-9bb7-d758b8e07cad.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/108216542-f32f2e80-7175-11eb-8375-f0d435e54a1d.png" width="70"> <img src="https://user-images.githubusercontent.com/76105302/108216634-08a45880-7176-11eb-82ec-1f19a7cd44fe.png" width="60">
+<img src="https://user-images.githubusercontent.com/76105302/108216440-d266d900-7175-11eb-9bb7-d758b8e07cad.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/108216634-08a45880-7176-11eb-82ec-1f19a7cd44fe.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/108216542-f32f2e80-7175-11eb-8375-f0d435e54a1d.png" width="70"> <img src="https://user-images.githubusercontent.com/76105302/109933799-272a5800-7d0f-11eb-8e17-55128aa426f3.png" width="80"> <img src="https://user-images.githubusercontent.com/76105302/109932126-25f82b80-7d0d-11eb-8b7f-5e70fd08aacd.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/109932515-a454cd80-7d0d-11eb-8be9-5b218d9b1542.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/109931799-a5392f80-7d0c-11eb-87dc-6e60e34ed6d3.png" width="70">
 
 ### テクノロジー
 <img src="https://user-images.githubusercontent.com/76105302/108219319-f5df5300-7178-11eb-8201-939a708e1f83.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/108219391-0abbe680-7179-11eb-98d4-da34fb42c446.png" width="80"> <img src="https://user-images.githubusercontent.com/76105302/108219500-23c49780-7179-11eb-9b7c-a3a34cc86cfc.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/108219582-38a12b00-7179-11eb-90c0-0b4d3bd283a9.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/108219671-4d7dbe80-7179-11eb-93f2-4c46754664ad.png" width="60"> <img src="https://user-images.githubusercontent.com/76105302/108219782-638b7f00-7179-11eb-9a81-d7955ea651a2.png" width="60">
