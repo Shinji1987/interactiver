@@ -7,7 +7,7 @@ jobs:                          #----------------------------------------------â˜
           RAILS_ENV: 'test'
           MYSQL_HOST: 127.0.0.1
           MYSQL_PORT: 3306
-      - image: circleci/mysql@sha256:d8e4032005f53a774f2361281ebf61fa3d7635d5dacf9c58bc54e823ddcf9f1d
+      - image: mysql@sha256:d8e4032005f53a774f2361281ebf61fa3d7635d5dacf9c58bc54e823ddcf9f1d
         command: mysqld --default-authentication-plugin=mysql_native_password
         environment:
           MYSQL_ROOT_HOST: '%'
