@@ -14,6 +14,7 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= ENV['MYSQL_DATABASE'] %>
+  username: ${MYSQL_DATABASE}
   socket: /tmp/mysql.sock
   
 
@@ -21,6 +22,7 @@ development:
   <<: *default
   database: interactiver_development
   password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
+  password: ${MYSQL_ROOT_PASSWORD}
   host: db
 
 # Warning: The database defined as "test" will be erased and
@@ -30,6 +32,7 @@ test:
   <<: *default
   database: interactiver_test
   password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
+  password: ${MYSQL_ROOT_PASSWORD}
   host: db
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -55,5 +58,7 @@ production:
   <<: *default
   database: interactiver_production
   username: <%= ENV['MYSQL_DATABASE'] %>
+  username: ${MYSQL_DATABASE}
   password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
+  password: ${MYSQL_ROOT_PASSWORD}
   socket: /var/lib/mysql/mysql.sock
