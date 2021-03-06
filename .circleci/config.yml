@@ -58,6 +58,7 @@ jobs:
       - run:
           name: bundle exec
           command: |
+            mv config/database.yml.ci config/database.yml
             dockerize -wait tcp://127.0.0.1:4306 -timeout 120s
             bundle exec rake db:create
             bundle exec rake db:schema:load
