@@ -1,34 +1,3 @@
-# # Ruby CircleCI 2.0 configuration file
-# #
-# # Check https://circleci.com/docs/2.0/language-ruby/ for more details
-# #
-# version: 2
-# jobs:
-#   build:
-#     docker:
-#       # specify the version you desire here
-#       # ruby2.5.1を使ったアプリのため
-#       - image: circleci/ruby:2.6.5-node-browsers
-#         environment:
-# #  ①注意！！ bundlerのバージョンが2.0.1以上だと、bundle installに失敗します。ここに環境として指定します。
-#           - BUNDLER_VERSION: 2.1.4
-# #  ②注意！！ circleCIは仮想環境を構築するので、そのときに使うデータベースを指定する必要があります。
-#           - RAILS_ENV: 'test'
-#           - MYSQL_HOST: 127.0.0.1
-#           - MYSQL_DATABASE: ${MYSQL_DATABASE}
-#           - MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-#           - MYSQL_PORT: 4306
-#       # Mysqlのバージョン5.6で動かしていたため、5.6を指定
-#       - image: circleci/mysql:5.6
-#         environment:
-#           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-#           - MYSQL_ROOT_HOST: '%'
-#           - MYSQL_DATABASE: ${MYSQL_DATABASE}
-#           - MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-# Ruby CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-ruby/ for more details
-#
 version: 2
 jobs:
   build:
@@ -39,13 +8,15 @@ jobs:
           BUNDLER_VERSION: 2.1.4
           RAILS_ENV: test
           DB_HOST: 127.0.0.1
-          MYSQL_DATABASE: <%= ENV['MYSQL_DATABASE'] %>
-          MYSQL_ROOT_PASSWORD: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
-
+          MYSQL_DATABASE: ${MYSQL_DATABASE}
+          MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+          MYSQL_PORT: 4306
       - image: circleci/mysql:5.6.50
         environment:
-          MYSQL_DATABASE: <%= ENV['MYSQL_DATABASE'] %>
-          MYSQL_ROOT_PASSWORD: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+          MYSQL_ROOT_HOST: '%'
+          MYSQL_DATABASE: ${MYSQL_DATABASE}
+          MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
