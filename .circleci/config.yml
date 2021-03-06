@@ -5,7 +5,7 @@ jobs:                          #----------------------------------------------â˜
       - image: circleci/ruby:2.6.5-node-browsers
         environment:
           RAILS_ENV: 'test'
-          MYSQL_HOST: db
+          MYSQL_HOST: 127.0.0.1
           MYSQL_DATABASE: ${MYSQL_DATABASE}
           MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
           MYSQL_PORT: 4306

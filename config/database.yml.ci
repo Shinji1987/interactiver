@@ -5,5 +5,5 @@ test:
   username: ${MYSQL_DATABASE}
   password: ${MYSQL_ROOT_PASSWORD}
   port: 4306
-  host: db
+  host: 127.0.0.1
   database: ci_test
