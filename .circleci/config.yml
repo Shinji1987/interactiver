@@ -1,85 +1,58 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
-      # specify the version you desire here 
       - image: circleci/ruby:2.6.5-node-browsers
         environment:
-          BUNDLER_VERSION: 2.1.4
-          RAILS_ENV: test
-          DB_HOST: 127.0.0.1
-          MYSQL_DATABASE: ${MYSQL_DATABASE}
-          MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-          MYSQL_PORT: 4306
-      - image: circleci/mysql:5.6.50
+          - BUNDLER_VERSION: 2.1.4
+          - RAILS_ENV: ‘test’
+      - image: circleci/mysql:5.6
         environment:
-          MYSQL_ROOT_HOST: '%'
-          MYSQL_DATABASE: ${MYSQL_DATABASE}
-          MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
+          - MYSQL_ALLOW_EMPTY_PASSWORD: ‘true’
+          - MYSQL_ROOT_HOST: ‘%’
     working_directory: ~/interactiver
-
     steps:
       - checkout
-      - run:
-          name: yarn install
-          command: yarn install
-      - run:
-          name: setup bundler
-          command: |
-            sudo gem update --system
-            sudo gem uninstall bundler
-            sudo rm /usr/local/bin/bundle
-            sudo rm /usr/local/bin/bundler
-            sudo gem install bundler
-        # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-{{ checksum “Gemfile.lock” }}
             - v1-dependencies-
-
       - run:
           name: install dependencies
           command: |
-            yarn install --check-files
+            gem install bundler -v 2.1.4
             bundle install --jobs=4 --retry=3 --path vendor/bundle
-
       - save_cache:
           paths:
             - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-
-      # Database setup
+          key: v1-dependencies-{{ checksum “Gemfile.lock” }}
+      - restore_cache:
+          keys:
+            - rails-demo-yarn-{{ checksum “yarn.lock” }}
+            - rails-demo-yarn-
       - run:
-          name: bundle exec
-          command: |
-            bundle exec rake db:create
-            bundle exec rake db:schema:load
-
-      # run test
+          name: Yarnをinstall
+          command: yarn install --cache-folder ~/.cache/yarn
+      - run: mv config/database.yml.ci config/database.yml
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+      #   効率化の為一旦コメントアウトする
+      # - run:
+      #     name: Rubocop
+      #     command: bundle exec rubocop
+      - run: bundle exec bin/webpack
       - run:
           name: run tests
           command: |
             mkdir /tmp/test-results
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
-              circleci tests split --split-by=timings)"
-
-            sudo gem install bundler
-            sudo gem install rspec
-            sudo gem install rspec-core
+            TEST_FILES=“$(circleci tests glob “spec/**/*_spec.rb” | \
+              circleci tests split --split-by=timings)”
             bundle exec rspec \
               --format progress \
               --format RspecJunitFormatter \
               --out /tmp/test-results/rspec.xml \
               --format progress \
               $TEST_FILES
-
-      # collect reports
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
