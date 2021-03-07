@@ -63,7 +63,7 @@ jobs:
             bundle exec rake db:create
             bundle exec rake db:schema:load
 
-      # run tests
+      # run test
       - run:
           name: run tests
           command: |
