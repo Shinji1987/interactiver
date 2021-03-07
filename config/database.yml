@@ -16,7 +16,6 @@ default: &default
   username: <%= ENV['MYSQL_DATABASE'] %>
   socket: /tmp/mysql.sock
   
-
 development:
   <<: *default
   database: interactiver_development
