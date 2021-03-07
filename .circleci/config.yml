@@ -6,10 +6,14 @@ jobs:
         environment:
           - BUNDLER_VERSION: 2.1.4
           - RAILS_ENV: ‘test’
+          - MYSQL_DATABASE: ${MYSQL_DATABASE}
+          - MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       - image: circleci/mysql:5.6
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: ‘true’
           - MYSQL_ROOT_HOST: ‘%’
+          - MYSQL_DATABASE: ${MYSQL_DATABASE}
+          - MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     working_directory: ~/interactiver
     steps:
       - checkout
@@ -31,7 +35,7 @@ jobs:
             - rails-demo-yarn-{{ checksum “yarn.lock” }}
             - rails-demo-yarn-
       - run:
-          name: Yarnをinstall
+          name: yarn install
           command: yarn install --cache-folder ~/.cache/yarn
       - run: mv config/database.yml.ci config/database.yml
       - run: bundle exec rake db:create
